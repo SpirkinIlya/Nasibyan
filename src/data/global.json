@@ -1,0 +1,19 @@
+{
+  "site": {
+    "name": "Сергей Насибян"
+  },
+  "contacts": {
+    "phone": "",
+    "email": ""
+  },
+  "navigation": [
+    {
+      "text": "Главная",
+      "href": "/"
+    },
+    {
+      "text": "Услуги",
+      "href": "/services/"
+    }
+  ]
+}

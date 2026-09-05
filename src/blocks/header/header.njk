@@ -1,0 +1,24 @@
+{% from "blocks/logo/logo.njk" import logo %}
+{% from "blocks/button/button.njk" import button %}
+
+{% macro header(data) %}
+<header class="header">
+  <div class="container header__container">
+    <div class="header__logo">
+      {{ logo() }}
+    </div>
+    <div class="header__items">
+      <nav class="header__nav" aria-label="Основная навигация">
+        <ul class="header__list">
+          {% for item in data.navigation %}
+          <li class="header__item">
+            <a class="header__link" href="{{ item.href }}">{{ item.text }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {{ button({theme:"secondary", text:"Записаться на курс"})}}
+    </div>
+  </div>
+</header>
+{% endmacro %}

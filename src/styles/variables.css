@@ -1,0 +1,55 @@
+:root {
+  /* Container */
+  --container-width: 1280px;
+  --container-padding: 40px;
+  --container-padding-mobile: 16px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 64px;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* Typography — font family */
+  --font-primary: 'Rubik', sans-serif;
+  --font-secondary: 'Source Serif 4', serif;
+
+  /* Typography — font weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* Typography — heading sizes */
+  --text-h1: 48px;
+  --text-h1-mobile: 40px;
+  --text-h2: 42px;
+  --text-h2-mobile: 30px;
+  --text-h3: 26px;
+
+  /* Typography — heading line-height and letter-spacing */
+  --line-height-heading: 1.2;
+  --letter-spacing-heading: 0;
+
+  /* Colors — primary */
+  --color-dark: #0e0d0b;
+  --color-white: #fff;
+
+  /* Colors — accent */
+  --color-accent-sand: #c59857;
+  --color-accent-brown: #5a4025;
+  --color-accent-pale: #dabdab;
+  --color-accent-red: #9a1710;
+}

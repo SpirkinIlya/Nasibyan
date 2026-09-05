@@ -1,0 +1,22 @@
+{% macro button(data) %}
+{% set classes = "button" %}
+{% if data.theme %} {% set classes = classes + " button_theme_" + data.theme %} {% endif %}
+{% if data.size %} {% set classes = classes + " button_size_" + data.size %} {% endif %}
+{% if data.width %} {% set classes = classes + " button_width_" + data.width %} {% endif %}
+
+{% if data.type === "link" %}
+<a
+  class="{{ classes }}"
+  href="{{ data.href or '#' }}"
+  {% if data.target %}target="{{ data.target }}"{% endif %}
+  {% if data.target === "_blank" %}rel="noopener noreferrer"{% endif %}
+>{{ data.text }}</a>
+{% else %}
+<button
+  class="{{ classes }}"
+  type="{{ data.buttonType or 'button' }}"
+  {% if data.disabled %}disabled{% endif %}
+  {% if data.ariaLabel %}aria-label="{{ data.ariaLabel }}"{% endif %}
+>{{ data.text }}</button>
+{% endif %}
+{% endmacro %}

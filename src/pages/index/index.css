@@ -1,0 +1,15 @@
+.hero {
+  padding-block: var(--space-8);
+}
+
+.hero__title {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.hero__description {
+  margin: 0 0 var(--space-6);
+  font-size: 1.125rem;
+  color: #555;
+  max-width: 560px;
+}

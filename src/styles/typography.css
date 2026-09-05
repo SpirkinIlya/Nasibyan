@@ -1,0 +1,128 @@
+body {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-dark);
+}
+
+/* ── Headings: base ─────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-heading);
+  margin: 0;
+}
+
+/* ── H1: Rubik Light, 48px desktop / 40px mobile, Uppercase ─────────────
+   clamp(40px, 1.85vw + 25.82px, 48px)
+   At 767px  → 1.85*7.67 + 25.82 = 14.19 + 25.82 = 40px  ✓
+   At 1200px → 1.85*12   + 25.82 = 22.2  + 25.82 = 48px  ✓
+   ──────────────────────────────────────────────────────────────────────── */
+h1 {
+  font-size: clamp(var(--text-h1-mobile), 1.85vw + 25.82px, var(--text-h1));
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+}
+
+/* ── H2: Rubik Light 42px / Regular 30px mobile, Uppercase ──────────────
+   clamp(30px, 2.77vw + 8.76px, 42px)
+   At 767px  → 2.77*7.67 + 8.76 = 21.24 + 8.76 = 30px  ✓
+   At 1200px → 2.77*12   + 8.76 = 33.24 + 8.76 = 42px  ✓
+   ──────────────────────────────────────────────────────────────────────── */
+h2 {
+  font-size: clamp(var(--text-h2-mobile), 2.77vw + 8.76px, var(--text-h2));
+  font-weight: var(--font-weight-light);
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  h2 {
+    font-weight: var(--font-weight-regular);
+  }
+}
+
+/* ── H3: Rubik Medium, 26px, As typed ───────────────────────────────────── */
+h3 {
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── H4–H6: не заданы в дизайне, разумный масштаб ──────────────────────── */
+h4 {
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-medium);
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+}
+
+h6 {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.font_body_20R {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 160%;
+}
+
+.font_body_20L {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 160%;
+}
+
+.font_body_16B {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.font_body_16M {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.font_body_16L {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.font_body_16LI {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 160%;
+}
+
+.font_small_14L {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.font_small_12R {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+}
