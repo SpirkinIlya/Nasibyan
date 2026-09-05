@@ -15,9 +15,9 @@
   width: 93px;
   height: 93px;
   flex-shrink: 1;
-  transition: opacity .5s ease;
+  transition: opacity 0.5s ease;
 
-  @media (min-width:739px) {
+  @media (min-width: 739px) {
     width: 147px;
     height: 147px;
   }
