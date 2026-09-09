@@ -9,30 +9,35 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const SRC_DIR = resolve(__dirname, 'src');
 const PAGES_DIR = resolve(SRC_DIR, 'pages');
 const BLOCKS_DIR = resolve(SRC_DIR, 'blocks');
+const GLOBAL_DATA_PATH = resolve(SRC_DIR, 'data', 'global.json');
 
-// Load global data once at config time
-const globalData = JSON.parse(
-  fs.readFileSync(resolve(SRC_DIR, 'data', 'global.json'), 'utf-8')
-);
-
-// Nunjucks env: templates root = src/
 const njkEnv = nunjucks.configure(SRC_DIR, {
   noCache: true,
 });
 
-/**
- * Returns:
- *
- * {
- *   index: "/absolute/path/src/pages/index/index.njk",
- *   contacts: "/absolute/path/src/pages/contacts/contacts.njk"
- * }
- */
+function getGlobalData() {
+  if (!fs.existsSync(GLOBAL_DATA_PATH)) {
+    return {};
+  }
+
+  return JSON.parse(
+    fs.readFileSync(GLOBAL_DATA_PATH, 'utf-8')
+  );
+}
+
 function getPages() {
   const pages = {};
 
+  if (!fs.existsSync(PAGES_DIR)) {
+    return pages;
+  }
+
   for (const dir of fs.readdirSync(PAGES_DIR)) {
-    const njkPath = join(PAGES_DIR, dir, `${dir}.njk`);
+    const njkPath = join(
+      PAGES_DIR,
+      dir,
+      `${dir}.njk`
+    );
 
     if (fs.existsSync(njkPath)) {
       pages[dir] = njkPath;
@@ -42,16 +47,96 @@ function getPages() {
   return pages;
 }
 
-/**
- * Finds static Nunjucks template dependencies:
- *
- * {% extends "layouts/base.njk" %}
- * {% include "blocks/foo/foo.njk" %}
- * {% import "blocks/foo/foo.njk" as foo %}
- * {% from "blocks/foo/foo.njk" import foo %}
- *
- * Dynamic expressions are intentionally not parsed.
- */
+function renderPagesIndex() {
+  const pages = getPages();
+
+  const links = Object.keys(pages)
+    .sort()
+    .map(
+      (pageName) => `
+        <li>
+          <a href="/${pageName}/">${pageName}</a>
+        </li>
+      `
+    )
+    .join('');
+
+  return `
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Страницы проекта</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+      color: #1a1a1a;
+      background: #f5f5f5;
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    ul {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      display: block;
+      padding: 16px 20px;
+      color: inherit;
+      text-decoration: none;
+      background: #f5f5f5;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+
+    a:hover {
+      background: #e9e9e9;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Страницы проекта</h1>
+
+    <ul>
+      ${links}
+    </ul>
+  </main>
+</body>
+</html>
+`;
+}
+
 function getTemplateDependencies(source) {
   const dependencies = new Set();
 
@@ -73,19 +158,10 @@ function getTemplateDependencies(source) {
   return [...dependencies];
 }
 
-/**
- * Resolves template references.
- *
- * Supports:
- *
- * blocks/header/header.njk
- *
- * as well as:
- *
- * ./partial.njk
- * ../shared/shared.njk
- */
-function resolveTemplateReference(reference, currentTemplate) {
+function resolveTemplateReference(
+  reference,
+  currentTemplate
+) {
   if (
     reference.startsWith('./') ||
     reference.startsWith('../')
@@ -101,16 +177,6 @@ function resolveTemplateReference(reference, currentTemplate) {
   return posix.normalize(reference);
 }
 
-/**
- * Recursively walks through all templates used by a page.
- *
- * Example:
- *
- * page.njk
- * -> layouts/base.njk
- * -> blocks/header/header.njk
- * -> blocks/logo/logo.njk
- */
 function collectTemplateGraph(entryTemplate) {
   const visited = new Set();
 
@@ -160,12 +226,6 @@ function collectTemplateGraph(entryTemplate) {
   return [...visited];
 }
 
-/**
- * Converts template paths into block names.
- *
- * blocks/header/header.njk -> header
- * blocks/logo/logo.njk     -> logo
- */
 function getBlocksFromTemplateGraph(templates) {
   const blocks = new Set();
 
@@ -182,17 +242,6 @@ function getBlocksFromTemplateGraph(templates) {
   return [...blocks];
 }
 
-/**
- * Finds the CSS and JS belonging to a block.
- *
- * Convention:
- *
- * blocks/header/header.njk
- * blocks/header/header.css
- * blocks/header/header.js
- *
- * CSS and JS are optional.
- */
 function getBlockAssets(blockName) {
   const blockDir = join(
     BLOCKS_DIR,
@@ -220,15 +269,6 @@ function getBlockAssets(blockName) {
   };
 }
 
-/**
- * Creates one inline Vite module containing all block imports.
- *
- * Example:
- *
- * import "/blocks/logo/logo.css";
- * import "/blocks/header/header.css";
- * import "/blocks/header/header.js";
- */
 function createBlockAssetsModule(blocks) {
   const imports = [];
 
@@ -259,11 +299,10 @@ function createBlockAssetsModule(blocks) {
   ].join('\n');
 }
 
-/**
- * Finds all blocks required by the page and injects
- * their CSS/JS imports into the rendered HTML.
- */
-function injectBlockAssets(html, entryTemplate) {
+function injectBlockAssets(
+  html,
+  entryTemplate
+) {
   const templateGraph =
     collectTemplateGraph(entryTemplate);
 
@@ -287,9 +326,6 @@ function injectBlockAssets(html, entryTemplate) {
   return `${assetsModule}\n${html}`;
 }
 
-/**
- * Render a page template with merged global + page data.
- */
 function renderPage(pageName) {
   const jsonPath = join(
     PAGES_DIR,
@@ -299,15 +335,17 @@ function renderPage(pageName) {
 
   const pageData = fs.existsSync(jsonPath)
     ? JSON.parse(
-      fs.readFileSync(jsonPath, 'utf-8')
-    )
+        fs.readFileSync(jsonPath, 'utf-8')
+      )
     : {};
 
-  const relPath =
+  const globalData = getGlobalData();
+
+  const relativeTemplate =
     `pages/${pageName}/${pageName}.njk`;
 
   const html = njkEnv.render(
-    relPath,
+    relativeTemplate,
     {
       global: globalData,
       page: pageData,
@@ -316,69 +354,54 @@ function renderPage(pageName) {
 
   return injectBlockAssets(
     html,
-    relPath
+    relativeTemplate
   );
 }
 
-/**
- * Custom Vite plugin:
- * Nunjucks multi-page support + automatic block assets.
- *
- * DEV:
- * URL -> Nunjucks render -> block dependency analysis ->
- * Vite transformIndexHtml.
- *
- * BUILD:
- * Nunjucks pages are pre-rendered to temporary HTML files.
- * Vite then handles module imports, CSS extraction and hashing.
- *
- * HMR:
- * Nunjucks and page JSON changes trigger full reload.
- * CSS/JS block files are handled by normal Vite HMR.
- */
+function getHtmlId(pageName) {
+  return join(
+    SRC_DIR,
+    pageName,
+    'index.html'
+  );
+}
+
 function nunjucksMultiPagePlugin() {
-  const tempFiles = [];
+  const htmlIdToPage = new Map();
+
+  const pagesIndexId = join(
+    SRC_DIR,
+    'index.html'
+  );
+
+  let buildMode = false;
 
   return {
     name: 'nunjucks-multi-page',
+    enforce: 'pre',
 
-    // BUILD
-    config(_userConfig, { command }) {
-      if (command !== 'build') {
+    config(_, { command }) {
+      buildMode = command === 'build';
+
+      if (!buildMode) {
         return;
       }
 
       const pages = getPages();
-      const inputs = {};
 
-      for (const [name] of Object.entries(pages)) {
-        const html = renderPage(name);
+      const inputs = {
+        main: pagesIndexId,
+      };
 
-        const tempPath =
-          name === 'index'
-            ? join(SRC_DIR, 'index.html')
-            : join(
-              SRC_DIR,
-              name,
-              'index.html'
-            );
+      for (const [pageName] of Object.entries(pages)) {
+        const htmlId = getHtmlId(pageName);
 
-        fs.mkdirSync(
-          dirname(tempPath),
-          {
-            recursive: true,
-          }
+        htmlIdToPage.set(
+          htmlId,
+          pageName
         );
 
-        fs.writeFileSync(
-          tempPath,
-          html,
-          'utf-8'
-        );
-
-        tempFiles.push(tempPath);
-
-        inputs[name] = tempPath;
+        inputs[pageName] = htmlId;
       }
 
       return {
@@ -390,7 +413,37 @@ function nunjucksMultiPagePlugin() {
       };
     },
 
-    // DEV
+    resolveId(id) {
+      if (!buildMode) {
+        return;
+      }
+
+      if (id === pagesIndexId) {
+        return id;
+      }
+
+      if (htmlIdToPage.has(id)) {
+        return id;
+      }
+    },
+
+    load(id) {
+      if (!buildMode) {
+        return;
+      }
+
+      if (id === pagesIndexId) {
+        return renderPagesIndex();
+      }
+
+      if (htmlIdToPage.has(id)) {
+        const pageName =
+          htmlIdToPage.get(id);
+
+        return renderPage(pageName);
+      }
+    },
+
     configureServer(server) {
       server.middlewares.use(
         async (req, res, next) => {
@@ -398,17 +451,43 @@ function nunjucksMultiPagePlugin() {
             .split('?')[0]
             .split('#')[0];
 
+          if (
+            url === '/' ||
+            url === '/index.html'
+          ) {
+            try {
+              const raw =
+                renderPagesIndex();
+
+              const html =
+                await server.transformIndexHtml(
+                  '/',
+                  raw
+                );
+
+              res.setHeader(
+                'Content-Type',
+                'text/html; charset=utf-8'
+              );
+
+              res.end(html);
+            } catch (error) {
+              next(error);
+            }
+
+            return;
+          }
+
           const pages = getPages();
 
           for (
-            const [pageName] of Object.entries(pages)
+            const [pageName]
+            of Object.entries(pages)
           ) {
             const isMatch =
-              pageName === 'index'
-                ? url === '/' ||
-                url === '/index.html'
-                : url === `/${pageName}/` ||
-                url === `/${pageName}/index.html`;
+              url === `/${pageName}/` ||
+              url ===
+                `/${pageName}/index.html`;
 
             if (!isMatch) {
               continue;
@@ -442,37 +521,21 @@ function nunjucksMultiPagePlugin() {
       );
     },
 
-    // CLEANUP
-    closeBundle() {
-      for (const file of tempFiles) {
-        try {
-          fs.unlinkSync(file);
-
-          const dir = dirname(file);
-
-          if (
-            dir !== SRC_DIR &&
-            fs.existsSync(dir) &&
-            fs.readdirSync(dir).length === 0
-          ) {
-            fs.rmdirSync(dir);
-          }
-        } catch {
-          // Ignore cleanup errors
-        }
-      }
-
-      tempFiles.length = 0;
-    },
-
-    // HMR
     handleHotUpdate({ file, server }) {
+      const isTemplate =
+        file.endsWith('.njk');
+
+      const isPageJson =
+        file.endsWith('.json') &&
+        file.startsWith(PAGES_DIR);
+
+      const isGlobalJson =
+        file === GLOBAL_DATA_PATH;
+
       if (
-        file.endsWith('.njk') ||
-        (
-          file.endsWith('.json') &&
-          file.startsWith(PAGES_DIR)
-        )
+        isTemplate ||
+        isPageJson ||
+        isGlobalJson
       ) {
         server.ws.send({
           type: 'full-reload',
@@ -495,28 +558,28 @@ export default defineConfig({
   resolve: {
     alias: {
       '@blocks': resolve(
-        __dirname,
-        'src/blocks'
+        SRC_DIR,
+        'blocks'
       ),
 
       '@assets': resolve(
-        __dirname,
-        'src/assets'
+        SRC_DIR,
+        'assets'
       ),
 
       '@styles': resolve(
-        __dirname,
-        'src/styles'
+        SRC_DIR,
+        'styles'
       ),
 
       '@data': resolve(
-        __dirname,
-        'src/data'
+        SRC_DIR,
+        'data'
       ),
 
       '@pages': resolve(
-        __dirname,
-        'src/pages'
+        SRC_DIR,
+        'pages'
       ),
     },
   },
@@ -532,6 +595,8 @@ export default defineConfig({
     ),
 
     emptyOutDir: true,
+
+    cssCodeSplit: true,
 
     rollupOptions: {
       output: {
