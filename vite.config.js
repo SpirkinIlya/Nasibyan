@@ -15,6 +15,10 @@ const njkEnv = nunjucks.configure(SRC_DIR, {
   noCache: true,
 });
 
+// GitHub Pages: https://spirkinilya.github.io/Nasibyan/
+// Locally: /
+const BASE_URL = process.env.GITHUB_ACTIONS ? '/Nasibyan/' : '/';
+
 function getGlobalData() {
   if (!fs.existsSync(GLOBAL_DATA_PATH)) {
     return {};
@@ -55,7 +59,7 @@ function renderPagesIndex() {
     .map(
       (pageName) => `
         <li>
-          <a href="/${pageName}/">${pageName}</a>
+          <a href="${BASE_URL}${pageName}/">${pageName}</a>
         </li>
       `
     )
@@ -563,7 +567,7 @@ export default defineConfig({
 
   // GitHub Pages: https://spirkinilya.github.io/Nasibyan/
   // Locally: /
-  base: process.env.GITHUB_ACTIONS ? '/Nasibyan/' : '/',
+  base: BASE_URL,
 
   publicDir: resolve(
     __dirname,
