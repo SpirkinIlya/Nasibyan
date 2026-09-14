@@ -12,7 +12,7 @@
         <ul class="header__list">
           {% for item in data.navigation %}
           <li class="header__item">
-            <a class="header__link" href="{{ item.href }}">{{ item.text }}</a>
+            <a class="header__link" href="{{ data.base }}{{ item.href }}">{{ item.text }}</a>
           </li>
           {% endfor %}
         </ul>

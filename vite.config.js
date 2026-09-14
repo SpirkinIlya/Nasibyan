@@ -364,6 +364,7 @@ function renderPage(pageName) {
     {
       global: globalData,
       page: pageData,
+      base: BASE_URL,
     }
   );
 

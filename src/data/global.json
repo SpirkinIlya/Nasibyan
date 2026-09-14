@@ -9,11 +9,11 @@
   "navigation": [
     {
       "text": "Главная",
-      "href": "/"
+      "href": "index/"
     },
     {
       "text": "Услуги",
-      "href": "/services/"
+      "href": "services/"
     }
   ]
 }
