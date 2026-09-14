@@ -1,7 +1,115 @@
+{% from "blocks/logo/logo.njk" import logo %}
+{% from "blocks/button/button.njk" import button %}
+
+{% set footerMenu = [
+{
+title: "О Сергее Насибяне",
+url: "#"
+},
+{
+title: "Расписание",
+url: "#"
+},
+{
+title: "Тренинги",
+url: "#"
+},
+{
+title: "Мистика",
+url: "#"
+},
+{
+title: "Психология",
+url: "#"
+},
+{
+title: "Философия",
+url: "#"
+},
+{
+title: "Книги",
+url: "#"
+},
+{
+title: "Статьи",
+url: "#"
+},
+{
+title: "Вопросы и ответы",
+url: "#"
+},
+{
+title: "Консультации",
+url: "#"
+},
+{
+title: "Контакты",
+url: "#"
+}
+] %}
+
 {% macro footer(data) %}
 <footer class="footer">
   <div class="container footer__container">
-    <p class="footer__copy">© {{ data.siteName }}</p>
+    <div class="footer__mobile-logo">
+      <div class="footer__logo">{{logo()}}</div>
+      <div class="footer__social-links footer__social-links_mobile">
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-telegram-circle"></use>
+          </svg>
+        </a>
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-vk"></use>
+          </svg>
+        </a>
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__col_1">
+      {{button({text:"Базовый курс", theme:"tertiary", type:"link", href:"#"})}}
+    </div>
+    <div class="footer__menu">
+      <ul class="footer__menu-list">
+        {% for item in footerMenu %}
+        <li class="footer__menu-item">
+          <a class="footer__menu-link" href="{{ item.url }}">
+            {{ item.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer__col_2">
+      <div class="footer__social-links footer__social-links_desktop">
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-telegram-circle"></use>
+          </svg>
+        </a>
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-vk"></use>
+          </svg>
+        </a>
+        <a href="#" class="footer__social-link">
+          <svg width="40" height="40">
+            <use href="/images/sprite/sprite.svg#icon-youtube"></use>
+          </svg>
+        </a>
+      </div>
+      {{button({text:"Записаться на курс", theme:"primary"})}}
+    </div>
+  </div>
+  <div class=" container footer__copyright font_small_12R">
+    <p>© 2026 | sergeinasibyan.ru</p>
+    <p>Сайт разработан <a href="https:://savin-seo.ru" target="_blank"
+        title="Ссылка откроется в новой вкладке">savin-seo.ru</a>, 2026 </p>
   </div>
 </footer>
 {% endmacro %}

@@ -248,6 +248,11 @@ function getBlockAssets(blockName) {
     blockName
   );
 
+  const scssFile = join(
+    blockDir,
+    `${blockName}.scss`
+  );
+
   const cssFile = join(
     blockDir,
     `${blockName}.css`
@@ -258,10 +263,16 @@ function getBlockAssets(blockName) {
     `${blockName}.js`
   );
 
+  let style = null;
+
+  if (fs.existsSync(scssFile)) {
+    style = `/blocks/${blockName}/${blockName}.scss`;
+  } else if (fs.existsSync(cssFile)) {
+    style = `/blocks/${blockName}/${blockName}.css`;
+  }
+
   return {
-    css: fs.existsSync(cssFile)
-      ? `/blocks/${blockName}/${blockName}.css`
-      : null,
+    css: style,
 
     js: fs.existsSync(jsFile)
       ? `/blocks/${blockName}/${blockName}.js`
@@ -335,8 +346,8 @@ function renderPage(pageName) {
 
   const pageData = fs.existsSync(jsonPath)
     ? JSON.parse(
-        fs.readFileSync(jsonPath, 'utf-8')
-      )
+      fs.readFileSync(jsonPath, 'utf-8')
+    )
     : {};
 
   const globalData = getGlobalData();
@@ -487,7 +498,7 @@ function nunjucksMultiPagePlugin() {
             const isMatch =
               url === `/${pageName}/` ||
               url ===
-                `/${pageName}/index.html`;
+              `/${pageName}/index.html`;
 
             if (!isMatch) {
               continue;
@@ -549,6 +560,10 @@ function nunjucksMultiPagePlugin() {
 
 export default defineConfig({
   root: 'src',
+
+  // GitHub Pages: https://spirkinilya.github.io/Nasibyan/
+  // Locally: /
+  base: process.env.GITHUB_ACTIONS ? '/Nasibyan/' : '/',
 
   publicDir: resolve(
     __dirname,

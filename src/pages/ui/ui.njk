@@ -95,12 +95,11 @@
     <p class="ui-section__title">Button</p>
 
     <div class="ui-row">
-      {{ button({ text: "Primary", theme: "primary" }) }}
-      {{ button({ text: "Secondary", theme: "secondary" }) }}
-      {{ button({ text: "Primary Large", theme: "primary", size: "large" }) }}
-      {{ button({ text: "Secondary Large", theme: "secondary", size: "large" }) }}
-      {{ button({ text: "Primary Small", theme: "primary", size: "small" }) }}
-      {{ button({ text: "Secondary Small", theme: "secondary", size: "small" }) }}
+      {{button({text:"Button primary", theme: "primary"})}}
+      {{button({text:"Button secondary", theme: "secondary"})}}
+      {{button({text:"Button disabled", theme: "primary", disabled: true})}}
+      {{button({text:"Button disabled", theme: "secondary", disabled: true})}}
+      {{button({text:"Button tertiary", theme: "tertiary"})}}
     </div>
   </section>
 
