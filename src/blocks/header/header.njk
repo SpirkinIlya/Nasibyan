@@ -7,16 +7,29 @@
     <div class="header__logo">
       {{ logo({ base: data.base }) }}
     </div>
+    <nav class="header__nav" aria-label="Основная навигация">
+      <ul class="header__list">
+        {% for item in data.navigation %}
+        <li class="header__item{% if item.children %} header__item_has-dropdown{% endif %}">
+          <a class="header__link" href="{{ data.base }}{{ item.href }}" {% if item.children %}aria-haspopup="true" {%
+            endif %}>{{ item.text }}</a>
+
+          {% if item.children %}
+          <div class="header__dropdown" role="region">
+            <ul class="header__sublist">
+              {% for child in item.children %}
+              <li class="header__subitem">
+                <a class="header__sublink" href="{{ data.base }}{{ child.href }}">{{ child.text }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
     <div class="header__items">
-      <nav class="header__nav" aria-label="Основная навигация">
-        <ul class="header__list">
-          {% for item in data.navigation %}
-          <li class="header__item">
-            <a class="header__link" href="{{ data.base }}{{ item.href }}">{{ item.text }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-      </nav>
       {{ button({theme:"secondary", text:"Записаться на курс"})}}
     </div>
   </div>

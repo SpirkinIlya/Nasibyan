@@ -75,14 +75,42 @@
 .button_theme_tertiary::after {
   position: absolute;
   content: '';
+
   width: 32px;
   height: 32px;
-  background-image: url(../../assets/icons/arrow.svg);
+
   top: 50%;
   right: 0;
+
   transform: translate(100%, -50%);
+
+  background-image: url(../../assets/icons/arrow.svg);
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+
+  background-position: -32px center;
+
+  transition: background-position 0.5s ease-in-out;
 }
 
+.button_theme_tertiary:hover::after {
+  background-position: 0 center;
+}
+
+.button_theme_tertiary::before {
+  position: absolute;
+  content: '';
+  width: 34px;
+  height: 2px;
+  background: var(--color-accent-sand);
+  bottom: -2px;
+  right: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.button_theme_tertiary:hover::before {
+  transform: translateX(100%);
+}
 
 /* Width */
 .button_width_full {

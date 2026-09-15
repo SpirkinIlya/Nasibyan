@@ -1,7 +1,9 @@
 .footer {
   padding-block: 40px;
+  position: relative;
+  z-index: 2;
 
-  @media (min-width:768px) {
+  @media (min-width: 768px) {
     padding-block: 40px 31px;
   }
 
