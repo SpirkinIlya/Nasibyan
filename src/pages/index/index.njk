@@ -1,5 +1,6 @@
 {% extends "layouts/base.njk" %}
 {% from "blocks/hero/hero.njk" import hero %}
+{% from "blocks/about/about.njk" import about %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/index/index.css" />
@@ -7,6 +8,7 @@
 
 {% block content %}
 {{hero()}}
+{{about()}}
 
 {% endblock %}
 

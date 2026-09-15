@@ -1,0 +1,21 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro about(data) %}
+<section class="about">
+    <div class="container">
+        <div class="about__container">
+            <div class="about__info">
+                <h2 class="about__title">сергей насибян</h2>
+                <p class="about__text font_body_16L">Тренер-психолог, бизнес-тренер клинический психолог
+                    путешественник.<br><br>Ведущий авторской программы «Провокация» на&nbsp;радио «Маяк», подкаста
+                    «Триггеры» в&nbsp;программе «Подкаст.Лаб» на&nbsp;Первом канале и психологического шоу «Фобия»
+                    на&nbsp;НТВ.</p>
+                {{ button({ text: "о сергее насибяне", type: "link", href: "#", theme: "tertiary" }) }}
+            </div>
+            <div class="about__image">
+                <img class="image" alt="" loading="lazy" src="/images/about__image.webp">
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}
