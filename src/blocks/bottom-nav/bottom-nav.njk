@@ -1,0 +1,36 @@
+{% macro bottomNav(data) %}
+<nav class="bottom-nav" data-js="bottom-nav" aria-label="Нижняя навигация">
+  <ul class="bottom-nav__list">
+
+    {% for item in data.items %}
+    <li class="bottom-nav__item">
+      <a class="bottom-nav__link" href="{{ item.href }}">
+
+        <span class="bottom-nav__icon" aria-hidden="true">
+
+          {% if item.icon === "calendar" %}
+          <svg width="40" height="40" fill="none">
+            <use href="/images/sprite/sprite.svg#icon-scedule"></use>
+          </svg>
+
+          {% elif item.icon === "ring" %}
+          <svg width="40" height="40" fill="none">
+            <use href="/images/sprite/sprite.svg#icon-logo"></use>
+          </svg>
+
+          {% elif item.icon === "send" %}
+          <svg width="40" height="40" fill="none">
+            <use href="/images/sprite/sprite.svg#icon-telegram"></use>
+          </svg>
+
+          {% endif %}
+        </span>
+
+        <span class="bottom-nav__label">{{ item.text }}</span>
+      </a>
+    </li>
+    {% endfor %}
+
+  </ul>
+</nav>
+{% endmacro %}

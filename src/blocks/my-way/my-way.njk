@@ -1,0 +1,30 @@
+{% macro myWay(data) %}
+<section class="my-way" data-js="my-way">
+    <div class="container my-way__container">
+        <div class="my-way__image">
+            <img class="image" alt="" src="/images/my-way.png" loading="lazy">
+        </div>
+        <div class="my-way__info">
+            {% if data.title %}
+            <h2 class="my-way__title h2">{{ data.title }}</h2>
+            {% endif %}
+
+            <div class="my-way__body">
+                <div class="my-way__text-wrap" data-js="my-way-wrap">
+                    <div class="my-way__text">
+                        {% for paragraph in data.text %}
+                        <p class="my-way__paragraph font_body_16L">{{ paragraph }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <button class="my-way__toggle" data-js="my-way-toggle" aria-expanded="false"
+                    aria-label="Читать полностью" type="button">
+                    <span class="my-way__icon" aria-hidden="true">↓</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endmacro %}

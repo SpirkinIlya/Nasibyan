@@ -1,0 +1,108 @@
+.my-way {
+    background-color: var(--color-dark);
+    color: var(--color-accent-pale);
+    padding-block: var(--space-8);
+}
+
+.my-way__title {
+    color: var(--color-accent-sand);
+    padding-bottom: 32px;
+}
+
+.my-way__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-way__image {
+    flex-shrink: 0;
+}
+
+.my-way__container {
+    padding-block: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 80px;
+    }
+}
+
+/* ── Collapsible text wrap ────────────────────────────────────────────────── */
+
+.my-way__text-wrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    /* Inline var set by JS; fallback covers ~10 lines at body font-size */
+    max-height: var(--my-way-collapsed, 256px);
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gradient fade at the bottom — hides on open */
+    &::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 80px;
+        background: linear-gradient(to bottom, transparent, var(--color-dark));
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+}
+
+/* State: open */
+[data-state='open'] .my-way__text-wrap::after {
+    opacity: 0;
+}
+
+/* ── Text content ─────────────────────────────────────────────────────────── */
+
+.my-way__text {
+    border-left: 1px solid var(--color-accent-sand);
+    padding: 0 0 0 16px;
+}
+
+/* ── Toggle button ────────────────────────────────────────────────────────── */
+
+.my-way__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-top: var(--space-5);
+    background: none;
+    border: none;
+    color: var(--color-accent-pale);
+    cursor: pointer;
+    padding: 0;
+    transition: color var(--transition-fast);
+
+    &:hover {
+        color: var(--color-accent-sand);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-accent-sand);
+        outline-offset: 4px;
+        border-radius: var(--radius-sm);
+    }
+}
+
+.my-way__icon {
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-state='open'] .my-way__icon {
+    transform: rotate(180deg);
+}

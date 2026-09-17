@@ -1,5 +1,6 @@
 {% from "blocks/logo/logo.njk" import logo %}
 {% from "blocks/button/button.njk" import button %}
+{% from "blocks/bottom-nav/bottom-nav.njk" import bottomNav %}
 
 {% set footerMenu = [
 {
@@ -112,4 +113,11 @@ url: "#"
         title="Ссылка откроется в новой вкладке">savin-seo.ru</a>, 2026 </p>
   </div>
 </footer>
+{{ bottomNav({
+items: [
+{ text: "Расписание", href: "#schedule", icon: "calendar" },
+{ text: "Программы", href: "#programs", icon: "ring" },
+{ text: "Соцсети", href: "#social", icon: "send" }
+]
+}) }}
 {% endmacro %}
