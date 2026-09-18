@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+/* Enforce the HTML hidden attribute across all browsers */
+[hidden] {
+  display: none !important;
+}
+
 html {
   text-size-adjust: 100%;
 }

@@ -1,6 +1,6 @@
 .my-way {
     background-color: var(--color-dark);
-    color: var(--color-accent-pale);
+    color: var(--color-pale-sandy);
     padding-block: var(--space-8);
 }
 
@@ -57,9 +57,18 @@
     }
 }
 
-/* State: open */
+/* State: open — fade out the gradient */
 [data-state='open'] .my-way__text-wrap::after {
     opacity: 0;
+}
+
+/* State: no-clamp — content fits, remove height limit and gradient entirely */
+[data-state='no-clamp'] .my-way__text-wrap {
+    max-height: none;
+
+    &::after {
+        display: none;
+    }
 }
 
 /* ── Text content ─────────────────────────────────────────────────────────── */
@@ -67,6 +76,12 @@
 .my-way__text {
     border-left: 1px solid var(--color-accent-sand);
     padding: 0 0 0 16px;
+
+    @media (min-width: 768px) {
+        border: none;
+        padding: 0;
+
+    }
 }
 
 /* ── Toggle button ────────────────────────────────────────────────────────── */

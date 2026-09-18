@@ -3,6 +3,7 @@
 {% from "blocks/about/about.njk" import about %}
 {% from "blocks/pages/pages.njk" import pages %}
 {% from "blocks/my-way/my-way.njk" import myWay %}
+{% from "blocks/basic-course/basic-course.njk" import basicCourse %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/index/index.css" />
@@ -24,6 +25,7 @@ text: [
 жизнь."
 ]
 }) }}
+{{ basicCourse() }}
 
 {% endblock %}
 

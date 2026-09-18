@@ -1,0 +1,14 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro basicCourse(data) %}
+<section class="basic-course">
+    <div class="container basic-course__container">
+        <h2 class="basic-course__title">Найди свой путь</h2>
+        <img class="basic-course__image image" src="/images/granat.webp" alt="" width="231" height="250">
+        <div class="basic-course__link">
+            {{ button({ text: "базовый курс", type: "link", href: "#", theme: "tertiary" }) }}
+            <div class="basic-course__date font_body_16B">14-16 сентября</div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

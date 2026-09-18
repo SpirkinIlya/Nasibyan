@@ -6,7 +6,25 @@
     }
 
     box-sizing: border-box;
-    background-image: url(/images/sand.webp);
+    background-color: #f4ead7;
+    background-image: url("/images/decor-right.svg"),
+    url("/images/paper-texture.webp");
+
+    background-position: right bottom,
+    center;
+
+    background-repeat: no-repeat,
+    repeat;
+
+    background-size: 220px auto,
+    400px auto;
+
+    @media (min-width: 768px) {
+        background-size:
+            420px auto,
+            500px auto;
+    }
+
     position: relative;
     z-index: 2;
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <g id="flower" fill="none" stroke="#bfa678" stroke-width="2">
+      <ellipse cx="0" cy="-34" rx="24" ry="46"/>
+      <ellipse cx="0" cy="-34" rx="24" ry="46" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-34" rx="24" ry="46" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-34" rx="24" ry="46" transform="rotate(135)"/>
+      <circle cx="0" cy="0" r="34"/>
+      <circle cx="0" cy="0" r="68"/>
+    </g>
+  </defs>
+
+  <g opacity=".24">
+    <use href="#flower" x="720" y="720"/>
+    <use href="#flower" x="630" y="735" transform="scale(.9)"/>
+    <use href="#flower" x="540" y="765" transform="scale(.75)"/>
+    <use href="#flower" x="755" y="615" transform="scale(.85)"/>
+    <use href="#flower" x="690" y="545" transform="scale(.72)"/>
+    <use href="#flower" x="770" y="470" transform="scale(.62)"/>
+
+    <circle cx="790" cy="650" r="92" fill="none" stroke="#bfa678" stroke-width="2"/>
+    <circle cx="785" cy="540" r="72" fill="none" stroke="#bfa678" stroke-width="2"/>
+    <circle cx="700" cy="785" r="98" fill="none" stroke="#bfa678" stroke-width="2"/>
+
+    <g fill="#bfa678" stroke="none">
+      <circle cx="760" cy="360" r="4"/>
+      <circle cx="744" cy="385" r="2.5"/>
+      <circle cx="772" cy="410" r="3"/>
+      <circle cx="720" cy="430" r="2"/>
+      <circle cx="688" cy="485" r="2.5"/>
+      <circle cx="650" cy="520" r="2"/>
+      <circle cx="612" cy="575" r="3"/>
+      <circle cx="575" cy="625" r="2"/>
+    </g>
+  </g>
+</svg>
