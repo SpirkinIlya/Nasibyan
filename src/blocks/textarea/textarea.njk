@@ -1,0 +1,15 @@
+{% macro textarea(data) %}
+<div
+  class="textarea{% if data.error %} textarea_error{% endif %}{% if data.disabled %} textarea_disabled{% endif %}{% if data.modifier %} textarea_{{ data.modifier }}{% endif %}">
+  <textarea class="textarea__field" name="{{ data.name }}" id="{{ data.id or data.name }}" rows="{{ data.rows or 1 }}"
+    {% if data.placeholder %}placeholder="{{ data.placeholder }}" {% endif %} {% if data.autocomplete
+    %}autocomplete="{{ data.autocomplete }}" {% endif %} {% if data.maxlength %}maxlength="{{ data.maxlength }}" {%
+    endif %} {% if data.required %}required{% endif %} {% if data.disabled %}disabled{% endif %} {% if
+    data['aria-describedby'] %}aria-describedby="{{ data['aria-describedby'] }}" {% endif %} {% if data.error
+    %}aria-invalid="true" {% endif %}>{{ data.value or '' }}</textarea>
+
+  {% if data.error %}
+  <span class="textarea__error" role="alert">{{ data.error }}</span>
+  {% endif %}
+</div>
+{% endmacro %}

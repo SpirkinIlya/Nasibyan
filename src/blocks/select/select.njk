@@ -1,0 +1,60 @@
+{% macro select(data) %}
+<div
+  class="select{% if data.error %} select_error{% endif %}{% if data.disabled %} select_disabled{% endif %}{% if not data.value %} select_placeholder{% endif %}"
+  data-js="select"
+>
+
+  {# Hidden input — carries selected value on form submit #}
+  <input
+    type="hidden"
+    name="{{ data.name }}"
+    id="{{ data.id or data.name }}"
+    value="{{ data.value or '' }}"
+    {% if data.required %}data-required="true"{% endif %}
+    data-js="select-input"
+  >
+
+  {# Trigger button — styled like underline input #}
+  <button
+    class="select__trigger"
+    type="button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="{{ data.name }}-list"
+    {% if data.disabled %}disabled{% endif %}
+    {% if data.error %}aria-invalid="true"{% endif %}
+    data-js="select-trigger"
+  >
+    <span class="select__display" data-js="select-display">
+      {%- if data.value -%}
+        {%- for option in data.options -%}
+          {%- if option.value == data.value -%}{{ option.text }}{%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {{ data.placeholder or 'Выберите...' }}
+      {%- endif -%}
+    </span>
+    <span class="select__arrow" aria-hidden="true"></span>
+  </button>
+
+  {# Custom dropdown panel #}
+  <div class="select__dropdown" role="listbox" aria-hidden="true" data-js="select-dropdown">
+    <ul class="select__list" id="{{ data.name }}-list">
+      {% for option in data.options %}
+      <li
+        class="select__option{% if data.value == option.value %} select__option_selected{% endif %}"
+        role="option"
+        data-value="{{ option.value }}"
+        aria-selected="{{ 'true' if data.value == option.value else 'false' }}"
+        tabindex="-1"
+      >{{ option.text }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% if data.error %}
+  <span class="select__error" role="alert">{{ data.error }}</span>
+  {% endif %}
+
+</div>
+{% endmacro %}

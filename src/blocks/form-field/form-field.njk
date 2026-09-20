@@ -1,0 +1,11 @@
+{% macro formField(data) %}
+<div class="form-field{% if data.modifier %} form-field_{{ data.modifier }}{% endif %}">
+
+  <label class="form-field__label" for="{{ data.name }}">{{ data.label }}</label>
+
+  <div class="form-field__control">
+    {{ caller() }}
+  </div>
+
+</div>
+{% endmacro %}

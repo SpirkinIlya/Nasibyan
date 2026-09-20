@@ -1,0 +1,85 @@
+.cta {
+    padding-block: 68px;
+
+    @media (min-width: 1200px) {
+        padding: 105px 0;
+
+    }
+
+    box-sizing: border-box;
+    background-color: #f4ead7;
+    background-image: url("/images/decor-right.svg"),
+    url("/images/paper-texture.webp");
+
+    background-position: right bottom,
+    center;
+
+    background-repeat: no-repeat,
+    repeat;
+
+    background-size: 220px auto,
+    400px auto;
+
+    @media (min-width: 768px) {
+        background-size:
+            420px auto,
+            500px auto;
+    }
+
+    position: relative;
+    z-index: 2;
+
+    &::before {
+        height: 68px;
+        content: '';
+        bottom: 0;
+        width: 100%;
+        position: absolute;
+        background-image: url(/images/divider.png);
+        background-position: top left;
+        background-size: 100% 100%;
+        transform: rotate(180deg);
+
+        @media (min-width: 768px) {
+            height: 105px;
+        }
+    }
+
+    &::after {
+        content: '';
+        top: 0;
+        width: 100%;
+        height: 68px;
+        position: absolute;
+        background-image: url(/images/divider.png);
+        background-position: top left;
+        background-size: 100% 100%;
+
+        @media (min-width: 768px) {
+            height: 105px;
+        }
+    }
+
+    &__container {
+        padding-block: 100px;
+
+
+        @media (min-width: 1200px) {
+            padding-block: 40px;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        padding-bottom: 32px;
+
+        @media (min-width: 1200px) {
+            padding-bottom: 40px;
+        }
+    }
+
+    &__form {
+        margin: 0 auto;
+        max-width: 384px;
+    }
+}

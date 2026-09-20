@@ -1,0 +1,24 @@
+{% macro input(data) %}
+<div class="input{% if data.error %} input_error{% endif %}{% if data.disabled %} input_disabled{% endif %}{% if data.modifier %} input_{{ data.modifier }}{% endif %}">
+  <input
+    class="input__field"
+    type="{{ data.type or 'text' }}"
+    name="{{ data.name }}"
+    id="{{ data.id or data.name }}"
+    {% if data.placeholder %}placeholder="{{ data.placeholder }}"{% endif %}
+    {% if data.value %}value="{{ data.value }}"{% endif %}
+    {% if data.autocomplete %}autocomplete="{{ data.autocomplete }}"{% endif %}
+    {% if data.required %}required{% endif %}
+    {% if data.disabled %}disabled{% endif %}
+    {% if data.maxlength %}maxlength="{{ data.maxlength }}"{% endif %}
+    {% if data.pattern %}pattern="{{ data.pattern }}"{% endif %}
+    {% if data.inputmode %}inputmode="{{ data.inputmode }}"{% endif %}
+    {% if data['aria-describedby'] %}aria-describedby="{{ data['aria-describedby'] }}"{% endif %}
+    {% if data.error %}aria-invalid="true"{% endif %}
+  >
+
+  {% if data.error %}
+  <span class="input__error" role="alert">{{ data.error }}</span>
+  {% endif %}
+</div>
+{% endmacro %}

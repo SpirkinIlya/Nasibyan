@@ -4,6 +4,7 @@
 {% from "blocks/pages/pages.njk" import pages %}
 {% from "blocks/my-way/my-way.njk" import myWay %}
 {% from "blocks/basic-course/basic-course.njk" import basicCourse %}
+{% from "blocks/cta/cta.njk" import cta %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/main/main.css" />
@@ -26,6 +27,7 @@ text: [
 ]
 }) }}
 {{ basicCourse() }}
+{{cta({title:"записаться на тренинг"})}}
 
 {% endblock %}
 

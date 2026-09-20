@@ -1,0 +1,86 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.textarea {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Field ────────────────────────────────────────────────────────────────── */
+
+.textarea__field {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  padding: var(--space-2) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgb(14 13 11 / 25%);
+  border-radius: 0;
+  outline: none;
+  font-family: var(--font-primary);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  color: var(--color-dark);
+  resize: vertical;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  /* Placeholder */
+  &::placeholder {
+    color: var(--color-dark);
+    opacity: 0.4;
+  }
+
+  /* Hover */
+  &:hover:not(:focus, :disabled) {
+    border-bottom-color: rgb(14 13 11 / 40%);
+  }
+
+  /* Active / Focus */
+  &:focus {
+    border-bottom-color: var(--color-accent-brown);
+  }
+
+  /* Disabled */
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    resize: none;
+  }
+}
+
+/* ── Error state ──────────────────────────────────────────────────────────── */
+
+.textarea_error .textarea__field {
+  border-bottom-color: var(--color-accent-red);
+
+  &:hover:not(:focus) {
+    border-bottom-color: var(--color-accent-red);
+  }
+
+  &:focus {
+    border-bottom-color: var(--color-accent-red);
+  }
+}
+
+/* ── Disabled state modifier ──────────────────────────────────────────────── */
+
+.textarea_disabled .textarea__field {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  resize: none;
+}
+
+/* ── Error message ────────────────────────────────────────────────────────── */
+
+.textarea__error {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-accent-red);
+}

@@ -1,0 +1,44 @@
+{% from "blocks/form/form.njk" import form %}
+{% from "blocks/form-field/form-field.njk" import formField %}
+{% from "blocks/select/select.njk" import select %}
+{% from "blocks/input/input.njk" import input %}
+{% from "blocks/textarea/textarea.njk" import textarea %}
+{% from "blocks/button/button.njk" import button %}
+
+{% macro cta(data) %}
+<section class="cta">
+    <div class="cta__container container">
+        <h2 class="cta__title">{{data.title}}</h2>
+        {% call form({ action: "#", class: "cta__form", novalidate: true }) %}
+        <div class="form__fields">
+            {% call formField({ name: "course" }) %}
+            {{ select({ name: "course", placeholder: "Выберите курс или тренинг", options: [
+            { value: "1", text: "Базовый курс" },
+            { value: "2", text: "Продвинутый тренинг" },
+            { value: "3", text: "Мистика и психология" }
+            ] }) }}
+            {% endcall %}
+            {% call formField({ label: "ФИО", name: "name" }) %}
+            {{ input({ name: "name", placeholder: "Введите Ваше имя", value: "Екатерина" }) }}
+            {% endcall %}
+            {% call formField({ label: "Email", name: "email" }) %}
+            {{ input({ name: "email", type: "email" }) }}
+            {% endcall %}
+            {% call formField({ label: "Телефон", name: "phone" }) %}
+            {{ input({ name: "phone", type: "tel", inputmode: "tel" }) }}
+            {% endcall %}
+            {% call formField({ label: "Вопрос", name: "question" }) %}
+            {{ textarea({ name: "question"}) }}
+            {% endcall %}
+        </div>
+        <div class="form__footer">
+            <p class="form__legal">
+                Нажимая кнопку «Отправить заявку», вы соглашаетесь с
+                <a class="form__legal-link" href="/privacy/">условиями обработки персональных данных</a>
+            </p>
+            {{ button({ text: "Отправить заявку", theme: "primary", width: "full" }) }}
+        </div>
+        {% endcall %}
+    </div>
+</section>
+{% endmacro %}

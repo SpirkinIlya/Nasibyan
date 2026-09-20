@@ -1,5 +1,9 @@
 {% extends "layouts/base.njk" %}
 {% from "blocks/button/button.njk" import button %}
+{% from "blocks/input/input.njk" import input %}
+{% from "blocks/select/select.njk" import select %}
+{% from "blocks/form-field/form-field.njk" import formField %}
+{% from "blocks/textarea/textarea.njk" import textarea %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/ui/ui.css" />
@@ -110,6 +114,175 @@
     <div class="ui-row">
       {{ button({ text: "Link Primary", type: "link", href: "/", theme: "primary" }) }}
       {{ button({ text: "Link Secondary", type: "link", href: "/", theme: "secondary" }) }}
+    </div>
+  </section>
+
+  {# ── Input ──────────────────────────────────────────────────────────── #}
+  <section class="ui-section">
+    <p class="ui-section__title">Input</p>
+
+    <div class="ui-fields">
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Default</p>
+        {{ input({ name: "demo-default", placeholder: "Placeholder" }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Filled</p>
+        {{ input({ name: "demo-filled", value: "Екатерина" }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Disabled</p>
+        {{ input({ name: "demo-disabled", placeholder: "Placeholder", disabled: true }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Error</p>
+        {{ input({ name: "demo-error", placeholder: "Placeholder", error: "Поле обязательно для заполнения" }) }}
+      </div>
+
+    </div>
+  </section>
+
+  {# ── Textarea ────────────────────────────────────────────────────────── #}
+  <section class="ui-section">
+    <p class="ui-section__title">Textarea</p>
+
+    <div class="ui-fields">
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Default</p>
+        {{ textarea({ name: "ta-default", placeholder: "Placeholder" }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Filled</p>
+        {{ textarea({ name: "ta-filled", value: "Текст который ввёл пользователь" }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Disabled</p>
+        {{ textarea({ name: "ta-disabled", placeholder: "Placeholder", disabled: true }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Error</p>
+        {{ textarea({ name: "ta-error", placeholder: "Placeholder", error: "Поле обязательно для заполнения" }) }}
+      </div>
+
+    </div>
+  </section>
+
+  {# ── Select ─────────────────────────────────────────────────────────── #}
+  <section class="ui-section">
+    <p class="ui-section__title">Select</p>
+
+    <div class="ui-fields">
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Default (placeholder)</p>
+        {{ select({
+        name: "course-default",
+        placeholder: "Выберите курс или тренинг",
+        options: [
+        { value: "1", text: "Базовый курс" },
+        { value: "2", text: "Продвинутый тренинг" },
+        { value: "3", text: "Мистика и психология" }
+        ]
+        }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Filled</p>
+        {{ select({
+        name: "course-filled",
+        value: "2",
+        options: [
+        { value: "1", text: "Базовый курс" },
+        { value: "2", text: "Продвинутый тренинг" },
+        { value: "3", text: "Мистика и психология" }
+        ]
+        }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Disabled</p>
+        {{ select({
+        name: "course-disabled",
+        placeholder: "Выберите курс или тренинг",
+        disabled: true,
+        options: [
+        { value: "1", text: "Базовый курс" }
+        ]
+        }) }}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Error</p>
+        {{ select({
+        name: "course-error",
+        placeholder: "Выберите курс или тренинг",
+        error: "Выберите один из вариантов",
+        options: [
+        { value: "1", text: "Базовый курс" },
+        { value: "2", text: "Продвинутый тренинг" }
+        ]
+        }) }}
+      </div>
+
+    </div>
+  </section>
+
+  {# ── Form Field ──────────────────────────────────────────────────────── #}
+  <section class="ui-section">
+    <p class="ui-section__title">Form Field</p>
+
+    <div class="ui-fields">
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Default</p>
+        {% call formField({ label: "ФИО", name: "ff-name" }) %}
+          {{ input({ name: "ff-name", placeholder: "Екатерина" }) }}
+        {% endcall %}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Disabled</p>
+        {% call formField({ label: "Email", name: "ff-email-dis" }) %}
+          {{ input({ name: "ff-email-dis", type: "email", placeholder: "email@mail.ru", disabled: true }) }}
+        {% endcall %}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">Error</p>
+        {% call formField({ label: "Телефон", name: "ff-phone" }) %}
+          {{ input({ name: "ff-phone", type: "tel", placeholder: "+7 000 000-00-00", error: "Введите корректный номер" }) }}
+        {% endcall %}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">With Select</p>
+        {% call formField({ label: "Курс", name: "ff-course" }) %}
+          {{ select({
+            name: "ff-course",
+            placeholder: "Выберите курс",
+            options: [
+              { value: "1", text: "Базовый курс" },
+              { value: "2", text: "Продвинутый тренинг" }
+            ]
+          }) }}
+        {% endcall %}
+      </div>
+
+      <div class="ui-field-row">
+        <p class="ui-field-label">With Textarea</p>
+        {% call formField({ label: "Вопрос", name: "ff-question" }) %}
+          {{ textarea({ name: "ff-question", rows: 3 }) }}
+        {% endcall %}
+      </div>
+
     </div>
   </section>
 

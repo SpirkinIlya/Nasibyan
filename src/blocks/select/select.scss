@@ -1,0 +1,205 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.select {
+  position: relative;
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Trigger button (styled like underline input)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgb(14 13 11 / 20%);
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--transition-fast);
+
+  &:hover:not(:disabled) {
+    border-bottom-color: rgb(14 13 11 / 40%);
+  }
+
+  &:focus-visible {
+    border-bottom-color: var(--color-accent-brown);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+/* Display text */
+.select__display {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: var(--color-dark);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Placeholder state — muted color */
+.select_placeholder .select__display {
+  color: var(--color-dark);
+}
+
+/* Chevron arrow */
+.select__arrow {
+  display: block;
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid rgb(14 13 11 / 40%);
+  border-bottom: 1.5px solid rgb(14 13 11 / 40%);
+  transform: rotate(45deg) translateY(-2px);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Open state  (data-state="open" set by JS on the root)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.select[data-state='open'] .select__trigger {
+  border-bottom-color: var(--color-accent-brown);
+}
+
+.select[data-state='open'] .select__arrow {
+  transform: rotate(-135deg) translateY(2px);
+  border-color: var(--color-accent-brown);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Dropdown panel
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.select__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 250;
+  background-color: rgb(80 72 62 / 98%);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) 0;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+
+  /* Hidden by default */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    visibility 0s var(--transition-base);
+}
+
+.select[data-state='open'] .select__dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    visibility 0s;
+}
+
+/* ── List ────────────────────────────────────────────────────────────────── */
+
+.select__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 20%) transparent;
+}
+
+/* ── Option ──────────────────────────────────────────────────────────────── */
+
+.select__option {
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-primary);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--color-accent-pale);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+
+  &:hover,
+  &:focus {
+    background-color: rgb(255 255 255 / 8%);
+    color: var(--color-white);
+    outline: none;
+  }
+}
+
+/* Selected option */
+.select__option_selected {
+  color: var(--color-accent-sand);
+
+  &:hover,
+  &:focus {
+    color: var(--color-accent-sand);
+    background-color: rgb(255 255 255 / 8%);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Error state
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.select_error .select__trigger {
+  border-bottom-color: var(--color-accent-red);
+
+  &:hover:not(:disabled) {
+    border-bottom-color: var(--color-accent-red);
+  }
+}
+
+.select_error .select__arrow {
+  border-color: var(--color-accent-red);
+}
+
+.select_error[data-state='open'] .select__trigger {
+  border-bottom-color: var(--color-accent-red);
+}
+
+/* ── Disabled ────────────────────────────────────────────────────────────── */
+
+.select_disabled .select__trigger {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Error message ───────────────────────────────────────────────────────── */
+
+.select__error {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-accent-red);
+}

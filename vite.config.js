@@ -461,6 +461,55 @@ function nunjucksMultiPagePlugin() {
     },
 
     configureServer(server) {
+      function shouldFullReload(file) {
+        const isTemplate =
+          file.endsWith('.njk');
+
+        const isPageJson =
+          file.endsWith('.json') &&
+          file.startsWith(PAGES_DIR);
+
+        const isGlobalJson =
+          file === GLOBAL_DATA_PATH;
+
+        const isBlockAsset =
+          file.startsWith(BLOCKS_DIR) &&
+          (
+            file.endsWith('.scss') ||
+            file.endsWith('.css') ||
+            file.endsWith('.js')
+          );
+
+        return (
+          isTemplate ||
+          isPageJson ||
+          isGlobalJson ||
+          isBlockAsset
+        );
+      }
+
+      function reloadOnFileStructureChange(file) {
+        if (!shouldFullReload(file)) {
+          return;
+        }
+
+        server.ws.send({
+          type: 'full-reload',
+        });
+      }
+
+      // handleHotUpdate обрабатывает изменение существующих файлов,
+      // а watcher дополнительно ловит создание и удаление файлов.
+      server.watcher.on(
+        'add',
+        reloadOnFileStructureChange
+      );
+
+      server.watcher.on(
+        'unlink',
+        reloadOnFileStructureChange
+      );
+
       server.middlewares.use(
         async (req, res, next) => {
           const url = (req.url || '/')

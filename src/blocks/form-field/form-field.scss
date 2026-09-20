@@ -1,0 +1,57 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.form-field {
+  width: 100%;
+}
+
+/* ── Control wrapper ─────────────────────────────────────────────────────── */
+
+.form-field__control {
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Label — base styles
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.form-field__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.6;   /* 160% */
+  color: var(--color-dark);
+  transition:
+    color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Label — states driven by CSS :has() on the wrapper
+   (no JS or duplicate props needed)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Hover — entire form-field hovered, but not when a child is disabled */
+.form-field:hover:not(:has(:disabled)) .form-field__label {
+  color: var(--color-accent-brown);
+}
+
+/* Active — any child input/textarea/button has focus */
+.form-field:focus-within .form-field__label {
+  color: var(--color-accent-brown);
+}
+
+/* Disabled — any child is disabled */
+.form-field:has(:disabled) .form-field__label {
+  opacity: 0.5;
+  color: var(--color-dark); /* keep base colour, only dim */
+}
+
+/* Error — child block carries the error modifier class
+   (covers .input_error, .textarea_error, .select_error)
+   Written last so it overrides hover/focus colour             */
+.form-field:has([class*='_error']) .form-field__label {
+  color: var(--color-accent-red);
+  opacity: 1;
+}

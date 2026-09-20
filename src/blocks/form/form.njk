@@ -1,0 +1,8 @@
+{% macro form(data) %}
+<form class="form{% if data.class %} {{ data.class }}{% endif %}" action="{{ data.action or '#' }}"
+  method="{{ data.method or 'post' }}" {% if data.id %}id="{{ data.id }}" {% endif %} {% if data.name
+  %}name="{{ data.name }}" {% endif %} {% if data.enctype %}enctype="{{ data.enctype }}" {% endif %} {% if
+  data.novalidate %}novalidate{% endif %} data-js="form">
+  {{ caller() }}
+</form>
+{% endmacro %}

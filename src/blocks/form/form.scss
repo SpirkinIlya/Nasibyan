@@ -1,0 +1,55 @@
+/* ── Form wrapper ─────────────────────────────────────────────────────────── */
+
+.form {
+  width: 100%;
+}
+
+/* ── Fields group ─────────────────────────────────────────────────────────── */
+
+.form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+
+.form__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Legal text ───────────────────────────────────────────────────────────── */
+
+.form__legal {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-dark);
+}
+
+.form__legal-link {
+  color: var(--color-accent-red);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-red);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ── Loading state ────────────────────────────────────────────────────────── */
+
+.form[data-state='loading'] {
+  pointer-events: none;
+  opacity: 0.7;
+}

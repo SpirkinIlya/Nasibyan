@@ -1,0 +1,87 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.input {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Field ────────────────────────────────────────────────────────────────── */
+
+.input__field {
+  display: block;
+  width: 100%;
+  padding: 0 0 12px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgb(14 13 11 / 20%);
+  border-radius: 0;
+  outline: none;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--color-dark);
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  /* Placeholder */
+  &::placeholder {
+    color: rgb(14 13 11 / 35%);
+  }
+
+  /* Hover */
+  &:hover:not(:focus, :disabled) {
+    border-bottom-color: rgb(14 13 11 / 40%);
+  }
+
+  /* Active / Focus */
+  &:focus {
+    border-bottom-color: var(--color-accent-brown);
+  }
+
+  /* Disabled */
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Autofill — prevent browser from injecting a background colour */
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 100px transparent inset;
+    transition: background-color 9999s ease;
+  }
+}
+
+/* ── Error state ──────────────────────────────────────────────────────────── */
+
+.input_error .input__field {
+  border-bottom-color: var(--color-accent-red);
+
+  &:hover:not(:focus) {
+    border-bottom-color: var(--color-accent-red);
+  }
+
+  &:focus {
+    border-bottom-color: var(--color-accent-red);
+  }
+}
+
+/* ── Disabled state modifier ──────────────────────────────────────────────── */
+
+.input_disabled .input__field {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Error message ────────────────────────────────────────────────────────── */
+
+.input__error {
+  display: block;
+  margin-top: var(--space-1);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-accent-red);
+}
