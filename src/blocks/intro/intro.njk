@@ -1,0 +1,15 @@
+{% macro intro(data) %}
+<section class="intro">
+    <div class="intro__decor">
+        <img class="image" src="/images/hero__circle.webp" alt="">
+    </div>
+    <div class="container intro__container">
+        {{ caller() }}
+    </div>
+    <a class="intro__to-form" aria-label="Перейти к форме записи" href="#cta">
+        <svg width="32" height="54">
+            <use href="/images/sprite/sprite.svg#icon-arrow"></use>
+        </svg>
+    </a>
+</section>
+{% endmacro %}

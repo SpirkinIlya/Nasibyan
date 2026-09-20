@@ -173,13 +173,7 @@
 ═══════════════════════════════════════════════════════════════════════════════ */
 
 .header__burger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
+  color: var(--color-accent-sand);
   background: none;
   border: none;
   cursor: pointer;
@@ -188,28 +182,6 @@
   @media (min-width: 1200px) {
     display: none;
   }
-}
-
-.header__burger-line {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background-color: var(--color-accent-pale);
-  border-radius: 2px;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-/* Burger → × animation when open */
-[data-state='menu-open'] .header__burger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-[data-state='menu-open'] .header__burger-line:nth-child(2) {
-  opacity: 0;
-}
-
-[data-state='menu-open'] .header__burger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
@@ -251,14 +223,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color-accent-sand);
-  font-size: 1.75rem;
-  line-height: 1;
   padding: 0;
   transition: opacity var(--transition-fast);
 
@@ -292,9 +260,11 @@
 .header__drawer-link {
   display: block;
   padding: var(--space-3) 0;
-  color: var(--color-accent-pale);
+  color: var(--color-pale-sandy);
   text-decoration: none;
-  font-size: 1.0625rem;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 100%;
   transition: color var(--transition-fast);
 
   &:hover {

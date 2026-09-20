@@ -6,7 +6,7 @@
 {% from "blocks/button/button.njk" import button %}
 
 {% macro cta(data) %}
-<section class="cta">
+<section class="cta" id="cta">
     <div class="cta__container container">
         <h2 class="cta__title">{{data.title}}</h2>
         {% call form({ action: "#", class: "cta__form", novalidate: true }) %}

@@ -1,0 +1,32 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/button/button.njk" import button %}
+
+{% block head %}
+<link rel="stylesheet" href="/pages/schedule/schedule.scss" />
+{% endblock %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">расписание мероприятий</h1>
+<p class="intro__description">Актуальное расписание тренингов и семинаров Сергея Насибяна</p>
+{{button({theme:"primary", text:"Записаться на Базовый курс"})}}
+{% endcall %}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "Расписание мероприятий",
+url: "#"
+}
+]) }}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/schedule/schedule.js"></script>
+{% endblock %}

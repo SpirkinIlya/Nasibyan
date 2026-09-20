@@ -1,0 +1,30 @@
+.breadcrumbs {
+    padding-block: 4px;
+
+    &__list {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 160%;
+        color: var(--color-pale-sandy);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4px;
+        list-style: none;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__current {
+        opacity: 0.35;
+    }
+}

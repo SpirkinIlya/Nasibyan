@@ -1,0 +1,87 @@
+.intro {
+    position: relative;
+
+    &__container {
+        padding-block: 24px 108px;
+        position: relative;
+        z-index: 2;
+
+        @media (min-width:1200px) {
+            padding-block: 30px 48px;
+        }
+
+    }
+
+    &__heading {
+        color: var(--color-accent-sand);
+        padding-bottom: 24px;
+    }
+
+    &__description {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+        color: var(--color-pale-sandy);
+        padding-bottom: 24px;
+
+        @media (min-width: 1200px) {
+            font-size: 20px;
+            padding-bottom: 32px;
+        }
+    }
+
+    &__to-form {
+        width: fit-content;
+        position: absolute;
+        z-index: 2;
+        bottom: 30px;
+        left: 24px;
+        color: var(--color-accent-sand);
+
+        @media (min-width:1200px) {
+            display: none;
+        }
+    }
+
+    &__decor {
+        position: absolute;
+        top: 76%;
+        transform: translateY(-50%);
+        z-index: 0;
+        right: 0;
+        height: 720px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+
+            background:
+
+                linear-gradient(to bottom,
+                    #0e0d0b 0,
+                    transparent 150px,
+                    transparent calc(100% - 150px),
+                    #0e0d0b 100%);
+        }
+
+        .image {
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            object-position: calc(100% + 100px) center;
+
+            @media (min-width:1200px) {
+                object-position: right center;
+
+            }
+        }
+
+        @media (min-width: 1200px) {
+            top: 260px;
+            height: 835px;
+        }
+    }
+}
