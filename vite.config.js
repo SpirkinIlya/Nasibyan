@@ -406,7 +406,7 @@ function nunjucksMultiPagePlugin() {
       const pages = getPages();
 
       const inputs = {
-        main: pagesIndexId,
+        __pages_index__: pagesIndexId,
       };
 
       for (const [pageName] of Object.entries(pages)) {
