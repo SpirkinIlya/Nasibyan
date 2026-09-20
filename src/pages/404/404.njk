@@ -1,0 +1,27 @@
+{% from "blocks/button/button.njk" import button %}
+{% extends "layouts/base.njk" %}
+
+
+{% block head %}
+<link rel="stylesheet" href="/pages/404/404.scss" />
+{% endblock %}
+
+{% block content %}
+<section class="error">
+    <div class="container error__container">
+        <div class="error__info">
+            <p class="error__title">404</p>
+            <h1 class="error__heading">Ошибка! Страница не найдена...</h1>
+            {{button({text:"на главную", theme:"tertiary", type:"link", href:"#"})}}
+        </div>
+        <div class="error__image">
+            <img src="/images/compos.webp" alt="">
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/404/404.js"></script>
+{% endblock %}
