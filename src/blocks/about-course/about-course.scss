@@ -1,0 +1,124 @@
+.about-course {
+    &__container {
+        padding-block: 20px 60px;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    &__title {
+        color: var(--color-accent-sand);
+        position: relative;
+        padding-left: 41px;
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            background-color: currentColor;
+        }
+    }
+
+    &__event {
+        position: relative;
+        font-family: var(--font-primary);
+        max-width: 996px;
+        margin: 0 auto;
+
+        &::before {
+            position: absolute;
+            z-index: 1;
+            content: '';
+            inset: 0;
+            border-radius: 30px;
+            background:
+                linear-gradient(185deg, rgba(90, 64, 37, 0.5) 0%, rgba(14, 13, 11, 0.8) 84.27%);
+
+        }
+
+        &::after {
+            position: absolute;
+            z-index: 2;
+            content: '';
+            inset: 2px;
+            border-radius: 30px;
+            background-color: var(--color-dark);
+            opacity: 0.3;
+        }
+
+        &-container {
+            border-radius: 30px;
+            padding: 24px;
+            border: 1px solid transparent;
+
+            // background: linear-gradient(210.26deg, rgba(90, 64, 37, 0.5) 0%, rgba(14, 13, 11, 0.5) 84.27%);
+
+            position: relative;
+            z-index: 3;
+            color: var(--color-pale-sandy);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @media (min-width:1200px) {
+                border-radius: 30px;
+                padding: 60px;
+                gap: 40px;
+            }
+        }
+
+        &-date {
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 160%;
+            padding-bottom: 16px;
+        }
+
+        &-place {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 160%;
+        }
+
+        &-aim {
+            font-size: 16px;
+            line-height: 160%;
+            font-weight: 300;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            b {
+                font-weight: 700;
+            }
+
+            @media (min-width:1200px) {
+                font-size: 20px;
+                gap: 40px;
+            }
+        }
+
+    }
+
+    &__price {
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 160%;
+        text-align: center;
+        color: var(--color-pale-sandy);
+    }
+
+    &__button {
+        @media (min-width:768px) {
+            margin: 0 auto;
+        }
+    }
+}

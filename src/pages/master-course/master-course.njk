@@ -1,0 +1,52 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/about-course/about-course.njk" import aboutCourse %}
+{% from "blocks/button/button.njk" import button %}
+
+{% block head %}
+<link rel="stylesheet" href="/pages/master-course/master-course.scss" />
+{% endblock %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">мастерский курс</h1>
+<p class="intro__description">Три дня, чтобы заложить фундамент масштабных целей и открыть неподдельный интерес к
+    собственной жизни</p>
+{{button({theme:"primary", text:"Записаться на Мастерский курс"})}}
+{% endcall %}
+{% call aboutCourse({name:"мастерский курс", date:"6 - 9 августа 2026", place:"АЗИМУТ ОТЕЛЬ, ул. Смоленская, д.8,
+Москва",
+aim: "
+<p><b>Цель: </b>стать Мастером своей жизни и начать влиять на процессы, которые происходят не только в ближайшем
+    окружении твоих целей и твоих задач, но и на следующей орбите твоей жизни и твоего сознания.</p>
+<p>Мастерский курс — это исследование глубинных принципов, которые управляют нашей жизнью. Мы будем работать с
+    философией личности, сознанием и законами, по которым человек взаимодействует с миром. Откроем причины, по которым
+    одни возможности становятся реальностью, а другие остаются недоступными..</p>
+<p>Мы начнем изменять пространство, где формируются наши убеждения, выборы, жизненные стратегии и представления о себе.
+</p>
+",
+price:"100 000"})
+%}
+{% endcall %}
+{{cta({title:"записаться на Мастерский курс"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/main/"
+},
+{
+name: "Тренинги",
+url: "/trainings/"
+},
+{
+name: "Мастерский курс",
+url: "#"
+}
+]) }}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/master-course/master-course.js"></script>
+{% endblock %}

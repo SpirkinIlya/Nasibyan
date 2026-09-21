@@ -5,12 +5,12 @@
 {% if data.width %} {% set classes = classes + " button_width_" + data.width %} {% endif %}
 
 {% if data.type === "link" %}
-<a class="button {{ classes }}" href="{{ data.href or '#' }}" {% if data.target %}target="{{ data.target }}" {% endif %}
-  {% if data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span class="button__text">{{ data.text
+<a class="{{ classes }}" href="{{ data.href or '#' }}" {% if data.target %}target="{{ data.target }}" {% endif %} {% if
+  data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span class="button__text">{{ data.text
     }}</span></a>
 {% else %}
-<button class="button {{ classes }}" type="{{ data.buttonType or 'button' }}" {% if data.disabled %}disabled{% endif %}
-  {% if data.ariaLabel %}aria-label="{{ data.ariaLabel }}" {% endif %}><span class="button__text">{{ data.text
+<button class="{{ classes }} {{data.class}}" type="{{ data.buttonType or 'button' }}" {% if data.disabled %}disabled{%
+  endif %} {% if data.ariaLabel %}aria-label="{{ data.ariaLabel }}" {% endif %}><span class="button__text">{{ data.text
     }}</span></button>
 {% endif %}
 {% endmacro %}

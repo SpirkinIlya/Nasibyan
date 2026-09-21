@@ -1,0 +1,47 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/about-course/about-course.njk" import aboutCourse %}
+{% from "blocks/button/button.njk" import button %}
+
+{% block head %}
+<link rel="stylesheet" href="/pages/basic-course/basic-course.scss" />
+{% endblock %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">базовый курс</h1>
+<p class="intro__description">Три дня глубокой трансформации, которые уберут ограничивающие установки 
+    и выведут эффективность на новый уровень</p>
+{{button({theme:"primary", text:"Записаться на Базовый курс"})}}
+{% endcall %}
+{% call aboutCourse({name:"Базовый курс", date:"10 - 12 июля 2026", place:"АЗИМУТ ОТЕЛЬ, ул. Смоленская, д.8, Москва",
+aim: "
+<p><b>Цель: </b>Увидеть и изменить установки и убеждения, мешающие получить желаемый результат во всех сферах жизни.</p>
+<p>Курс помогает понять и осознать свои реакции, и начать менять деструктивные поведенческие шаблоны.</p>
+",
+price:"79 000"})
+%}
+
+{% endcall %}
+{{cta({title:"записаться на базовый курс"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/main/"
+},
+{
+name: "Тренинги",
+url: "/trainings/"
+},
+{
+name: "Базовый курс",
+url: "#"
+}
+]) }}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/basic-course/basic-course.js"></script>
+{% endblock %}

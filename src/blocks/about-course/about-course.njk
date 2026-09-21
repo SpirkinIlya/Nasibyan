@@ -1,0 +1,22 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro aboutCourse(data) %}
+<section class="about-course">
+    <div class="about-course__container container">
+        <div class="about-course__event">
+            <div class="about-course__event-container">
+                <h2 class="about-course__title">{{data.name}}</h2>
+                <div class="about-course__event-info">
+                    <p class="about-course__event-date">{{data.date}}</p>
+                    <p class="about-course__event-place">{{data.place}}</p>
+                </div>
+                <div class="about-course__event-aim">{{data.aim | safe}}</div>
+            </div>
+        </div>
+        {{ caller() }}
+        <p class="about-course__price">Стоимость: {{data.price}} ₽</p>
+        {{button({theme:"primary", class:"about-course__button", text:"Записаться на курс"})}}
+    </div>
+
+</section>
+{% endmacro %}
