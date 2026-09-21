@@ -32,7 +32,7 @@
     &::before {
         height: 68px;
         content: '';
-        bottom: 0;
+        bottom: -1px;
         width: 100%;
         position: absolute;
         background-image: url(/images/divider.png);
@@ -47,7 +47,7 @@
 
     &::after {
         content: '';
-        top: 0;
+        top: -1px;
         width: 100%;
         height: 68px;
         position: absolute;

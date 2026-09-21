@@ -1,0 +1,36 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/trainings/trainings.njk" import trainings %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/button/button.njk" import button %}
+
+{% block head %}
+<link rel="stylesheet" href="/pages/trainings/trainings.scss" />
+{% endblock %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">тренинги</h1>
+<p class="intro__description">Мои тренинги — не последовательность знаний и техник. Это разные уровни встречи человека
+    с собственным способом жить. Базовый курс помогает увидеть систему. Следующие программы позволяют исследовать
+    отношения, ответственность, стыд, одиночество,  идентичность и свободу. Поэтому здесь важен не выбор самого
+    интересного тренинга, а понимание того, на каком этапе собственного пути вы сейчас находитесь.</p>
+{% endcall %}
+{{trainings()}}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "Тренинги",
+url: "#"
+}
+]) }}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/trainings/trainings.js"></script>
+{% endblock %}

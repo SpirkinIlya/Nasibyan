@@ -24,6 +24,7 @@
         line-height: 160%;
         color: var(--color-pale-sandy);
         padding-bottom: 24px;
+        max-width: 792px;
 
         @media (min-width: 1200px) {
             font-size: 20px;
@@ -46,11 +47,12 @@
 
     &__decor {
         position: absolute;
-        top: 76%;
+        position: absolute;
+        top: 57%;
         transform: translateY(-50%);
         z-index: 0;
         right: 0;
-        height: 720px;
+        height: 600px;
 
         &::after {
             content: '';
