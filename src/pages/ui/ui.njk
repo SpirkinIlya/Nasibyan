@@ -3,6 +3,7 @@
 {% from "blocks/input/input.njk" import input %}
 {% from "blocks/select/select.njk" import select %}
 {% from "blocks/form-field/form-field.njk" import formField %}
+{% from "blocks/question/question.njk" import question %}
 {% from "blocks/textarea/textarea.njk" import textarea %}
 
 {% block head %}
@@ -284,6 +285,27 @@
       </div>
 
     </div>
+  </section>
+
+  {# ── Question (FAQ item) ─────────────────────────────────────────────── #}
+  <section class="ui-section">
+    <p class="ui-section__title">Question</p>
+
+    {{ question({
+      question: "Зачем идти на тренинг?",
+      answer: ""
+    }) }}
+
+    {{ question({
+      question: "С какого возраста можно идти к вам на тренинг или консультацию?",
+      answer: ""
+    }) }}
+
+    {{ question({
+      question: "Сколько нужно консультаций для решения моей проблемы?",
+      answer: "Количество консультаций, необходимое для решения запроса, каждый раз подбирается индивидуально. В среднем нужно 2-3 сессии для проработки запроса и ещё 2 сессии для закрепления результата. Эффективность зависит в том числе от вашей внутренней готовности к работе"
+    }) }}
+
   </section>
 
 </div>

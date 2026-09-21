@@ -1,0 +1,11 @@
+.faq {
+    &__container {
+        padding-block: 60px;
+    }
+
+    &__title {
+        color: var(--color-accent-sand);
+        text-align: center;
+        padding-bottom: 40px;
+    }
+}

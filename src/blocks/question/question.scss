@@ -1,0 +1,100 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.question {
+  border-bottom: 1px solid rgba(206, 189, 176, 0.15);
+  padding: 24px 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Trigger — full-width clickable row
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.question__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  width: 100%;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-pale-sandy);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent-sand);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-sand);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ── Question text ────────────────────────────────────────────────────────── */
+
+.question__text {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 120%;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+/* ── Arrow icon ───────────────────────────────────────────────────────────── */
+
+.question__icon {
+  flex-shrink: 0;
+  transition: transform var(--transition-base), color var(--transition-fast);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Open state  (data-state="open" on root)
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.question[data-state='open'] .question__trigger {
+  color: var(--color-accent-sand);
+}
+
+.question[data-state='open'] .question__icon {
+  transform: rotate(180deg);
+  color: var(--color-accent-sand);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   Answer — CSS grid trick for smooth height animation
+   grid-template-rows: 0fr → 1fr expands without JS height calculation
+═══════════════════════════════════════════════════════════════════════════════ */
+
+.question__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition-base);
+}
+
+.question[data-state='open'] .question__body {
+  grid-template-rows: 1fr;
+}
+
+/* Inner wrapper required for grid 0fr trick */
+.question__body-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Answer text ──────────────────────────────────────────────────────────── */
+
+.question__answer {
+  padding-top: 24px;
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: var(--font-weight-light);
+  line-height: 1.6;
+  color: var(--color-accent-pale);
+}

@@ -4,6 +4,7 @@
 {% from "blocks/intro/intro.njk" import intro %}
 {% from "blocks/about-course/about-course.njk" import aboutCourse %}
 {% from "blocks/button/button.njk" import button %}
+{% from "blocks/faq/faq.njk" import faq %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/basic-course/basic-course.scss" />
@@ -25,6 +26,7 @@ price:"79 000"})
 %}
 
 {% endcall %}
+{{faq()}}
 {{cta({title:"записаться на базовый курс"})}}
 {{ breadcrumbs([
 {

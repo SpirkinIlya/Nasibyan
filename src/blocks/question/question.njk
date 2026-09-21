@@ -1,0 +1,19 @@
+{% macro question(data) %}
+<div class="question" data-js="question">
+
+  <button class="question__trigger" type="button" aria-expanded="false" data-js="question-trigger">
+    <span class="question__text">{{ data.question }}</span>
+
+    <svg class="question__icon" width="32" height="32">
+      <use href="/images/sprite/sprite.svg#icon-arrow"></use>
+    </svg>
+  </button>
+
+  <div class="question__body" role="region">
+    <div class="question__body-inner">
+      <p class="question__answer">{{ data.answer }}</p>
+    </div>
+  </div>
+
+</div>
+{% endmacro %}
