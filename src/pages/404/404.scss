@@ -6,6 +6,7 @@
         font-weight: 300;
         color: var(--color-accent-sand);
         line-height: 100%;
+        margin: 0;
 
         @media (min-width:1200px) {
             font-size: 200px;
@@ -39,6 +40,7 @@
         color: var(--color-pale-sandy);
         text-transform: none;
         padding-bottom: 32px;
+        margin: 0;
 
         @media (min-width: 1200px) {
             padding-bottom: 50px;

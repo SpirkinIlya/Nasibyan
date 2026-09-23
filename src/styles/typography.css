@@ -9,7 +9,6 @@ h6 {
   font-family: var(--font-primary);
   line-height: var(--line-height-heading);
   letter-spacing: var(--letter-spacing-heading);
-  margin: 0;
 }
 
 /* ── H1: Rubik Light, 48px desktop / 40px mobile, Uppercase ─────────────

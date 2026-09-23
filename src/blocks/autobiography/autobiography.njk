@@ -1,0 +1,21 @@
+{% macro autobiography(data) %}
+<section class="autobiography">
+    <div class="autobiography__container container">
+        <h2 class="autobiography__title">{{data.title}}</h2>
+        <div class="autobiography__body">
+            <div class="autobiography__text-wrap" data-js="autobiography-wrap">
+                <div class="autobiography__text">
+                    {% for paragraph in data.text %}
+                    <p class="autobiography__paragraph">{{ paragraph }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button class="autobiography__toggle" data-js="autobiography-toggle" aria-expanded="false"
+                aria-label="Читать полностью" type="button">
+                <span class="autobiography__icon" aria-hidden="true">↓</span>
+            </button>
+        </div>
+    </div>
+</section>
+{% endmacro %}
