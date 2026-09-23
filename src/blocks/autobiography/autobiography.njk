@@ -1,8 +1,16 @@
 {% macro autobiography(data) %}
-<section class="autobiography">
+<section class="autobiography" data-js="autobiography">
     <div class="autobiography__container container">
         <h2 class="autobiography__title">{{data.title}}</h2>
         <div class="autobiography__body">
+            <div class="autobiography__left-top-corner"></div>
+            <div class="autobiography__right-top-corner"></div>
+            <div class="autobiography__right-bottom-corner"></div>
+            <div class="autobiography__left-bottom-corner"></div>
+            <div class="autobiography__top-line"></div>
+            <div class="autobiography__right-line"></div>
+            <div class="autobiography__bottom-line"></div>
+            <div class="autobiography__left-line"></div>
             <div class="autobiography__text-wrap" data-js="autobiography-wrap">
                 <div class="autobiography__text">
                     {% for paragraph in data.text %}
