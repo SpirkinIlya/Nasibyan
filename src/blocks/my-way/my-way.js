@@ -74,13 +74,32 @@ function initMyWay() {
         const isOpen = root.dataset.state === 'open';
 
         if (isOpen) {
-          // Collapse: pin current height first, then animate down.
+          // Pin current height so the animation has a defined start
           wrap.style.maxHeight = `${wrap.scrollHeight}px`;
+
           requestAnimationFrame(() => {
             requestAnimationFrame(() => {
+              const anchorY = toggle.getBoundingClientRect().top;
+
               wrap.style.maxHeight = `${collapsedHeight}px`;
+
+              const TRANSITION_MS = 350;
+              const startTime = performance.now();
+
+              function tick(now) {
+                const drift = toggle.getBoundingClientRect().top - anchorY;
+                if (Math.abs(drift) >= 1) {
+                  window.scrollBy({ top: drift, behavior: 'instant' });
+                }
+                if (now - startTime < TRANSITION_MS) {
+                  requestAnimationFrame(tick);
+                }
+              }
+
+              requestAnimationFrame(tick);
             });
           });
+
           delete root.dataset.state;
           toggle.setAttribute('aria-expanded', 'false');
           toggle.setAttribute('aria-label', 'Читать полностью');
