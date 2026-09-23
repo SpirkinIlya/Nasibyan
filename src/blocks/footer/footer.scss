@@ -3,6 +3,10 @@
   position: relative;
   z-index: 2;
 
+  p {
+    margin: 0;
+  }
+
   @media (min-width: 1200px) {
     padding-block: 40px 31px;
   }
@@ -62,6 +66,9 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
 
     @media (min-width: 1200px) {
       display: block;

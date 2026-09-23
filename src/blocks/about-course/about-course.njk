@@ -1,9 +1,9 @@
 {% from "blocks/button/button.njk" import button %}
 
 {% macro aboutCourse(data) %}
-<section class="about-course">
-    <div class="about-course__container container">
-        <div class="about-course__event">
+<section class="about-course container">
+    <div class="about-course__container">
+        <div class="about-course__event gradient_type_gold">
             <div class="about-course__event-container">
                 <h2 class="about-course__title">{{data.name}}</h2>
                 <div class="about-course__event-info">
@@ -14,6 +14,9 @@
             </div>
         </div>
         {{ caller() }}
+        <div class="about-course__footer gradient_type_gold">
+            <div class="about-course__footer-info">{{data.footer | safe}}</div>
+        </div>
         <p class="about-course__price">Стоимость: {{data.price}} ₽</p>
         {{button({theme:"primary", class:"about-course__button", text:"Записаться на курс"})}}
     </div>

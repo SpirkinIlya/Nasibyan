@@ -1,4 +1,10 @@
 .about-course {
+    font-family: var(--font-primary);
+
+    p {
+        margin: 0;
+    }
+
     &__container {
         padding-block: 20px 60px;
         position: relative;
@@ -7,6 +13,12 @@
         flex-direction: column;
         justify-content: center;
         gap: 40px;
+        max-width: 996px;
+        margin: 0 auto;
+
+        @media (min-width:1200px) {
+            padding-block: 60px 60px;
+        }
     }
 
     &__title {
@@ -28,41 +40,14 @@
     }
 
     &__event {
-        position: relative;
         font-family: var(--font-primary);
-        max-width: 996px;
-        margin: 0 auto;
-
-        &::before {
-            position: absolute;
-            z-index: 1;
-            content: '';
-            inset: 0;
-            border-radius: 30px;
-            background:
-                linear-gradient(185deg, rgba(90, 64, 37, 0.5) 0%, rgba(14, 13, 11, 0.8) 84.27%);
-
-        }
-
-        &::after {
-            position: absolute;
-            z-index: 2;
-            content: '';
-            inset: 2px;
-            border-radius: 30px;
-            background-color: var(--color-dark);
-            opacity: 0.3;
-        }
+        box-sizing: border-box;
 
         &-container {
-            border-radius: 30px;
-            padding: 24px;
-            border: 1px solid transparent;
-
-            // background: linear-gradient(210.26deg, rgba(90, 64, 37, 0.5) 0%, rgba(14, 13, 11, 0.5) 84.27%);
 
             position: relative;
             z-index: 3;
+            padding: 24px;
             color: var(--color-pale-sandy);
             display: flex;
             flex-direction: column;
@@ -108,6 +93,51 @@
 
     }
 
+    &__footer {
+        padding: 24px;
+
+        &-info {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            font-family: var(--font-primary);
+
+            p {
+
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 160%;
+                color: var(--color-pale-sandy);
+
+                @media (min-width:1200px) {
+                    font-size: 20px;
+                    font-weight: 400;
+                }
+            }
+
+            b {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 160%;
+                text-align: center;
+                color: var(--color-accent-sand);
+
+                @media (min-width:1200px) {
+                    font-size: 26px;
+                    line-height: 120%;
+                }
+            }
+        }
+
+        @media (min-width:1200px) {
+            padding: 40px 60px;
+            gap: 40px;
+        }
+
+    }
+
     &__price {
         font-weight: 700;
         font-size: 25px;
@@ -121,4 +151,23 @@
             margin: 0 auto;
         }
     }
+
+    &__info {
+        h3 {
+            color: var(--color-accent-sand);
+            padding-bottom: 24px;
+        }
+
+        &_cols_2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+
+            @media (min-width:1200px) {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+
+
 }

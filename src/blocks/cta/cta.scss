@@ -2,8 +2,21 @@
     padding-block: 68px;
 
     @media (min-width: 1200px) {
-        padding: 105px 0;
+        padding-block: 105px;
 
+    }
+
+    &_no-top {
+        padding-block: 0 68px;
+
+        @media (min-width: 1200px) {
+            padding-block: 0 105px;
+
+        }
+
+        &::after {
+            display: none;
+        }
     }
 
     box-sizing: border-box;
@@ -65,13 +78,14 @@
 
 
         @media (min-width: 1200px) {
-            padding-block: 40px;
+            padding-block: 60px;
         }
     }
 
     &__title {
         text-align: center;
         padding-bottom: 32px;
+        color: var(--color-dark);
 
         @media (min-width: 1200px) {
             padding-bottom: 40px;

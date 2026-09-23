@@ -1,6 +1,10 @@
 .hero {
     position: relative;
 
+    p {
+        margin: 0;
+    }
+
     &__image {
         width: 500px;
         height: 735px;
