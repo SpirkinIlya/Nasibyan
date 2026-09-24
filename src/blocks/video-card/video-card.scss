@@ -1,0 +1,27 @@
+.video-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(165, 128, 88, 0.1);
+    background: linear-gradient(210.26deg, rgba(90, 64, 37, 0.5) 0%, rgba(14, 13, 11, 0.5) 77%);
+
+    &__title {
+        font-family: var(--font-primary);
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 120%;
+        padding: 24px;
+        margin: 0;
+
+        @media (min-width:1200px) {
+            padding: 40px 24px;
+        }
+    }
+
+    &__video {
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+    }
+}

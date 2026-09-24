@@ -1,0 +1,14 @@
+{% macro videoCard(data) %}
+{% if data %}
+<div class="video-card {%if data.class %} {{data.class}}{% endif %}">
+    {% if data.video %}
+    <div class="video-card__video">
+        {{ data.video | safe }}
+    </div>
+    {% endif %}
+    {% if data.title %}
+    <p class="video-card__title">{{ data.title }}</p>
+    {% endif %}
+</div>
+{% endif %}
+{% endmacro %}

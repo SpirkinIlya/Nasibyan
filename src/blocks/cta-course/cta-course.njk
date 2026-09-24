@@ -1,0 +1,19 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro ctaCourse(data) %}
+<section class="cta-course container">
+    <div class="cta-course__container gradient_type_gold">
+        <div class="cta-course__wrap">
+            <img class="cta-course__image" src="/images/circle.webp" alt="" loading="lazy">
+            <h2 class="cta-course__title">Хотите протестировать действие провокативного метода?</h2>
+            <div class="cta-course__info">
+                <p>За три дня вы шаг за шагом исследуете привычные способы думать, чувствовать и действовать, которые
+                    влияют на ваши отношения, решения, результаты и качество жизни.</p>
+                <p>Программа построена так, чтобы помочь не только увидеть свои ограничения, но и начать менять
+                    их на практике.</p>
+            </div>
+            {{button({class:"cta-course__button", theme:"primary", text: "Записаться на Базовый курс"})}}
+        </div>
+    </div>
+</section>
+{% endmacro %}

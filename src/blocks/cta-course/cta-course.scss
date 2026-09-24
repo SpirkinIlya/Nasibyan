@@ -1,0 +1,74 @@
+.cta-course {
+    padding-block: 60px;
+
+    @media (min-width:1200px) {
+        padding-block: 60px 80px;
+    }
+
+    &__container {
+        padding: 24px;
+        overflow: hidden;
+
+
+        @media (min-width:1200px) {
+            padding: 40px 60px;
+        }
+    }
+
+    &__wrap {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @media (min-width:1200px) {
+            gap: 40px;
+            width: 766px;
+        }
+    }
+
+    &__title {
+        color: var(--color-accent-sand);
+        margin: 0;
+    }
+
+    &__info {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+
+        p {
+            margin: 0;
+        }
+
+        @media (min-width:1200px) {
+            font-size: 20px;
+        }
+    }
+
+    &__button {
+        @media (min-width:768px) {
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        @media (min-width:1200px) {
+            margin: 0;
+            width: fit-content;
+        }
+    }
+
+    &__image {
+        width: 206px;
+        margin: 0 auto;
+
+        @media (min-width:1200px) {
+            position: absolute;
+            width: 434px;
+            top: 14px;
+            right: -480px;
+        }
+    }
+}
