@@ -1,0 +1,22 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro courseSchedule(data) %}
+<section class="course-schedule">
+    <div class="course-schedule__container container">
+        <div class="gradient_type_gold">
+            <div class="course-schedule__wrap">
+                <h2 class="course-schedule__title">расписание базового курса</h2>
+                <div class="course-schedule__info">
+                    <p>Пятница <b>10:00 – 22:00</b></p>
+                    <p>Суббота <b>10:00 – 22:00</b></p>
+                    <p>Воскресенье <b>10:00 – 19:00</b></p>
+                    <br>
+                    <p>Среда <b>20:00 – 22:00</b></p>
+                    <p><b>(посттренинг)</b></p>
+                </div>
+                {{button({class:"course-schedule__button", theme:"primary", text:"Записаться на курс"})}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

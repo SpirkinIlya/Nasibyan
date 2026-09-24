@@ -5,6 +5,8 @@
 {% from "blocks/about-course/about-course.njk" import aboutCourse %}
 {% from "blocks/button/button.njk" import button %}
 {% from "blocks/faq/faq.njk" import faq %}
+{% from "blocks/course-schedule/course-schedule.njk" import courseSchedule %}
+{% from "blocks/how-it-works/how-it-works.njk" import howItWorks%}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/basic-course/basic-course.scss" />
@@ -40,6 +42,8 @@ price:"79 000", footer:"<p>Курс проходит в офлайн-форма�
     </ul>
 </div>
 {% endcall %}
+{{howItWorks()}}
+{{courseSchedule()}}
 {{faq()}}
 {{cta({title:"записаться на базовый курс"})}}
 {{ breadcrumbs([
