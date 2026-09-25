@@ -9,6 +9,7 @@
 {% from "blocks/how-it-works/how-it-works.njk" import howItWorks%}
 {% from "blocks/video-course/video-course.njk" import videoCourse%}
 {% from "blocks/cta-course/cta-course.njk" import ctaCourse%}
+{% from "blocks/course-program/course-program.njk" import courseProgram%}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/basic-course/basic-course.scss" />
@@ -47,6 +48,7 @@ price:"79 000", footer:"<p>Курс проходит в офлайн-форма�
 {{howItWorks()}}
 {{videoCourse()}}
 {{ctaCourse()}}
+{{courseProgram()}}
 {{courseSchedule()}}
 {{faq()}}
 {{cta({title:"записаться на базовый курс"})}}

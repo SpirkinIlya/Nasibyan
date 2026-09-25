@@ -1,0 +1,107 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro courseProgram(data) %}
+<section class="course-program" data-js="course-program">
+    <div class="course-program__container container">
+        <h2 class="course-program__title">программа базового курса</h2>
+        <div class="course-program__wrap" data-js="course-program-wrap">
+            <div class="course-program__day">
+                <h3 class="course-program__day-title">День 1. Увидеть свои сценарии</h3>
+                <div class="course-program__module">
+                    <p><b>Модуль 1. Почему я живу именно так?</b></p>
+                    <ul>
+                        <li>Какие внутренние правила и убеждения управляют моими решениями</li>
+                        <li>Ограничения и запреты, которые незаметно влияют на жизнь</li>
+                        <li>Как формируется привычный взгляд на себя и мир</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 2. Что на самом деле мешает изменениям?</b></p>
+                    <ul>
+                        <li>Как я воспринимаю себя</li>
+                        <li>Какие части себя избегаю замечать</li>
+                        <li>Что не работает в моей жизни и почему</li>
+                        <li>Формирование личного запроса на тренинг</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 3. Доверие и защита</b></p>
+                    <ul>
+                        <li>Как формируется доверие</li>
+                        <li>Почему мы защищаемся даже тогда, когда хотим близости</li>
+                        <li>Доверие как основа отношений и влияния</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 4. Ответственность за свою жизнь</b></p>
+                    <ul>
+                        <li>Что такое ответственность на практике</li>
+                        <li>Автоматические программы поведения</li>
+                        <li>Позиция жертвы и её скрытые выгоды</li>
+                        <li>Позиция автора и возможность выбора</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="course-program__day">
+                <h3 class="course-program__day-title">День 2. Отношения и взаимодействие</h3>
+                <div class="course-program__module">
+                    <p><b>Модуль 1. Трансформационная игра и разбор опыта</b></p>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 2. Стратегии достижения целей и построения отношений</b></p>
+                    <ul>
+                        <li>Какие стратегии помогают получать результат</li>
+                        <li>Где мы теряем эффективность</li>
+                        <li>Ловушки уступок и компромиссов</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 3. Партнёрство и сотрудничество</b></p>
+                    <ul>
+                        <li>Как строить отношения без борьбы и контроля</li>
+                        <li>Взаимодействие, основанное на уважении и ясности</li>
+                        <li>Принципы здорового партнёрства</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="course-program__day">
+                <h3 class="course-program__day-title">День 3. Принятие и движение вперёд</h3>
+                <div class="course-program__module">
+                    <p><b>Модуль 1. Почему мы сопротивляемся изменениям</b></p>
+                    <ul>
+                        <li>Принятие себя и реальности</li>
+                        <li>Причины внутреннего сопротивления</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 2. Страхи и ограничения</b></p>
+                    <ul>
+                        <li>Выявление страхов, которые влияют на решения</li>
+                        <li>Работа с внутренними ограничениями</li>
+                        <li>Коучинг по достижению целей</li>
+                    </ul>
+                </div>
+                <div class="course-program__module">
+                    <p><b>Модуль 3. Постановка и достижение целей</b></p>
+                    <ul>
+                        <li>Как формировать цели, которые действительно важны</li>
+                        <li>Алгоритмы достижения результатов</li>
+                        <li>Личный план дальнейших изменений</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="course-program__day">
+                <h3 class="course-program__day-title">Посттренинг</h3>
+                <div class="course-program__module">
+                    <p>Завершающая встреча с тренером и участниками.<br>
+                        Возможность задать вопросы, обсудить результаты и получить поддержку в интеграции изменений в
+                        жизнь.</p>
+                </div>
+            </div>
+        </div>
+        <div class="course-program__control" data-js="course-program-control">
+            {{button({class:"course-program__button", theme:"secondary", text:"Развернуть ↓"})}}
+        </div>
+    </div>
+</section>
+{% endmacro %}

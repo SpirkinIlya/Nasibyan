@@ -42,7 +42,7 @@ h2 {
 /* ── H3: Rubik Medium, 26px, As typed ───────────────────────────────────── */
 h3 {
   font-size: var(--text-h3);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
 }
 
 /* ── H4–H6: не заданы в дизайне, разумный масштаб ──────────────────────── */
