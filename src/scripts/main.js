@@ -8,3 +8,5 @@
 // Example: auto-initialize block modules found on the current page
 // import.meta.glob is available if needed for auto-discovery:
 // const modules = import.meta.glob('../blocks/**/*.js');
+import 'lite-youtube-embed';
+import 'lite-youtube-embed/src/lite-yt-embed.css';

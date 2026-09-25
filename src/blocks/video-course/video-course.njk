@@ -4,18 +4,11 @@
 <section class="video-course container">
     <h2 class="video-course__title">видео о курсе</h2>
     <div class="video-course__items">
-        {{videoCard({class:"video-course__item", video:'<iframe width="560" height="315"
-            src="https://www.youtube.com/embed/TV-e3LG1Ckk?si=4tFnBwveIc2__0PY" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', title:"БАЗОВЫЙ КУРС
+        {{videoCard({class:"video-course__item", video:'<lite-youtube videoid="TV-e3LG1Ckk" playlabel="БАЗОВЫЙ КУРС
+        вопросы-ответы"></lite-youtube>', title:"БАЗОВЫЙ КУРС
         вопросы-ответы"})}}
-        {{videoCard({class:"video-course__item", video:'<iframe width="560" height="315"
-            src="https://www.youtube.com/embed/TV-e3LG1Ckk?si=4tFnBwveIc2__0PY" title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', title:"Сергей Насибян о Базовом
-        курсе"})}}
+        {{videoCard({class:"video-course__item", video:'<lite-youtube videoid="TV-e3LG1Ckk"
+            playlabel="Сергей Насибян о Базовом курсе"></lite-youtube>', title:"Сергей Насибян о Базовом курсе"})}}
     </div>
 </section>
 {% endmacro %}

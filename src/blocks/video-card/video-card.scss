@@ -18,7 +18,9 @@
     }
 
     &__video {
-        iframe {
+
+        iframe,
+        lite-youtube {
             width: 100%;
             height: auto;
             aspect-ratio: 16/9;

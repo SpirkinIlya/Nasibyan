@@ -35,9 +35,8 @@
 /* ── List ──────────────────────────────────────────────────────────────────── */
 
 .bottom-nav__list {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   list-style: none;
   margin: 0;
   padding: 0;

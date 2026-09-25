@@ -25,5 +25,8 @@
     "stylelint": "^16.0.0",
     "stylelint-config-standard-scss": "^14.0.0",
     "vite": "^5.4.0"
+  },
+  "dependencies": {
+    "lite-youtube-embed": "^0.3.4"
   }
 }
