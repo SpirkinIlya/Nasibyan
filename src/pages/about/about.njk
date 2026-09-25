@@ -7,6 +7,7 @@
 {% from "blocks/autobiography/autobiography.njk" import autobiography %}
 {% from "blocks/cartoon/cartoon.njk" import cartoon %}
 {% from "blocks/videos/videos.njk" import videos %}
+{% from "blocks/bio/bio.njk" import bio %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/about/about.scss" />
@@ -16,7 +17,7 @@
 {% call intro() %}
 <h1 class="intro__heading">о сергее насибяне</h1>
 {% endcall %}
-
+{{bio()}}
 {{autobiography({title: "автобиография",
 text: [
 "Я родился в семье совершенно простых людей в городе Баку. Моё детское стремление к тотальной справедливости, также как
