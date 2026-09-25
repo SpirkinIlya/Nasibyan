@@ -1,0 +1,22 @@
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/video-card/video-card.njk" import videoCard %}
+
+{% macro videos(data) %}
+<section class="videos container">
+    <h2 class="videos__title">интервью с сергеем насибяном</h2>
+    <div class="videos__items">
+        {{videoCard({class:"videos__item", video:'<lite-youtube videoid="TV-e3LG1Ckk"
+            playlabel="Люция Усманова и Сергей Насибян | Как идти к цели и не сбиться с пути"></lite-youtube>',
+        title:"Люция Усманова и Сергей Насибян | Как идти к цели и не сбиться с пути"})}}
+        {{videoCard({class:"vides__item", video:'<lite-youtube videoid="TV-e3LG1Ckk"
+            playlabel="Сергей Насибян КАК ИЗМЕНИТЬ ЖИЗНЬ ЧЕЛОВЕКА"></lite-youtube>', title:"Сергей Насибян КАК ИЗМЕНИТЬ
+        ЖИЗНЬ ЧЕЛОВЕКА"})}}
+        {{videoCard({class:"vides__item", video:'<lite-youtube videoid="TV-e3LG1Ckk"
+            playlabel="Максим Матвеев: как роль “Триггере” перевернула мою жизнь"></lite-youtube>', title:"Максим
+        Матвеев: как роль “Триггере” перевернула мою жизнь"})}}
+    </div>
+    <div class="videos__control">
+        {{button({theme:'secondary', text:'Показать еще ↓'})}}
+    </div>
+</section>
+{% endmacro %}
