@@ -1,0 +1,23 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro eventCard(data) %}
+<div class="event-card gradient_type_gold">
+    <div class="event-card__info">
+        <div class="event-card__date font_body_16B">
+            <p>31 августа 2026</p>
+            <span class="event-card__label font_body_16B">
+                <svg width="16" height="16" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-fire"></use>
+                </svg>
+                скоро
+            </span>
+        </div>
+        <p class="event-card__title h3">Открытая встреча</p>
+        <div class="event-card__description font_small_14L">Цель: узнать как можно работать внутренними конфликтами и
+            выйти на новый
+            уровень осознанности и свободы</div>
+        <p class="event-card__place font_body_16B">АЗИМУТ отель, Москва, ул. Смоленская, д.8, 3 этаж</p>
+        {{button({theme:'secondary', width:'full', text: 'Подробнее', type: 'link', url:'#'})}}
+    </div>
+</div>
+{% endmacro %}

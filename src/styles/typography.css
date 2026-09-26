@@ -16,7 +16,8 @@ h6 {
    At 767px  → 1.85*7.67 + 25.82 = 14.19 + 25.82 = 40px  ✓
    At 1200px → 1.85*12   + 25.82 = 22.2  + 25.82 = 48px  ✓
    ──────────────────────────────────────────────────────────────────────── */
-h1 {
+h1,
+.h1 {
   font-size: clamp(var(--text-h1-mobile), 1.85vw + 25.82px, var(--text-h1));
   font-weight: var(--font-weight-light);
   text-transform: uppercase;
@@ -27,20 +28,24 @@ h1 {
    At 767px  → 2.77*7.67 + 8.76 = 21.24 + 8.76 = 30px  ✓
    At 1200px → 2.77*12   + 8.76 = 33.24 + 8.76 = 42px  ✓
    ──────────────────────────────────────────────────────────────────────── */
-h2 {
+h2,
+.h2 {
   font-size: clamp(var(--text-h2-mobile), 2.77vw + 8.76px, var(--text-h2));
   font-weight: var(--font-weight-light);
   text-transform: uppercase;
 }
 
 @media (max-width: 767px) {
-  h2 {
+
+  h2,
+  .h2 {
     font-weight: var(--font-weight-regular);
   }
 }
 
 /* ── H3: Rubik Medium, 26px, As typed ───────────────────────────────────── */
-h3 {
+h3,
+.h3 {
   font-size: var(--text-h3);
   font-weight: var(--font-weight-regular);
 }

@@ -1,0 +1,44 @@
+{% from "blocks/event-card/event-card.njk" import eventCard %}
+
+{% macro schedule(data) %}
+<section class="schedule container">
+    <h2 class="schedule__title">расписание</h2>
+    <div class="schedule__swiper swiper">
+        <div class="swiper-wrapper" id="schedule">
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+            <div class="swiper-slide">
+                {{eventCard()}}
+            </div>
+        </div>
+        <div class="swiper-controls">
+
+            <div class="button-prev"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-prew"></use>
+                </svg></div>
+            <div class="button-next"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-next"></use>
+                </svg></div>
+        </div>
+    </div>
+</section>
+{% endmacro %}
