@@ -8,6 +8,7 @@
 {% from "blocks/cartoon/cartoon.njk" import cartoon %}
 {% from "blocks/videos/videos.njk" import videos %}
 {% from "blocks/bio/bio.njk" import bio %}
+{% from "blocks/gallery/gallery.njk" import gallery %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/about/about.scss" />
@@ -161,6 +162,7 @@ text: [
 научиться для того, чтобы его жизнь стала такой, как он хочет: принимать решения и учиться избегать сожалений о принятом
 решении."
 ]}) }}
+{{gallery()}}
 {{videos()}}
 {{cartoon()}}
 {{cta({title:"записаться на тренинг"})}}

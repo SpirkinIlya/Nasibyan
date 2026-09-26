@@ -1,0 +1,22 @@
+.gallery {
+    padding-block: 60px;
+
+    &__title {
+        padding-bottom: 24px;
+        text-align: center;
+        margin: 0;
+        color: var(--color-accent-sand);
+    }
+
+    .swiper-slide {
+
+        img {
+            border-radius: 20px;
+            aspect-ratio: 384 / 280;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
+        }
+    }
+}

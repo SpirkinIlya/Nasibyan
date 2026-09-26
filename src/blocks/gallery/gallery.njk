@@ -1,0 +1,47 @@
+{% macro gallery(data) %}
+<section class="gallery container">
+    <h2 class="gallery__title">галерея</h2>
+    <div class="gallery__swiper swiper">
+        <div class="swiper-wrapper" id="gallery-about">
+
+            <div class="swiper-slide">
+                <a href="/images/gallery1.jpg" data-pswp-srcset="/images/gallery1.jpg" data-pswp-width="1280"
+                    data-pswp-height="854" target="_blank">
+                    <img src="/images/gallery1.webp" alt="Фото 1" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/gallery2.jpg" data-pswp-srcset="/images/gallery2.jpg" data-pswp-width="1280"
+                    data-pswp-height="854" target="_blank">
+                    <img src=" /images/gallery2.webp" alt="Фото 2" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/gallery3.jpg" data-pswp-srcset="/images/gallery3.jpg" data-pswp-width="1280"
+                    data-pswp-height="854" target="_blank">
+                    <img src="/images/gallery3.webp" alt="Фото 3" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/11.jpg" data-pswp-srcset="/images/11.jpg" data-pswp-width="1280" data-pswp-height="854"
+                    target="_blank">
+                    <img src="/images/11.jpg" alt="Фото 4" loading="lazy">
+                </a>
+            </div>
+
+        </div>
+        <div class="swiper-controls">
+
+            <div class="button-prev"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-prew"></use>
+                </svg></div>
+            <div class="button-next"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-next"></use>
+                </svg></div>
+        </div>
+    </div>
+</section>
+{% endmacro %}
