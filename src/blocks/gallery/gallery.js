@@ -1,9 +1,12 @@
 import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
-
 import 'swiper/css';
-import 'photoswipe/style.css';
+
+// Импорт функции-конструктора GLightbox
+import GLightbox from 'glightbox';
+
+// Импорт стилей (обязательно для корректного отображения)
+import 'glightbox/dist/css/glightbox.min.css';
 
 function initGallery() {
     // ── Swiper ──────────────────────────────────────────────────────────────────
@@ -24,13 +27,7 @@ function initGallery() {
 
     // ── PhotoSwipe ──────────────────────────────────────────────────────────────
 
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: '#gallery-about',
-        children: 'a',
-        pswpModule: () => import('photoswipe/lightbox'),
-    });
-
-    lightbox.init();
+    const lightbox = GLightbox();
 }
 
 if (document.readyState === 'loading') {
