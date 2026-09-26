@@ -116,12 +116,10 @@
 
 .swiper-button-disabled {
   opacity: 0.5;
+  cursor: auto;
+  pointer-events: none;
 }
 
 .swiper-button-lock {
   display: none;
-}
-
-.pswp img {
-  object-fit: contain;
 }
