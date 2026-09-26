@@ -6,10 +6,12 @@
     <div class="container intro__container">
         {{ caller() }}
     </div>
+    {% if data.toForm %}
     <a class="intro__to-form" aria-label="Перейти к форме записи" href="#cta">
         <svg width="32" height="54">
             <use href="/images/sprite/sprite.svg#icon-arrow"></use>
         </svg>
     </a>
+    {% endif %}
 </section>
 {% endmacro %}

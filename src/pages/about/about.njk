@@ -16,7 +16,35 @@
 
 {% block content %}
 {% call intro() %}
-<h1 class="intro__heading">о сергее насибяне</h1>
+<div class="intro__grid">
+    <h1 class="intro__heading_grid">о сергее насибяне</h1>
+    <div class="intro__image">
+        <img src="/images/about-intro.webp" alt="Сергей Насибян">
+    </div>
+    <div class="intro__text" data-js="intro-text">
+        <div class="intro__text-wrap font_body_16L" data-js="intro-text-wrap">
+            <p>«Всё, чему я научился, это проживать каждую минуту своей жизни с максимальной пользой для себя. И как бы
+                эгоистично это не звучало, чем больше пользы я получаю от проживания этой жизни, тем больше пользы я
+                приношу
+                всем окружающим, потому что не делиться этим в результате не получается. Когда тебя это переполняет,
+                начинаешь делиться.</p>
+            <p>
+                Если сегодня спросить у меня, в чём моя основная миссия, то конечно, как бы высокопарно это не звучало,
+                моя
+                миссия пробуждать людей, которые попадают в моё поле, тех, кто рядом со мной. Пробуждать не в смысле
+                какого-то духовного просветления, пробуждать в смысле их собственной ответственности за свою жизнь и
+                способности и возможности влиять на эту жизнь».</p>
+        </div>
+        <button class="intro__text-toggle" data-js="intro-text-toggle" type="button"
+            aria-expanded="false" aria-label="Читать полностью">
+            <svg class="intro__text-toggle-icon" width="14" height="22" viewBox="0 0 14 22" fill="none" aria-hidden="true">
+                <line x1="7" y1="1" x2="7" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M2 16L7 21L12 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <p class="intro__quote-author"> С. Насибян</p>
+    </div>
+</div>
 {% endcall %}
 {{bio()}}
 {{autobiography({title: "автобиография",

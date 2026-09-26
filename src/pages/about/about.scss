@@ -1,0 +1,55 @@
+/* ── Intro text collapsible (mobile only, < 1200px) ──────────────────────── */
+
+.intro__text-wrap {
+    position: relative;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+/* No-clamp — content fits within 6 lines, remove all restrictions */
+[data-js="intro-text"][data-state='no-clamp'] .intro__text-wrap {
+    max-height: none;
+}
+
+/* ── Toggle button ────────────────────────────────────────────────────────── */
+
+.intro__text-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--space-3) 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-accent-sand);
+    transition: opacity var(--transition-fast);
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-accent-sand);
+        outline-offset: 4px;
+        border-radius: var(--radius-sm);
+    }
+
+    /* Hidden on desktop — text is always fully visible */
+    @media (min-width: 1200px) {
+        display: none;
+    }
+}
+
+.intro__text-toggle-icon {
+    display: inline-block;
+    transition: transform var(--transition-base);
+}
+
+[data-js="intro-text"][data-state='open'] .intro__text-toggle-icon {
+    transform: rotate(180deg);
+}
+
+[data-js="intro-text"][data-state='no-clamp'] .intro__text-toggle {
+    display: none;
+}

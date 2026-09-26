@@ -27,7 +27,10 @@ function initGallery() {
 
     // ── PhotoSwipe ──────────────────────────────────────────────────────────────
 
-    const lightbox = GLightbox();
+    const lightbox = GLightbox({
+        selector: '.gallery-about',
+        zoomable: false
+    });
 }
 
 if (document.readyState === 'loading') {
