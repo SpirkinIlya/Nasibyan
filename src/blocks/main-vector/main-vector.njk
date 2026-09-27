@@ -1,0 +1,20 @@
+{% from "blocks/button/button.njk" import button %}
+{% macro mainVector(data) %}
+<section class="main-vector container">
+    <div class="gradient_type_gold">
+        <div class="main-vector__wrap">
+            <div class="main-vector__info">
+                <h2 class="main-vector__title">система «главный вектор»</h2>
+                <p class="main-vector__description">Авторская методика, созданная лучшими психологами страны</p>
+                <ul class="main-vector__list font_body_16L">
+                    <li>Помогает понять, что важно для вас важно сейчас – актуальные ценности, которые дают энергию</li>
+                    <li>Подсвечивает главный фокус и путь к нему</li>
+                    <li>Дает трекинг на пути к целям и поддержку ИИ-ассистента</li>
+                </ul>
+                {{button({type:'link', url:'#', theme:'primary', text:'Разобраться в целях'})}}
+            </div>
+            <img src="/images/compos.webp" alt="система главный вектор" loading="lazy">
+        </div>
+    </div>
+</section>
+{% endmacro %}

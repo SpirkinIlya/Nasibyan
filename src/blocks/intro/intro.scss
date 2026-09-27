@@ -147,4 +147,22 @@
         margin: 0;
         color: var(--color-accent-sand);
     }
+
+    &__quote {
+        font-family: var(--font-secondary);
+        font-weight: 300;
+        font-style: italic;
+        font-size: 28px;
+        line-height: 120%;
+        max-width: 735px;
+
+        @media (min-width:1200px) {
+            font-size: 33px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+    }
 }

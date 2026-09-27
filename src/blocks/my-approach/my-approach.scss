@@ -1,0 +1,95 @@
+.my-approach {
+    position: relative;
+    z-index: 3;
+    padding-bottom: 60px;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    &__image {
+        &_start {
+            height: 413px;
+        }
+
+    }
+
+    &__text {
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+
+        p {
+            margin: 0;
+            padding-bottom: 16px;
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+
+
+    &__title {
+        margin: 0;
+        color: var(--color-accent-sand);
+        padding-bottom: 40px;
+    }
+
+    &__section {
+        &_way {
+            padding: 40px 16px 60px 16px;
+        }
+
+        &_work {
+            padding: 60px 16px 0 16px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+
+            @media (min-width:1200px) {
+                flex-direction: row;
+                text-align: left;
+                padding: 60px 40px 0 40px;
+                max-width: 1280px;
+                margin: 0 auto;
+            }
+
+            img {
+                border: 1px solid #5a4025;
+                border-radius: 30px;
+                width: 328px;
+                height: 389px;
+                object-fit: cover;
+                object-position: center center;
+
+                @media (min-width:1200px) {
+                    width: 384px;
+                    height: 455px;
+                }
+            }
+        }
+
+        &_quote {
+            p {
+                font-family: var(--font-secondary);
+                font-weight: 300;
+                font-style: italic;
+                font-size: 28px;
+                text-align: center;
+                color: #c59857;
+            }
+        }
+    }
+
+    &__work-description {
+        margin: 0;
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 160%;
+        padding-bottom: 40px;
+    }
+}
