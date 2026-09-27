@@ -11,10 +11,6 @@
 {% from "blocks/cta-course/cta-course.njk" import ctaCourse%}
 {% from "blocks/course-program/course-program.njk" import courseProgram%}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/basic-course/basic-course.scss" />
-{% endblock %}
-
 {% block content %}
 {% call intro({toForm:true}) %}
 <h1 class="intro__heading">базовый курс</h1>
@@ -68,6 +64,3 @@ url: "#"
 ]) }}
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/basic-course/basic-course.js"></script>
-{% endblock %}

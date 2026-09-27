@@ -5,10 +5,6 @@
 {% from "blocks/main-vector/main-vector.njk" import mainVector %}
 {% from "blocks/my-approach/my-approach.njk" import myApproach %}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/philosophy/philosophy.scss" />
-{% endblock %}
-
 {% block content %}
 {% call intro({toForm: true}) %}
 <h1 class="intro__heading">Философия</h1>
@@ -39,6 +35,3 @@ url: "#"
 ]) }}
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/philosophy/philosophy.js"></script>
-{% endblock %}

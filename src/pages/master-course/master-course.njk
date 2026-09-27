@@ -6,10 +6,6 @@
 {% from "blocks/button/button.njk" import button %}
 {% from "blocks/autobiography/autobiography.njk" import autobiography %}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/master-course/master-course.scss" />
-{% endblock %}
-
 {% block content %}
 {% call intro({toForm:true}) %}
 <h1 class="intro__heading">мастерский курс</h1>
@@ -100,6 +96,3 @@ url: "#"
 ]) }}
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/master-course/master-course.js"></script>
-{% endblock %}

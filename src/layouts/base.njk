@@ -17,21 +17,11 @@
 
   <link rel="icon" href="/favicon.ico" />
 
-  {# Global styles #}
-  <link rel="stylesheet" href="/styles/fonts.css" />
-
-  <link rel="stylesheet" href="/styles/reset.css" />
-
-  <link rel="stylesheet" href="/styles/variables.css" />
-
-  <link rel="stylesheet" href="/styles/typography.css" />
-
-  <link rel="stylesheet" href="/styles/globals.scss" />
-
   {#
-  CSS and JS for blocks are injected
-  automatically by vite.config.js.
+  All styles and scripts are bundled into a single entry point.
+  Vite extracts CSS into one .css file and injects a <link> tag automatically.
   #}
+  <script type="module" src="/scripts/main.js"></script>
 
   {% block head %}{% endblock %}
 </head>
@@ -56,11 +46,6 @@
   base: base
   })
   }}
-
-  {# Global JS #}
-  <script type="module" src="/scripts/main.js"></script>
-
-  {% block scripts %}{% endblock %}
 
 </body>
 

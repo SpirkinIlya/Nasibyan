@@ -6,10 +6,6 @@
 {% from "blocks/basic-course/basic-course.njk" import basicCourse %}
 {% from "blocks/cta/cta.njk" import cta %}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/main/main.css" />
-{% endblock %}
-
 {% block content %}
 {{hero()}}
 {{about()}}
@@ -31,6 +27,3 @@ text: [
 
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/main/main.js"></script>
-{% endblock %}

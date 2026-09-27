@@ -7,10 +7,6 @@
 {% from "blocks/travelling/travelling.njk" import travelling %}
 {% from "blocks/practices/practices.njk" import practices %}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/mystery/mystery.scss" />
-{% endblock %}
-
 {% block content %}
 {% call intro({toForm: true}) %}
 <h1 class="intro__heading">Мистика</h1>
@@ -39,6 +35,3 @@ url: "#"
 ]) }}
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/mystery/mystery.js"></script>
-{% endblock %}

@@ -10,10 +10,6 @@
 {% from "blocks/bio/bio.njk" import bio %}
 {% from "blocks/gallery/gallery.njk" import gallery %}
 
-{% block head %}
-<link rel="stylesheet" href="/pages/about/about.scss" />
-{% endblock %}
-
 {% block content %}
 {% call intro() %}
 <div class="intro__grid">
@@ -206,6 +202,3 @@ url: "#"
 ]) }}
 {% endblock %}
 
-{% block scripts %}
-<script type="module" src="/pages/about/about.js"></script>
-{% endblock %}
