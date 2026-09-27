@@ -24,7 +24,11 @@
 
     &__place.font_body_16B {
         flex-grow: 1;
-        margin: 40px 0 24px 0;
+        margin: 24px 0;
+
+        @media (min-width:1200px) {
+            margin: 40px 0 24px 0;
+        }
     }
 
     &__title {
@@ -73,16 +77,4 @@
     &::after {
         opacity: 0;
     }
-}
-
-.test {
-    text-align: center;
-    font-size: 18px;
-    background: #333;
-    height: calc((100% - 30px) / 2) !important;
-
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
