@@ -5,6 +5,7 @@
 {% from "blocks/mystery/mystery.njk" import mystery %}
 {% from "blocks/chanel-subscribe/chanel-subscribe.njk" import chanelSubscribe %}
 {% from "blocks/travelling/travelling.njk" import travelling %}
+{% from "blocks/practices/practices.njk" import practices %}
 
 {% block head %}
 <link rel="stylesheet" href="/pages/mystery/mystery.scss" />
@@ -20,6 +21,7 @@
 {{ mystery()}}
 {{chanelSubscribe()}}
 {{travelling()}}
+{{practices()}}
 {{cta({title:"записаться на тренинг"})}}
 {{ breadcrumbs([
 {
