@@ -53,7 +53,7 @@
             height: 45px;
             position: absolute;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(calc(-50% + 1px));
             top: 0;
         }
 

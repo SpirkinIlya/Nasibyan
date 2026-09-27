@@ -1,0 +1,42 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/mystery/mystery.njk" import mystery %}
+{% from "blocks/chanel-subscribe/chanel-subscribe.njk" import chanelSubscribe %}
+{% from "blocks/travelling/travelling.njk" import travelling %}
+
+{% block head %}
+<link rel="stylesheet" href="/pages/mystery/mystery.scss" />
+{% endblock %}
+
+{% block content %}
+{% call intro({toForm: true}) %}
+<h1 class="intro__heading">Мистика</h1>
+<p class="intro__description">Мистика для меня — это непосредственный опыт реальности, который начинается там, где
+    заканчиваются наши привычные объяснения. Здесь нет ничего сверхъестественного. Так когда-то я сделал свой курс
+    по эмпирическому проживанию реальности</p>
+{% endcall %}
+{{ mystery()}}
+{{chanelSubscribe()}}
+{{travelling()}}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/main/"
+},
+{
+name: "О Сергее Насибяне",
+url: "/about/"
+},
+{
+name: "Мистика",
+url: "#"
+}
+]) }}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="/pages/mystery/mystery.js"></script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro chanelSubscribe(data) %}
+<section class="chanel-subscribe container">
+    <div class="chanel-subscribe__wrap gradient_type_gold">
+        <div class="chanel-subscribe__container">
+            <img src="/images/circle.webp" alt="" loading="lazy">
+            <div class="chanel-subscribe__info">
+                <h2 class="chanel-subscribe__title">канал «Притчи Насиба»</h2>
+                <p class="chanel-subscribe__description">Закрытый канал авторских притч с психологическим разбором и
+                    практиками</p>
+                <p class="chanel-subscribe__price font_body_16B">450 рублей/ месяц</p>
+                {{button({type:'link', url:'#', theme:'primary', text:'Подписаться'})}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

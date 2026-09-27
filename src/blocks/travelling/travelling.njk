@@ -1,0 +1,57 @@
+{% macro travelling(data) %}
+<section class="travelling container">
+    <h2 class="travelling__title">путешествия</h2>
+    <div class="travelling__info font_body_16L">
+        <p>Некоторые дороги нужны не для того, чтобы куда-то прийти. Они нужны, чтобы оставить по пути того, кем ты
+            привык
+            быть.</p>
+
+        <p>Я часто повторяю что между тренингом и путешествием стоит выбирать путешествие, но путешествие не ради
+            коллекции
+            стран. Некоторые места обладают удивительной способностью менять состояние человека. Гималаи, древние храмы
+            Индии, монастыри Тибета, Кайлас — туда можно приехать туристом, а можно использовать дорогу как практику.
+            Паломничество отличается от путешествия тем, что его целью становится не место назначения. Дорога постепенно
+            забирает привычный комфорт, контроль, роли и представления о себе. И иногда человек встречает там совсем не
+            то,
+            ради чего отправлялся в путь. Он встречает себя.</p>
+    </div>
+    <div class="travelling__swiper swiper">
+        <div class="swiper-wrapper" id="gallery-travelling">
+
+            <div class="swiper-slide">
+                <a href="/images/gallery1.jpg" class="gallery-travelling" data-gallery="gallery1">
+                    <img src="/images/gallery1.webp" alt="Фото 1" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/gallery2.jpg" class="gallery-travelling" data-gallery="gallery1">
+                    <img src=" /images/gallery2.webp" alt="Фото 2" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/gallery3.jpg" class="gallery-travelling" data-gallery="gallery1">
+                    <img src="/images/gallery3.webp" alt="Фото 3" loading="lazy">
+                </a>
+            </div>
+
+            <div class="swiper-slide">
+                <a href="/images/11.jpg" class="gallery-travelling" data-gallery="gallery1">
+                    <img src="/images/11.jpg" alt="Фото 4" loading="lazy">
+                </a>
+            </div>
+
+        </div>
+        <div class="swiper-controls">
+
+            <div class="button-prev"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-prew"></use>
+                </svg></div>
+            <div class="button-next"><svg width="15" height="15" fill="none">
+                    <use href="/images/sprite/sprite.svg#icon-next"></use>
+                </svg></div>
+        </div>
+    </div>
+</section>
+{% endmacro %}
