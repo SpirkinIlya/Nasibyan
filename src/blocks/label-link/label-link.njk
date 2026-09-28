@@ -1,0 +1,6 @@
+{% macro labelLink(data) %}
+<a class="label-link" href="{{ data.href or '#' }}" {% if data.target %}target="{{ data.target }}" {% endif %} {% if
+    data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span class="button__text">{{
+        data.text
+        }}</span></a>
+{% endmacro %}

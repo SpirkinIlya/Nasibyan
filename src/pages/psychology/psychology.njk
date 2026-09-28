@@ -1,0 +1,39 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/podcasts/podcasts.njk" import podcasts %}
+{% from "blocks/smotrim/smotrim.njk" import smotrim %}
+{% from "blocks/personal-work/personal-work.njk" import personalWork %}
+{% from "blocks/seminar/seminar.njk" import seminar %}
+{% from "blocks/lectures/lectures.njk" import lectures %}
+
+{% block content %}
+{% call intro({toForm: true}) %}
+<h1 class="intro__heading">Психология</h1>
+<div class="intro__quote">
+    <p class="color_sand">«Проблема редко находится там, где человек привык её искать</p>
+    <p class="font_body_16LI phylosophy__qoute-author">- Сергей Насибян</p>
+</div>
+{% endcall %}
+{{podcasts()}}
+{{smotrim()}}
+{{personalWork()}}
+{{lectures()}}
+{{seminar()}}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/main/"
+},
+{
+name: "О Сергее Насибяне",
+url: "/about/"
+},
+{
+name: "Психология",
+url: "#"
+}
+]) }}
+{% endblock %}

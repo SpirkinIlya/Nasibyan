@@ -1,0 +1,75 @@
+.seminar {
+    padding-block: 60px;
+
+    &__wrap {
+        position: relative;
+        z-index: 3;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        @media (min-width:1200px) {
+            padding: 40px 60px;
+            flex-direction: row;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        color: var(--color-accent-sand);
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        font-family: var(--font-primary);
+    }
+
+    &__description {
+        margin: 0;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+
+        @media (min-width:1200px) {
+            font-size: 20px;
+        }
+    }
+
+    &__date {
+
+        p {
+            margin: 0;
+        }
+
+        &-text {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 160%;
+
+            @media (min-width:1200px) {
+                font-size: 20px;
+            }
+        }
+
+        &-date {
+            font-size: 20px;
+            line-height: 160%;
+            color: var(--color-accent-sand);
+        }
+    }
+
+    &__image {
+        flex-grow: 1;
+        max-width: 308px;
+        margin: 0 auto;
+    }
+
+    .button_type_link {
+        @media (min-width:768px) {
+            width: 200px;
+        }
+    }
+}

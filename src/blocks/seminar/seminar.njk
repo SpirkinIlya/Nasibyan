@@ -1,0 +1,23 @@
+{% from "blocks/button/button.njk" import button %}
+{% macro seminar(data) %}
+<section class="seminar container">
+    <div class="gradient_type_gold">
+        <div class="seminar__wrap">
+            <div class="seminar__info">
+                <h2 class="seminar__title">семинар «цели и ценности»</h2>
+                <p class="seminar__description">Практический семинар о том, как определить свои настоящие цели и
+                    выстроить
+                    жизнь в соответствии с ними</p>
+                <div class="seminar__date">
+                    <p class="seminar__date-text">Ближайшая дата:</p>
+                    <p class="seminar__date-date">22 октября 2026</p>
+                </div>
+                {{button({type:'link', href:'#', text:'Подробнее', theme: 'primary'})}}
+            </div>
+            <div class="seminar__image">
+                <img src="/images/seminar.webp" alt="Семинар" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

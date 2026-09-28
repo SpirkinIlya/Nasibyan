@@ -1,0 +1,20 @@
+{% macro smotrim(data) %}
+<section class="smotrim container">
+    <h2 class="smotrim__title">как разобраться в ситуации</h2>
+    <div class="smotrim-facade" data-video-id="2700436">
+        <div class="smotrim-facade__preview">
+            <picture>
+                <source srcset="/images/smotrim.avif" type="image/avif">
+
+                <img src="/images/smotrim.webp" alt="Смотреть видео" loading="lazy" class="smotrim-facade__image">
+            </picture>
+
+            <button class="smotrim-facade__play button button_player" type="button" aria-label="Воспроизвести видео">
+                <svg width="12" height="13">
+                    <use href="/images/sprite/sprite.svg#icon-play"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,117 @@
+.podcasts {
+    padding-block: 20px 60px;
+    position: relative;
+    z-index: 3;
+
+    &__wrap {
+        padding: 40px 16px;
+        position: relative;
+        z-index: 3;
+
+        @media (min-width:1200px) {
+            padding: 40px;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        margin: 0;
+        padding-bottom: 40px;
+        color: var(--color-accent-sand);
+    }
+
+    &__description {
+        margin: 0;
+        font-family: var(--font-primary);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: center;
+        padding-bottom: 40px;
+
+        @media (min-width:1200px) {
+            font-size: 20px;
+        }
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @media (min-width:1200px) {
+            gap: 40px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        gap: 12px;
+        padding-bottom: 8px;
+        position: relative;
+
+        @media (min-width:1200px) {
+            gap: 32px;
+            align-items: center;
+        }
+
+        .button {
+            flex-shrink: 0;
+        }
+
+        &-info {
+            border-bottom: 1px solid rgba(206, 189, 176, 0.1);
+            padding: 0 0 4px;
+            width: 100%;
+            font-family: var(--font-primary);
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+        }
+
+        &-title {
+            p {
+                margin: 0;
+            }
+
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 120%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            @media (min-width:1200px) {
+                font-size: 26px;
+            }
+        }
+
+        &-duration,
+        &-small {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 160%;
+            opacity: 0.6;
+            margin: 0;
+            flex-shrink: 0;
+
+            @media (min-width:1200px) {
+                font-size: 20px;
+            }
+        }
+
+        &-duration {
+            align-self: flex-end;
+
+            @media (min-width:1200px) {
+                align-self: center;
+            }
+        }
+    }
+
+    .button_player::after {
+        position: absolute;
+        inset: 0;
+        content: '';
+    }
+}

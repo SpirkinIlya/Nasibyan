@@ -1,0 +1,37 @@
+{% macro podcasts(data) %}
+{% set podcastTitles = [
+'Почему молчание хуже ссоры?',
+'Все изменяют всем',
+'Брак по любви - это миф',
+'Стыд, вина и одиночество. Как избавиться от тревоги',
+'Как найти любовь. Чувства, измены, ревность. 30 вопросов психологу',
+'50 главных вопросов психологу'
+]%}
+<section class="podcasts container">
+    <div class="gradient_type_gold">
+        <div class="podcasts__wrap">
+            <h2 class="podcasts__title">подкасты</h2>
+            <p class="podcasts__description">Прямые разговоры без пафоса, без воды, с юмором и силой.<br>
+                Речь — о страхах, самооценке, любви, смысле жизни и том, как быть собой.</p>
+            <div class="podcasts__items">
+                {% for item in podcastTitles %}
+                <div class="podcasts__item">
+                    <button class="button button_player">
+                        <svg width="12" height="13">
+                            <use href="/images/sprite/sprite.svg#icon-play"></use>
+                        </svg>
+                    </button>
+                    <div class="podcasts__item-info">
+                        <div class="podcasts__item-title">
+                            <p>{{item}}</p>
+                            <p class="podcasts__item-small">Видеоподкаст</p>
+                        </div>
+                        <div class="podcasts__item-duration">34:12</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}

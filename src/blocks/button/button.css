@@ -116,3 +116,24 @@
 .button_width_full {
   width: 100%;
 }
+
+/* Player controls */
+.button_player {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #c59857;
+  box-sizing: border-box;
+  border-radius: 50%;
+  color: var(--color-accent-sand);
+
+  @media (min-width:1200px) {
+    width: 62px;
+    height: 62px;
+  }
+
+}
+
+.button_player:hover {
+  background: var(--color-accent-sand);
+  color: var(--color-white);
+}

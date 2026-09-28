@@ -1,0 +1,28 @@
+.label-link {
+    display: inline-flex;
+    border: 1px solid rgba(197, 152, 87, 0.2);
+    border-radius: 25px;
+    padding: 11px;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    color: var(--color-accent-sand);
+    text-decoration: none;
+    box-sizing: border-box;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+
+    @media (min-width:1200px) {
+        font-size: 16px;
+        padding: 15px 19px;
+        line-height: 100%;
+    }
+
+    &:hover {
+        color: var(--color-white);
+        background-color: var(--color-accent-sand);
+    }
+}

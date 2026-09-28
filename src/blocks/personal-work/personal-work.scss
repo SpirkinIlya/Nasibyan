@@ -1,0 +1,54 @@
+.personal-work {
+    padding-block: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: center;
+
+    @media (min-width:1200px) {
+        flex-direction: row-reverse;
+    }
+
+    &__title {
+        color: var(--color-accent-sand);
+        margin: 0;
+        padding-bottom: 40px;
+    }
+
+    &__image {
+        border: 1px solid var(--color-accent-brown);
+        border-radius: 30px;
+        aspect-ratio: 486/576;
+        max-width: 486px;
+        overflow: hidden;
+        margin: 0 auto;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+
+    &__info {
+        text-align: center;
+
+        p {
+            margin: 0;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width:1200px) {
+            text-align: left;
+        }
+    }
+
+    &__labels {
+        padding-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}

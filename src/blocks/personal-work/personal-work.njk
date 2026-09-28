@@ -1,0 +1,29 @@
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/label-link/label-link.njk" import labelLink %}
+{% macro personalWork(data) %}
+<section class="personal-work container">
+    <div class="personal-work__image">
+        <img src="/images/phylosophy.webp" alt="Сергей Насибян" loading="lazy">
+    </div>
+    <div class="personal-work__info">
+        <h2 class="personal-work__title">личная работа</h2>
+        <div class="personal-work__text font_body_20L">
+            <p>Психотерапия для меня начинается не с попытки исправить человека, а с исследования того, каким образом он
+                снова и снова создает ту реальность, от которой хочет освободиться.</p>
+            <p>Человек это набор убеждений о нем. И часто мы не растождествляем одно с другим, но важно помнить — все
+                наши ограничения это ранее принятые нами решения о себе.</p>
+        </div>
+        {{button({type:'link', url:'#', text:'подробнее о консультации', theme:'tertiary'})}}
+        <div class="personal-work__labels">
+            {{labelLink({text:'тревога и страхи'})}}
+            {{labelLink({text:'отношения и конфликты'})}}
+            {{labelLink({text:'неуверенность в себе'})}}
+            {{labelLink({text:'самореализация и цели'})}}
+            {{labelLink({text:'выгорание и стресс'})}}
+            {{labelLink({text:'смысл и предназначение'})}}
+            {{labelLink({text:'личностный рост'})}}
+            {{labelLink({text:'внутренние кризисы'})}}
+        </div>
+    </div>
+</section>
+{% endmacro %}

@@ -1,0 +1,50 @@
+.smotrim {
+    padding-block: 60px;
+
+    &__title {
+        color: var(--color-accent-sand);
+        margin: 0;
+        text-align: center;
+        padding-bottom: 24px;
+    }
+
+}
+
+.smotrim-facade {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 20px;
+    max-width: 794px;
+    margin: 0 auto;
+}
+
+.smotrim-facade__preview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.smotrim-facade__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.smotrim-facade__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.smotrim-facade iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
