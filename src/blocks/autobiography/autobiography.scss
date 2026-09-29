@@ -1,5 +1,5 @@
 .autobiography {
-    padding-block: 68px 0;
+    margin: 68px 0;
     color: var(--color-dark);
     box-sizing: border-box;
     background-color: #f4ead7;
@@ -14,21 +14,51 @@
     }
 
     @media (min-width: 1200px) {
-        padding-block: 105px 0;
+        margin: 105px 0;
     }
 
     &::before {
+        height: 68px;
         content: '';
-        top: -1px;
+        bottom: 1px;
+        width: 100%;
+        position: absolute;
+        background-image: url(/images/divider-no-top.webp);
+        background-position: top left;
+        background-size: 100% 100%;
+        transform: rotate(180deg) translateY(-100%);
+
+        @media (min-width: 768px) {
+            height: 105px;
+        }
+    }
+
+    &::after {
+        content: '';
+        top: 1px;
         width: 100%;
         height: 68px;
         position: absolute;
-        background-image: url("/images/divider.png");
+        background-image: url(/images/divider-no-top.webp);
+        transform: translateY(-100%);
         background-position: top left;
         background-size: 100% 100%;
 
         @media (min-width: 768px) {
             height: 105px;
+        }
+    }
+
+    &_no-bottom {
+        margin: 68px 0 0 0;
+
+        @media (min-width: 1200px) {
+            margin: 105px 0 0 0;
+
+        }
+
+        &::before {
+            display: none;
         }
     }
 

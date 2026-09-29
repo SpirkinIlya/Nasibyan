@@ -1,0 +1,34 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro consultation(data) %}
+<section class="consultation container">
+    <div class="consultation__image">
+        <img src="/images/sergej-consultation.webp" alt="Сергей Насибян" loading="lazy">
+    </div>
+    <div class="consultation__about">
+        <h2 class="consultation__title">Сергей насибян</h2>
+        <ul class="consultation__list">
+            <li>Психолог</li>
+            <li>Психотерапевт</li>
+            <li>Ведущий авторских трансформационных программ</li>
+            <li>Эксперт подкаста «Триггеры» на Первом канале</li>
+            <li>Ведущий авторской программы «Провокация» на радио «Маяк»</li>
+            <li>Ведущий проекта «Фобия» на НТВ</li>
+        </ul>
+        <div class="gradient_type_gold">
+            <div class="consultation__text">
+                <p>Консультация проходит в кабинете в центре города в психодинамическом формате разговора.</p>
+                <br>
+                <p>Я применяю разные техники и методы, каждый из которых направлен на максимальное раскрытие темы,
+                    подробное исследование травмы и закрепление трансформационного инсайта.</p>
+                <br>
+                <p>В результате консультации вы будете не только знать причины неудач или проблем, но и иметь чёткий
+                    инструмент собственного исцеления, который останется с вами.</p>
+            </div>
+        </div>
+        <div class="consultation__button">
+            {{button({type:'link', href:'/about/', theme: 'tertiary', text: 'читать полностью'})}}
+        </div>
+    </div>
+</section>
+{% endmacro %}

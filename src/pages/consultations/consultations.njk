@@ -1,0 +1,33 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/faq/faq.njk" import faq %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/consultation/consultation.njk" import consultation %}
+{% from "blocks/requests/requests.njk" import requests %}
+{% from "blocks/about-consultation/about-consultation.njk" import aboutConsultation %}
+
+{% block content %}
+{% call intro({toForm:true}) %}
+<h1 class="intro__heading">консультации</h1>
+<p class="intro__description">Воспользуйтесь возможностью глубокой проработки и решения своих проблем и вопросов в
+    индивидуальных сессиях с опытным психологом Сергеем Насибяном</p>
+{{button({theme:"primary", text:"Записаться на консультацию"})}}
+{% endcall %}
+{{consultation()}}
+{{requests()}}
+{{aboutConsultation()}}
+{{faq()}}
+{{cta({title:'Записаться на консультацию'})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "Консультации",
+url: "#"
+}
+]) }}
+{% endblock %}

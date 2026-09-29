@@ -1,0 +1,82 @@
+.about-consultation {
+    padding-block: 60px;
+    font-family: var(--font-primary);
+
+    &__record {
+        padding: 24px;
+        position: relative;
+        z-index: 4;
+        overflow: hidden;
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 434px;
+            height: 426px;
+            background-image: url('/images/circle.webp');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            z-index: 3;
+            bottom: -246px;
+            right: -295px;
+
+            @media (min-width:1200px) {
+                bottom: -263px;
+                right: -237px;
+
+            }
+        }
+
+        .button {
+            position: relative;
+            z-index: 5;
+        }
+
+        &-title {
+            margin: 0;
+            color: var(--color-accent-sand);
+            padding-bottom: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        @media (min-width:1200px) {
+            padding: 40px 60px;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    &__title {
+        margin: 0;
+        color: var(--color-accent-sand);
+        text-align: center;
+        padding-bottom: 24px;
+    }
+
+    &__section {
+        ul {
+            margin: 0;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 160%;
+            padding: 0 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px
+        }
+
+        @media (min-width:1200px) {
+            padding: 20px 60px;
+        }
+    }
+
+    .devider {
+        margin-top: 40px;
+    }
+}

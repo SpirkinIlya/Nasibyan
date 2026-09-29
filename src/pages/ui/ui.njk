@@ -241,67 +241,47 @@
       <div class="ui-field-row">
         <p class="ui-field-label">Default</p>
         {% call formField({ label: "ФИО", name: "ff-name" }) %}
-          {{ input({ name: "ff-name", placeholder: "Екатерина" }) }}
+        {{ input({ name: "ff-name", placeholder: "Екатерина" }) }}
         {% endcall %}
       </div>
 
       <div class="ui-field-row">
         <p class="ui-field-label">Disabled</p>
         {% call formField({ label: "Email", name: "ff-email-dis" }) %}
-          {{ input({ name: "ff-email-dis", type: "email", placeholder: "email@mail.ru", disabled: true }) }}
+        {{ input({ name: "ff-email-dis", type: "email", placeholder: "email@mail.ru", disabled: true }) }}
         {% endcall %}
       </div>
 
       <div class="ui-field-row">
         <p class="ui-field-label">Error</p>
         {% call formField({ label: "Телефон", name: "ff-phone" }) %}
-          {{ input({ name: "ff-phone", type: "tel", placeholder: "+7 000 000-00-00", error: "Введите корректный номер" }) }}
+        {{ input({ name: "ff-phone", type: "tel", placeholder: "+7 000 000-00-00", error: "Введите корректный номер" })
+        }}
         {% endcall %}
       </div>
 
       <div class="ui-field-row">
         <p class="ui-field-label">With Select</p>
         {% call formField({ label: "Курс", name: "ff-course" }) %}
-          {{ select({
-            name: "ff-course",
-            placeholder: "Выберите курс",
-            options: [
-              { value: "1", text: "Базовый курс" },
-              { value: "2", text: "Продвинутый тренинг" }
-            ]
-          }) }}
+        {{ select({
+        name: "ff-course",
+        placeholder: "Выберите курс",
+        options: [
+        { value: "1", text: "Базовый курс" },
+        { value: "2", text: "Продвинутый тренинг" }
+        ]
+        }) }}
         {% endcall %}
       </div>
 
       <div class="ui-field-row">
         <p class="ui-field-label">With Textarea</p>
         {% call formField({ label: "Вопрос", name: "ff-question" }) %}
-          {{ textarea({ name: "ff-question", rows: 3 }) }}
+        {{ textarea({ name: "ff-question", rows: 3 }) }}
         {% endcall %}
       </div>
 
     </div>
-  </section>
-
-  {# ── Question (FAQ item) ─────────────────────────────────────────────── #}
-  <section class="ui-section">
-    <p class="ui-section__title">Question</p>
-
-    {{ question({
-      question: "Зачем идти на тренинг?",
-      answer: ""
-    }) }}
-
-    {{ question({
-      question: "С какого возраста можно идти к вам на тренинг или консультацию?",
-      answer: ""
-    }) }}
-
-    {{ question({
-      question: "Сколько нужно консультаций для решения моей проблемы?",
-      answer: "Количество консультаций, необходимое для решения запроса, каждый раз подбирается индивидуально. В среднем нужно 2-3 сессии для проработки запроса и ещё 2 сессии для закрепления результата. Эффективность зависит в том числе от вашей внутренней готовности к работе"
-    }) }}
-
   </section>
 
 </div>

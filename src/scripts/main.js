@@ -15,6 +15,7 @@ import 'lite-youtube-embed/src/lite-yt-embed.css';
 
 // ── Blocks ────────────────────────────────────────────────────────────────
 import '/blocks/about/about.scss';
+import '/blocks/about-consultation/about-consultation.scss';
 import '/blocks/about-course/about-course.scss';
 import '/blocks/autobiography/autobiography.scss';
 import '/blocks/autobiography/autobiography.js';
@@ -26,6 +27,7 @@ import '/blocks/breadcrumbs/breadcrumbs.scss';
 import '/blocks/button/button.css';
 import '/blocks/cartoon/cartoon.scss';
 import '/blocks/chanel-subscribe/chanel-subscribe.scss';
+import '/blocks/consultation/consultation.scss';
 import '/blocks/course-program/course-program.scss';
 import '/blocks/course-program/course-program.js';
 import '/blocks/course-schedule/course-schedule.scss';
@@ -65,6 +67,7 @@ import '/blocks/podcasts/podcasts.scss';
 import '/blocks/practices/practices.scss';
 import '/blocks/question/question.scss';
 import '/blocks/question/question.js';
+import '/blocks/requests/requests.scss';
 import '/blocks/schedule/schedule.scss';
 import '/blocks/schedule/schedule.js';
 import '/blocks/select/select.scss';
