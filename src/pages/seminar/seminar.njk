@@ -1,0 +1,31 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/seminar-about/seminar-about.njk" import seminarAbout %}
+
+{% block content %}
+{% call intro({toForm:true}) %}
+<h1 class="intro__heading">Семинар «Цели и Ценности»</h1>
+<p class="intro__description">Динамичный интенсив по отсечению чужих желаний, поиску личной мотивации и превращению
+    намерений в реальные результаты на практике</p>
+{{button({theme:"primary", text:"Записаться на семинар"})}}
+{% endcall %}
+{{seminarAbout()}}
+{{cta({title:"записаться на семинар"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "Тренинги",
+url: "/trainings/"
+},
+{
+name: "Семинар",
+url: "#"
+}
+]) }}
+{% endblock %}

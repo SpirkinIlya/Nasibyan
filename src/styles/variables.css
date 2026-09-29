@@ -1,6 +1,8 @@
 :root {
   /* Container */
   --container-width: 1280px;
+  --container-width-middle: 1076px;
+  --container-width-narrrow: 872px;
   --container-padding: 40px;
   --container-padding-mobile: 16px;
 
@@ -31,6 +33,7 @@
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
   /* Typography — heading sizes */
   --text-h1: 48px;

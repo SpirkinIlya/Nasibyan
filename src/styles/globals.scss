@@ -3,9 +3,17 @@
   max-width: var(--container-width);
   margin-inline: auto;
   padding-inline: var(--container-padding);
+
+  &_width_middle {
+    max-width: var(--container-width-middle);
+  }
+
+  &_width_narrow {
+    max-width: var(--container-width-narrow);
+  }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .container {
     padding-inline: var(--container-padding-mobile);
   }

@@ -53,7 +53,7 @@ function buildCard(lecture) {
     <div class="lecture-card__info">
       <p class="lecture-card__title">${esc(lecture.title)}</p>
       <p class="lecture-card__description">${esc(lecture.description)}</p>
-      <a class="button button_theme_primary" href="${esc(lecture.url)}">
+      <a class="button button_theme_primary lecture-card__link" href="${esc(lecture.url)}">
         <span class="button__text">Подробнее</span>
       </a>
     </div>

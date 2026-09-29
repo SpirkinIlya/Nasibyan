@@ -86,7 +86,7 @@
 /* ── Lecture card ─────────────────────────────────────────────────────────── */
 
 /* When card is placed inside the grid (mobile / tablet) it spans full width */
-.lectures__items > .lecture-card {
+.lectures__items>.lecture-card {
     grid-column: 1 / -1;
 }
 
@@ -134,8 +134,13 @@
     }
 
     img {
-        width: 240px;
-        height: 240px;
+        @media (min-width:768px) {
+            max-width: 240px;
+
+        }
+
+        max-width: 290px;
+        aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 16px;
         flex-shrink: 0;
@@ -145,6 +150,10 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+
+        @media (min-width:1200px) {
+            gap: 32px;
+        }
     }
 
     &__title {
@@ -162,5 +171,11 @@
         font-size: 20px;
         line-height: 160%;
         margin: 0;
+    }
+
+    &__link {
+        @media (min-width:768px) {
+            width: 200px;
+        }
     }
 }
