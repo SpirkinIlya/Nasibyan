@@ -1,0 +1,26 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/lectures-list/lectures-list.njk" import lecturesList %}
+
+{% block content %}
+{% call intro({class:'intro_empty'}) %}
+{% endcall %}
+{{lecturesList()}}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "О Сергее Насибяне",
+url: "/about/"
+},
+{
+name: "Лекции",
+url: "#"
+}
+]) }}
+{% endblock %}

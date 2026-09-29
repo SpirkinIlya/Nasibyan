@@ -1,0 +1,12 @@
+{% macro lectureCard(data) %}
+<div class="lecture-card {{data.class}}">
+    <img class="lecture-card__image" src="{{data.image}}" alt="{{data.title}}" loading="lazy">
+    <div class="lecture-card__info">
+        <p class="lecture-card__title">{{data.title}}</p>
+        <p class="lecture-card__description">{{data.description}}</p>
+        <a class="button button_theme_primary lecture-card__link" href="{{data.url}}">
+            <span class="button__text">Подробнее</span>
+        </a>
+    </div>
+</div>
+{% endmacro %}

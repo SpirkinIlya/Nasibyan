@@ -1,0 +1,53 @@
+{% from "blocks/lecture-card/lecture-card.njk" import lectureCard %}
+
+{% set lecturesData=[
+{
+title:'Лекция «Интуиция. Как слышать себя в мире неопределенности»',
+image:'/images/lectures/lecture1.webp',
+description:'Как перестать тонуть в шуме прошлого, страхах настоящего и сотнях сценариев будущего',
+url:'#'
+},
+{
+title:'Лекция «О достоинстве»',
+image:'/images/lectures/lecture2.webp',
+description:'Как перестать зарабатывать то, что уже есть по умолчанию?',
+url:'#'
+},
+{
+title:'Лекция «Тёмная триада невроза: стыд, вина и тревога»',
+image:'/images/lectures/lecture3.webp',
+description:'Как не дать скрытым чувствам управлять вашей жизнью, отношениями и карьерой',
+url:'#'
+},
+{
+title:'Лекция «Секс, сексуальность, романтика и эротизм»',
+image:'/images/lectures/lecture4.webp',
+description:'Провокационная лекция о том, как вернуть притяжение и научиться строить близость на различиях, а не на
+одинаковости',
+url:'#'
+},
+{
+title:'Лекция «Мужчины и женщины. ‌Равные или разные?»',
+image:'/images/lectures/lecture5.webp',
+description:'Жесткая система психологической автономии: без жалости, бесконечной валидации и утешительных сессий',
+url:'#'
+},
+{
+title:'Лекция «Как жить, чтобы не надо было ходить к психологу»',
+image:'/images/lectures/lecture6.webp',
+description:'Глубокая лекция о том, как устроена жизненная энергия, почему уходит страсть и как вернуть живой контакт в
+отношения',
+url:'#'
+}
+]%}
+{% macro lecturesList(data) %}
+<section class="lectures-list container">
+    <h1 class="lectures-list__title">лекции сергея насибяна</h1>
+    <div class="lectures-list__items">
+        {% for item in lecturesData %}
+        {{lectureCard({title:item.title, image:item.image, description:item.description, url:item.url,
+        class:'lecture-card_bordered'})}}
+        {% endfor %}
+    </div>
+</section>
+{% endmacro %}

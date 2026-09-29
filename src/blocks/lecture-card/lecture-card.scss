@@ -1,0 +1,87 @@
+.lecture-card {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    padding-top: 40px;
+    animation: lecture-card-in 0.35s ease both;
+    font-family: var(--font-primary);
+
+    @media (min-width: 1200px) {
+        flex-direction: row;
+    }
+
+    /* Closing state — play exit animation before removal */
+    &[data-state="closing"] {
+        animation: lecture-card-out 0.35s ease both;
+    }
+
+    img {
+        @media (min-width:768px) {
+            max-width: 240px;
+
+        }
+
+        max-width: 290px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 16px;
+        flex-shrink: 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @media (min-width:1200px) {
+            gap: 32px;
+        }
+    }
+
+    &__title {
+        font-family: var/(--font-primary);
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 120%;
+        color: var(--color-accent-sand);
+        margin: 0;
+    }
+
+    &__description {
+        font-family: var/(--font-primary);
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 160%;
+        margin: 0;
+        color: var(--color-accent-pale)
+    }
+
+    &__link {
+        @media (min-width:768px) {
+            width: 200px;
+        }
+    }
+}
+
+.lecture-card_bordered {
+    border-radius: 30px;
+    padding: 16px;
+    backdrop-filter: blur(12px);
+    background: rgba(90, 64, 37, 0.2);
+    box-sizing: border-box;
+    border: 2px solid rgba(59, 46, 28, 0.2);
+
+    @media (min-width:1200px) {
+        padding: 24px;
+
+        img {
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    .lecture-card__info {
+        gap: 24px;
+    }
+}
