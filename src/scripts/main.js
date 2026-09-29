@@ -48,6 +48,7 @@ import '/blocks/how-it-works/how-it-works.scss';
 import '/blocks/input/input.scss';
 import '/blocks/intro/intro.scss';
 import '/blocks/label-link/label-link.scss';
+import '/blocks/lecture/lecture.scss';
 import '/blocks/lecture-card/lecture-card.scss';
 import '/blocks/lectures/lectures.scss';
 import '/blocks/lectures/lectures.js';

@@ -1,0 +1,29 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/lecture/lecture.njk" import lecture %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">онлайн-лекция</h1>
+{% endcall %}
+{{lecture()}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: "/"
+},
+{
+name: "О Сергее Насибяне",
+url: "/about/"
+},
+{
+name: "Лекции",
+url: "/lectures/"
+},
+{
+name: "Интуиция. Как слышать себя в мире неопределенности",
+url: "#"
+}
+]) }}
+{% endblock %}
