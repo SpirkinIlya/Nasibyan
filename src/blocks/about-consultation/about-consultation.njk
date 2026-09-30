@@ -2,9 +2,9 @@
 
 {% macro aboutConsultation(data) %}
 <section class="about-consultation">
-    <div class="about-consultation__container container container_width_middle">
+    <div class="about-consultation__container ">
 
-        <div class="about-consultation__section">
+        <div class="about-consultation__section container container_width_middle">
             <h2 class="about-consultation__title">Консультация нужна, если вы:</h2>
             <ul>
                 <li>Живете в состоянии фоновой тревоги, стресса или эмоционального выгорания.</li>
@@ -17,13 +17,16 @@
                 </li>
             </ul>
         </div>
-        <div class="gradient_type_gold">
-            <div class="about-consultation__record">
-                <h2 class="about-consultation__record-title">Ищете решение своей проблемы?</h2>
-                {{button({theme:'primary', type:'link', href:'#cta', text:'Записаться на консультацию'})}}
+        <div class="container container_width_middle">
+            <div class="gradient_type_gold">
+                <div class="about-consultation__record">
+                    <h2 class="about-consultation__record-title">Ищете решение своей проблемы?</h2>
+                    {{button({theme:'primary', type:'link', href:'#cta', text:'Записаться на консультацию'})}}
+                </div>
             </div>
         </div>
-        <div class="about-consultation__section">
+        <div class="devider"></div>
+        <div class="about-consultation__section container container_width_middle">
             <h2 class="about-consultation__title">Что вы получите в результате работы:</h2>
             <ul>
                 <li><b>Четкую систему вместо хаоса</b> — наведете порядок в мыслях, систематизируете свой опыт и поймете
@@ -43,6 +46,6 @@
             </ul>
         </div>
     </div>
-    <div class="devider"></div>
+
 </section>
 {% endmacro %}

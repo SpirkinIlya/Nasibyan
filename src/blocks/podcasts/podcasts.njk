@@ -1,12 +1,30 @@
 {% macro podcasts(data) %}
 {% set podcastTitles = [
-'Почему молчание хуже ссоры?',
-'Все изменяют всем',
-'Брак по любви - это миф',
-'Стыд, вина и одиночество. Как избавиться от тревоги',
-'Как найти любовь. Чувства, измены, ревность. 30 вопросов психологу',
-'50 главных вопросов психологу'
-]%}
+{
+title:'Почему молчание хуже ссоры?',
+duration:'43:14'
+},
+{
+title:'Все изменяют всем',
+duration:'39:35'
+},
+{
+title:'Брак по любви - это миф',
+duration:'55:13'
+},
+{
+title:'Стыд, вина и одиночество. Как избавиться от тревоги',
+duration:'46:53'
+},
+{
+title:'Как найти любовь. Чувства, измены, ревность. 30 вопросов психологу',
+duration:'1:01:53'
+},
+{
+title:'50 главных вопросов психологу',
+duration:'1:07:14'
+}
+] %}
 <section class="podcasts container">
     <div class="gradient_type_gold">
         <div class="podcasts__wrap">
@@ -23,10 +41,10 @@
                     </button>
                     <div class="podcasts__item-info">
                         <div class="podcasts__item-title">
-                            <p>{{item}}</p>
+                            <p>{{item.title}}</p>
                             <p class="podcasts__item-small">Видеоподкаст</p>
                         </div>
-                        <div class="podcasts__item-duration">34:12</div>
+                        <div class="podcasts__item-duration">{{item.duration}}</div>
                     </div>
                 </div>
                 {% endfor %}

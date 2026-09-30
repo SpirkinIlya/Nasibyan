@@ -165,9 +165,9 @@
             grid-template-columns: 1fr;
             gap: 40px;
 
-            @media (min-width:1200px) {
-                grid-template-columns: 1fr 1fr;
-            }
+            // @media (min-width:1200px) {
+            //     grid-template-columns: 1fr 1fr;
+            // }
         }
     }
 
