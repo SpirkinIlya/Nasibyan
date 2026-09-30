@@ -2,12 +2,14 @@
 {% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
 {% from "blocks/intro/intro.njk" import intro %}
 {% from "blocks/book/book.njk" import book %}
+{% from "blocks/book-presentation/book-presentation.njk" import bookPresentation %}
 
 {% block content %}
 {% call intro({class:'intro_empty'}) %}
 {% endcall %}
 
 {{book()}}
+{{bookPresentation()}}
 {{ breadcrumbs([
 {
 name: "Главная",

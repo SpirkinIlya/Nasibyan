@@ -1,0 +1,45 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro bookPresentation(data) %}
+<section class="book-presentation container">
+    <h2 class="book-presentation__title">Презентация книги</h2>
+    <p class="book-presentation__info">Московский дом книги<br>Новый Арбат 21.12.2023</p>
+    <div class="book-presentation__swiper swiper">
+        <div class="swiper-wrapper" id="gallery-about">
+
+            <div class="swiper-slide">
+                <a href="{{ 'images/book/gallery1.webp' | url }}" class="book-presentation__image">
+                    <img src="{{ 'images/book/gallery1.webp' | url }}" alt="Фото 1" loading="lazy">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{{ 'images/book/gallery2.webp' | url }}" class="book-presentation__image">
+                    <img src="{{ 'images/book/gallery2.webp' | url }}" alt="Фото 1" loading="lazy">
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="{{ 'images/book/gallery3.webp' | url }}" class="book-presentation__image">
+                    <img src="{{ 'images/book/gallery3.webp' | url }}" alt="Фото 1" loading="lazy">
+                </a>
+            </div>
+
+
+
+        </div>
+        <div class="swiper-controls">
+
+            <div class="button-prev"><svg width="15" height="15" fill="none">
+                    <use href="{{ 'images/sprite/sprite.svg#icon-prew' | url }}"></use>
+                </svg></div>
+            <div class="button-next"><svg width="15" height="15" fill="none">
+                    <use href="{{ 'images/sprite/sprite.svg#icon-next' | url }}"></use>
+                </svg></div>
+        </div>
+    </div>
+    <div class="book-presentation__button">
+        {{button({theme:'secondary', text:'Смотреть все книги', type:'link',
+        href:'books/'
+        | url})}}
+    </div>
+</section>
+{% endmacro %}

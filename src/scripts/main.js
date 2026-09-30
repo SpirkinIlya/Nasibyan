@@ -24,6 +24,8 @@ import '/blocks/bio/bio.scss';
 import '/blocks/book/book.scss';
 import '/blocks/book/book.js';
 import '/blocks/book-card/book-card.scss';
+import '/blocks/book-presentation/book-presentation.scss';
+import '/blocks/book-presentation/book-presentation.js';
 import '/blocks/books/books.scss';
 import '/blocks/bottom-nav/bottom-nav.scss';
 import '/blocks/bottom-nav/bottom-nav.js';
