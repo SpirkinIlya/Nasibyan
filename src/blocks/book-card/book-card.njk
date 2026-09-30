@@ -1,0 +1,18 @@
+{% from "blocks/button/button.njk" import button %}
+
+{% macro bookCard(data) %}
+<div class="book-card {{data.class}}">
+    <div class="book-card__image">
+        <img src="{{ 'images/provokator.webp' | url}}" alt="Книга. Провокатор. Загляни своим страхам в лицо"
+            loading="lazy">
+    </div>
+    <div class="book-card__info">
+        <p class="book-card__title">Провокатор. Загляни своим страхам в лицо</p>
+        <p class="book-card__author">Сергей Насибян, Яна Поляруш</p>
+    </div>
+    <div class="book-card__controls">
+        {{button({theme:'tertiary', text: 'о книге', type:'link', url:'#', width:'full'})}}
+        {{button({theme:'primary', text:'Купить', width:'full'})}}
+    </div>
+</div>
+{% endmacro %}

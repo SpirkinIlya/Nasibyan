@@ -51,11 +51,11 @@ price:"79 000", footer:"<p>Курс проходит в офлайн-форма�
 {{ breadcrumbs([
 {
 name: "Главная",
-url: "/main/"
+url: 'main/' | url
 },
 {
 name: "Тренинги",
-url: "/trainings/"
+url: 'trainings/' | url
 },
 {
 name: "Базовый курс",
@@ -63,4 +63,3 @@ url: "#"
 }
 ]) }}
 {% endblock %}
-

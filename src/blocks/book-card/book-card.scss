@@ -1,0 +1,43 @@
+.book-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: var(--font-primary);
+
+    &__image {
+        border-radius: 30px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+    }
+
+    &__controls,
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .button_theme_tertiary {
+        color: var(--color-dark)
+    }
+
+    &__title {
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 120%;
+        margin: 0;
+    }
+
+    &__author {
+        margin: 0;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 160%;
+    }
+}

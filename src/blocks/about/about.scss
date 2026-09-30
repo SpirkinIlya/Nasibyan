@@ -38,22 +38,6 @@
     &::before {
         height: 68px;
         content: '';
-        bottom: 0;
-        width: 100%;
-        position: absolute;
-        background-image: url(/images/divider.png);
-        background-position: top left;
-        background-size: 100% 100%;
-        transform: rotate(180deg);
-
-        @media (min-width: 768px) {
-            height: 105px;
-        }
-    }
-
-    &::before {
-        height: 68px;
-        content: '';
         bottom: 1px;
         width: 100%;
         position: absolute;

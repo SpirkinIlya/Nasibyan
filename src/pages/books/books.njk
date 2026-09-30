@@ -1,14 +1,13 @@
 {% extends "layouts/base.njk" %}
 {% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
 {% from "blocks/intro/intro.njk" import intro %}
-{% from "blocks/faq/faq.njk" import faq %}
-{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/books/books.njk" import books %}
 
 {% block content %}
 {% call intro({class:'intro_empty'}) %}
 {% endcall %}
-{{faq()}}
-{{cta({title:'Задать вопрос'})}}
+
+{{books()}}
 {{ breadcrumbs([
 {
 name: "Главная",
@@ -19,7 +18,7 @@ name: "О Сергее Насибяне",
 url: 'about/' | url
 },
 {
-name: "Часто задаваемые вопросы",
+name: "Книги",
 url: "#"
 }
 ]) }}

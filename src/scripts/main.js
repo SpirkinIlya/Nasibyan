@@ -21,6 +21,8 @@ import '/blocks/autobiography/autobiography.scss';
 import '/blocks/autobiography/autobiography.js';
 import '/blocks/basic-course/basic-course.scss';
 import '/blocks/bio/bio.scss';
+import '/blocks/book-card/book-card.scss';
+import '/blocks/books/books.scss';
 import '/blocks/bottom-nav/bottom-nav.scss';
 import '/blocks/bottom-nav/bottom-nav.js';
 import '/blocks/breadcrumbs/breadcrumbs.scss';

@@ -5,35 +5,35 @@
 {% set footerMenu = [
 {
 title: "О Сергее Насибяне",
-url: "#"
+url: 'about/' | url
 },
 {
 title: "Расписание",
-url: "#"
+url: 'schedule/' | url
 },
 {
 title: "Тренинги",
-url: "#"
+url: 'trainings/' | url
 },
 {
 title: "Мистика",
-url: "#"
+url: 'mystery/' | url
 },
 {
 title: "Психология",
-url: "#"
+url: 'psychology/' | url
 },
 {
 title: "Философия",
-url: "#"
+url: 'philosophy/' | url
 },
 {
 title: "Книги",
-url: "#"
+url: 'books/' | url
 },
 {
 title: "Лекции",
-url: "#"
+url: 'lectures/' | url
 },
 {
 title: "Статьи",
@@ -41,11 +41,11 @@ url: "#"
 },
 {
 title: "Вопросы и ответы",
-url: "#"
+url: 'faq/' | url
 },
 {
 title: "Консультации",
-url: "#"
+url: 'consultations/' | url
 },
 {
 title: "Контакты",
@@ -77,7 +77,7 @@ url: "#"
       </div>
     </div>
     <div class="footer__col_1">
-      {{button({text:"Базовый курс", theme:"tertiary", type:"link", href:"#"})}}
+      {{button({text:"Базовый курс", theme:"tertiary", type:"link", href:'basic-course/' | url})}}
     </div>
     <div class="footer__menu">
       <ul class="footer__menu-list">

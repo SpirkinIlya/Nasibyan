@@ -1,0 +1,18 @@
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/book-card/book-card.njk" import bookCard %}
+
+{% macro books(data) %}
+<section class="books">
+    <h1 class="container books__heading">Книги сергея насибяна</h1>
+    <div class="books__container">
+        <div class="books__wrap container">
+            <h2 class="books__title">книги</h2>
+            <div class="books__items">
+                {{bookCard({class:'books__item'})}}
+                {{bookCard({class:'books__item'})}}
+                {{bookCard({class:'books__item'})}}
+            </div>
+        </div>
+    </div>
+</section>
+{% endmacro %}
