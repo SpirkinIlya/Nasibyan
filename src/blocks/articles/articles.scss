@@ -1,0 +1,85 @@
+.articles {
+    position: relative;
+    z-index: 3;
+    padding-block: 60px;
+
+    &__items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &__title {
+        margin: 0;
+        color: var(--color-accent-sand);
+        padding-bottom: 40px;
+        text-align: center;
+    }
+
+    /* ── Tabs wrapper — handles collapse ───────────────────────────── */
+
+    &__tabs-wrap {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    &__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        overflow: hidden;
+        max-height: 169px;
+        transition: max-height 0.4s ease;
+
+        &[data-state="open"] {
+            max-height: var(--tabs-scroll-height, 9999px);
+        }
+    }
+
+    /* ── Toggle button ─────────────────────────────────────────────── */
+
+    &__tabs-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        margin-top: 8px;
+        background: none;
+        border: none;
+        color: var(--color-accent-pale);
+        cursor: pointer;
+        padding: 0;
+        transition: color var(--transition-fast);
+
+        &:hover {
+            color: var(--color-accent-sand);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-accent-sand);
+            outline-offset: 4px;
+            border-radius: var(--radius-sm);
+        }
+    }
+
+    &__tabs-icon {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1;
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* Icon rotation when tabs are open (sibling selector) */
+.articles__tabs[data-state="open"] + .articles__tabs-toggle .articles__tabs-icon {
+    transform: rotate(180deg);
+}

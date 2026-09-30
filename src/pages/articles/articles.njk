@@ -1,0 +1,27 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/article/article.njk" import article %}
+{% from "blocks/articles/articles.njk" import articles %}
+
+{% block content %}
+{% call intro({class:'intro_empty'}) %}
+{% endcall %}
+{{articles()}}
+{{cta({title:"задать вопрос"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: 'main/' | url
+},
+{
+name: "О Сергее Насибяне",
+url: 'about/' | url
+},
+{
+name: "Статьи",
+url: '#'
+}
+]) }}
+{% endblock %}

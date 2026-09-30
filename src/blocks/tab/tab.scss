@@ -1,0 +1,20 @@
+.tab {
+    display: inline-flex;
+    border: 1px solid var(--color-accent-sand);
+    border-radius: 25px;
+    padding: 16px 20px;
+
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 100%;
+    color: var(--color-accent-sand);
+    transition: all .3s ease;
+
+    &_active,
+    &:hover {
+        color: var(--color-white);
+        background: var(--color-accent-sand);
+    }
+}

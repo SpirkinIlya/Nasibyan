@@ -1,0 +1,42 @@
+{% from "blocks/article-card/article-card.njk" import articleCard %}
+{% from "blocks/tab/tab.njk" import tab %}
+
+{% macro articles(data) %}
+<section class="articles container">
+    <h1 class="articles__title">статьи</h1>
+    <div class="articles__tabs-wrap" data-js="articles-tabs-wrap">
+        <div class="articles__tabs" data-js="articles-tabs">
+            {{tab({text:'Все', class:'tab_active'})}}
+            {{tab({text:'Групповой тренинг'})}}
+            {{tab({text:'за кулисами психотерапии'})}}
+            {{tab({text:'Командное развитие'})}}
+            {{tab({text:'Личностный рост'})}}
+            {{tab({text:'Методы психолога'})}}
+            {{tab({text:'Повышение эффективности'})}}
+            {{tab({text:'Преодоление страхов'})}}
+            {{tab({text:'Продуктивность'})}}
+            {{tab({text:'Психологическая практика'})}}
+            {{tab({text:'Психология отношений'})}}
+            {{tab({text:'Самореализация'})}}
+            {{tab({text:'Самосовершенствование'})}}
+        </div>
+        <button
+            class="articles__tabs-toggle"
+            type="button"
+            data-js="articles-tabs-toggle"
+            aria-expanded="false"
+            aria-label="Развернуть фильтры"
+            hidden>
+            <span class="articles__tabs-icon" aria-hidden="true">↓</span>
+        </button>
+    </div>
+    <div class="articles__items">
+        {{articleCard()}}
+        {{articleCard()}}
+        {{articleCard()}}
+        {{articleCard()}}
+        {{articleCard()}}
+        {{articleCard()}}
+    </div>
+</section>
+{% endmacro %}
