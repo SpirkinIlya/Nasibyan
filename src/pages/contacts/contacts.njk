@@ -1,0 +1,39 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/cta/cta.njk" import cta %}
+
+{% block content %}
+{% call intro() %}
+<h1 class="intro__heading">контакты</h1>
+<a class="intro__link" href="mailto:info@sergeinasibyan.ru">info@sergeinasibyan.ru</a>
+<div class="intro__social-links">
+    <a href="#" class=" intro__social-link">
+        <svg width="40" height="40">
+            <use href="{{ 'images/sprite/sprite.svg#icon-telegram-circle' | url }}"></use>
+        </svg>
+    </a>
+    <a href="#" class=" intro__social-link">
+        <svg width="40" height="40">
+            <use href="{{ 'images/sprite/sprite.svg#icon-vk' | url }}"></use>
+        </svg>
+    </a>
+    <a href="#" class=" intro__social-link">
+        <svg width="40" height="40">
+            <use href="{{ 'images/sprite/sprite.svg#icon-youtube' | url }}"></use>
+        </svg>
+    </a>
+</div>
+{% endcall %}
+{{cta({title:'Записаться на тренинг'})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: 'main/' | url
+},
+{
+name: "Контакты",
+url: "#"
+}
+]) }}
+{% endblock %}

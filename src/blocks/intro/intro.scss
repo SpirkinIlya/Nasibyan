@@ -165,6 +165,35 @@
         }
 
     }
+
+    &__link {
+        display: inline-block;
+        font-family: var(--font-primary);
+        font-weight: 400;
+        font-size: 26px;
+        line-height: 120%;
+        margin-bottom: 48px;
+
+        &:hover {
+            color: var(--color-accent-sand);
+        }
+    }
+
+    &__social-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+
+    }
+
+    &__social-link {
+        color: #cebdb0;
+        transition: color .5s ease-in-out;
+
+        &:hover {
+            color: var(--color-accent-sand);
+        }
+    }
 }
 
 .intro_empty {
