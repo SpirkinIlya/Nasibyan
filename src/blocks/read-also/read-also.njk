@@ -1,0 +1,17 @@
+{% from "blocks/button/button.njk" import button %}
+{% from "blocks/article-card/article-card.njk" import articleCard %}
+
+{% macro readAlso(data) %}
+<section class="read-also container">
+    <h2 class="read-also__title">Читайте также</h2>
+    <div class="read-also__items">
+        {{articleCard()}}
+        {{articleCard()}}
+        {{articleCard()}}
+    </div>
+    <div class="read-also__button">
+
+        {{button({theme:'secondary', type:'link', text:'Больше статей', href:'articles/' | url})}}
+    </div>
+</section>
+{% endmacro %}

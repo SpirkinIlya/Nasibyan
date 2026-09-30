@@ -1,0 +1,29 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/cta/cta.njk" import cta %}
+{% from "blocks/article/article.njk" import article %}
+{% from "blocks/read-also/read-also.njk" import readAlso %}
+
+{% block content %}
+{{article()}}
+{{readAlso()}}
+{{cta({title:"записаться на тренинг"})}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: 'main/' | url
+},
+{
+name: "О Сергее Насибяне",
+url: 'about/' | url
+},
+{
+name: "Статьи",
+url: 'articles/' | url
+},
+{
+name: "Название статьи",
+url: "#"
+}
+]) }}
+{% endblock %}

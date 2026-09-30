@@ -1,0 +1,24 @@
+{% macro articleCard(data) %}
+<a class="article-card" href="#">
+    <div class="article-card__image">
+        <img src="{{'images/article.webp' | url}}" alt="" loading="lazy">
+    </div>
+    <div class="article-card__data">
+        <div class="article-card__row">
+            <div class="article-card__tags">
+                <span>#личностный рост</span>
+                <span>#самореализация</span>
+            </div>
+            <p class="article-card__date">23 сентября 2023</p>
+        </div>
+
+        <div class="article-card__title">
+            <p>Бизнес-тренер для руководителя: когда нужен внешний специалист и как выбрать формат
+                тренинга</p>
+        </div>
+        <div class="article-card__button"><svg width="15" height="15" fill="none">
+                <use href="{{ 'images/sprite/sprite.svg#icon-next' | url }}"></use>
+            </svg></div>
+    </div>
+</a>
+{% endmacro %}
