@@ -1,0 +1,25 @@
+{% extends "layouts/base.njk" %}
+{% from "blocks/breadcrumbs/breadcrumbs.njk" import breadcrumbs %}
+{% from "blocks/intro/intro.njk" import intro %}
+{% from "blocks/book/book.njk" import book %}
+
+{% block content %}
+{% call intro({class:'intro_empty'}) %}
+{% endcall %}
+
+{{book()}}
+{{ breadcrumbs([
+{
+name: "Главная",
+url: 'main/' | url
+},
+{
+name: "О Сергее Насибяне",
+url: 'about/' | url
+},
+{
+name: "Книги",
+url: "#"
+}
+]) }}
+{% endblock %}
