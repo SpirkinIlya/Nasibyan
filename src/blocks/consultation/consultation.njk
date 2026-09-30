@@ -3,7 +3,7 @@
 {% macro consultation(data) %}
 <section class="consultation container">
     <div class="consultation__image">
-        <img src="/images/sergej-consultation.webp" alt="Сергей Насибян" loading="lazy">
+        <img src="{{ 'images/sergej-consultation.webp' | url }}" alt="Сергей Насибян" loading="lazy">
     </div>
     <div class="consultation__about">
         <h2 class="consultation__title">Сергей насибян</h2>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="consultation__button">
-            {{button({type:'link', href:'/about/', theme: 'tertiary', text: 'читать полностью'})}}
+            {{button({type:'link', href: 'about/' | url, theme: 'tertiary', text: 'читать полностью'})}}
         </div>
     </div>
 </section>

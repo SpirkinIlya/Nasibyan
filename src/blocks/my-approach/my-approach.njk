@@ -3,7 +3,7 @@
 {% macro myApproach(data) %}
 <section class="my-approach">
     <div class="my-approach__image_start">
-        <img src="/images/1.webp" alt="" loading="lazy">
+        <img src="{{ 'images/1.webp' | url }}" alt="" loading="lazy">
     </div>
     <div class="my-approach__section my-approach__section_way">
         <h2 class="my-approach__title">мой подход</h2>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="my-approach__section my-approach__section_work">
-        <img src="/images/phylosophy.webp" alt="Сергей Насибян" loading="lazy">
+        <img src="{{ 'images/phylosophy.webp' | url }}" alt="Сергей Насибян" loading="lazy">
         <div class="my-approach__work">
             <h2 class="my-approach__title">личная работа</h2>
             <p class="my-approach__work-description">Пространство для глубокой встречи с тем,<br>что не увидеть со
@@ -28,7 +28,7 @@
     </div>
     <div class="my-approach__section my-approach__section_quote">
         <div class="my-approach__image_end">
-            <img src="/images/2.webp" alt="" loading="lazy">
+            <img src="{{ 'images/2.webp' | url }}" alt="" loading="lazy">
         </div>
         <p>«Чтобы понять, с чего начать путь изменений, важно определить свой внутренний запрос»</p>
     </div>

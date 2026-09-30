@@ -1,11 +1,11 @@
 {% macro hero(data) %}
 <section class="hero">
     <div class="hero__decor">
-        <img class="image" src="/images/hero__circle.webp" alt="">
+        <img class="image" src="{{ 'images/hero__circle.webp' | url }}" alt="">
     </div>
     <div class="container hero__container">
         <div class="hero__image">
-            <img class="image" alt="" src="/images/hero__photo.webp">
+            <img class="image" alt="" src="{{ 'images/hero__photo.webp' | url }}">
         </div>
         <div class="hero__title">
             <p class="hero__quote">«Себя познать труднее, чем мир вокруг»</p>
@@ -14,7 +14,7 @@
     </div>
     <a class="hero__to-form" aria-label="Перейти к форме записи" href="#cta">
         <svg width="32" height="54">
-            <use href="/images/sprite/sprite.svg#icon-arrow"></use>
+            <use href="{{ 'images/sprite/sprite.svg#icon-arrow' | url }}"></use>
         </svg>
     </a>
 </section>

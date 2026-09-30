@@ -10,17 +10,17 @@
 
           {% if item.icon === "calendar" %}
           <svg width="40" height="40" fill="none">
-            <use href="/images/sprite/sprite.svg#icon-scedule"></use>
+            <use href="{{ 'images/sprite/sprite.svg#icon-scedule' | url }}"></use>
           </svg>
 
           {% elif item.icon === "ring" %}
           <svg width="40" height="40" fill="none">
-            <use href="/images/sprite/sprite.svg#icon-logo"></use>
+            <use href="{{ 'images/sprite/sprite.svg#icon-logo' | url }}"></use>
           </svg>
 
           {% elif item.icon === "send" %}
           <svg width="40" height="40" fill="none">
-            <use href="/images/sprite/sprite.svg#icon-telegram"></use>
+            <use href="{{ 'images/sprite/sprite.svg#icon-telegram' | url }}"></use>
           </svg>
 
           {% endif %}

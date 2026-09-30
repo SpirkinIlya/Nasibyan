@@ -4,14 +4,14 @@
     <div class="smotrim-facade" data-video-id="2700436">
         <div class="smotrim-facade__preview">
             <picture>
-                <source srcset="/images/smotrim.avif" type="image/avif">
+                <source srcset="{{ 'images/smotrim.avif' | url }}" type="image/avif">
 
-                <img src="/images/smotrim.webp" alt="Смотреть видео" loading="lazy" class="smotrim-facade__image">
+                <img src="{{ 'images/smotrim.webp' | url }}" alt="Смотреть видео" loading="lazy" class="smotrim-facade__image">
             </picture>
 
             <button class="smotrim-facade__play button button_player" type="button" aria-label="Воспроизвести видео">
                 <svg width="12" height="13">
-                    <use href="/images/sprite/sprite.svg#icon-play"></use>
+                    <use href="{{ 'images/sprite/sprite.svg#icon-play' | url }}"></use>
                 </svg>
             </button>
         </div>

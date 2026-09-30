@@ -1,7 +1,7 @@
 {% macro intro(data) %}
 <section class="intro {{data.class}}">
     <div class="intro__decor">
-        <img class="image" src="/images/hero__circle.webp" alt="">
+        <img class="image" src="{{ 'images/hero__circle.webp' | url }}" alt="">
     </div>
     <div class="container intro__container">
         {{ caller() }}
@@ -9,7 +9,7 @@
     {% if data.toForm %}
     <a class="intro__to-form" aria-label="Перейти к форме записи" href="#cta">
         <svg width="32" height="54">
-            <use href="/images/sprite/sprite.svg#icon-arrow"></use>
+            <use href="{{ 'images/sprite/sprite.svg#icon-arrow' | url }}"></use>
         </svg>
     </a>
     {% endif %}

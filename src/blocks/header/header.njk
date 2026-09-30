@@ -42,7 +42,7 @@
     <button class="header__burger" data-js="header-burger" aria-label="Открыть меню" aria-expanded="false"
       aria-controls="header-drawer" type="button">
       <svg width="40" height="40">
-        <use href="/images/sprite/sprite.svg#icon-burger"></use>
+        <use href="{{ 'images/sprite/sprite.svg#icon-burger' | url }}"></use>
       </svg>
     </button>
 
@@ -52,7 +52,7 @@
   <div class="header__drawer" id="header-drawer" data-js="header-drawer" aria-hidden="true">
     <button class="header__drawer-close" data-js="header-drawer-close" aria-label="Закрыть меню" type="button"><svg
         width="40" height="40">
-        <use href="/images/sprite/sprite.svg#icon-close"></use>
+        <use href="{{ 'images/sprite/sprite.svg#icon-close' | url }}"></use>
       </svg></button>
 
     <nav class="header__drawer-nav" aria-label="Мобильная навигация">

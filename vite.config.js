@@ -11,13 +11,20 @@ const PAGES_DIR = resolve(SRC_DIR, 'pages');
 const BLOCKS_DIR = resolve(SRC_DIR, 'blocks');
 const GLOBAL_DATA_PATH = resolve(SRC_DIR, 'data', 'global.json');
 
+// GitHub Pages: https://spirkinilya.github.io/Nasibyan/
+// Locally: /
+const BASE_URL = process.env.GITHUB_PAGES === 'true'
+  ? '/Nasibyan/'
+  : '/';
+
 const njkEnv = nunjucks.configure(SRC_DIR, {
   noCache: true,
 });
 
-// GitHub Pages: https://spirkinilya.github.io/Nasibyan/
-// Locally: /
-const BASE_URL = process.env.GITHUB_ACTIONS ? '/Nasibyan/' : '/';
+njkEnv.addFilter('url', (path) => {
+  const cleanPath = String(path).replace(/^\/+/, '');
+  return `${BASE_URL}${cleanPath}`;
+});
 
 function getGlobalData() {
   if (!fs.existsSync(GLOBAL_DATA_PATH)) {
