@@ -1,7 +1,8 @@
 {% macro tab(data) %}
 
-<a class="tab {{data.class}}" href="{{ data.href or '#' }}" {% if data.target %}target="{{ data.target }}" {% endif %}
-    {% if data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span class="tab__text">{{
+<a class="tab {{data.class}}{%if data.small %} tab_small{%endif %}" href="{{ data.href or '#' }}" {% if data.target
+    %}target="{{ data.target }}" {% endif %} {% if data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span
+        class="tab__text">{{
         data.text
         }}</span></a>
 {% endmacro %}

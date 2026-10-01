@@ -1,0 +1,60 @@
+{% from "blocks/question/question.njk" import question %}
+
+{% macro faqPage(data) %}
+{% set categories = data.categories if data.categories else [] %}
+{% set questions  = data.questions  if data.questions  else [] %}
+
+<div class="faq-page container" data-js="faq-page">
+    <h1 class="faq-page__title">Часто задаваемые вопросы</h1>
+
+    {# ── Search ──────────────────────────────────────────────────────── #}
+    <div class="faq-page__search-wrap">
+        <label class="faq-page__search-label" for="faq-search">
+            <input
+                class="faq-page__search-input"
+                id="faq-search"
+                type="search"
+                placeholder="Поиск"
+                autocomplete="off"
+                data-js="faq-search">
+            <svg class="faq-page__search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+        </label>
+    </div>
+
+    {# ── Tabs / categories ───────────────────────────────────────────── #}
+    <div class="faq-page__tabs" role="tablist" data-js="faq-tabs">
+        {% for cat in categories %}
+        <button
+            class="tab tab_small{% if loop.first %} tab_active{% endif %}"
+            type="button"
+            role="tab"
+            data-js="faq-tab"
+            data-category="{{ cat.id }}"
+            aria-selected="{{ 'true' if loop.first else 'false' }}">
+            <span class="tab__text">{{ cat.label }}</span>
+        </button>
+        {% endfor %}
+    </div>
+
+    {# ── Questions list ──────────────────────────────────────────────── #}
+    <div class="faq-page__items" data-js="faq-items">
+        {% for item in questions %}
+        <div class="faq-page__item" data-js="faq-item" data-category="{{ item.category }}">
+            {{ question({
+                question: item.question,
+                answer: item.answer,
+                videoUrl: item.videoUrl
+            }) }}
+        </div>
+        {% endfor %}
+    </div>
+
+    {# ── No results message ──────────────────────────────────────────── #}
+    <p class="faq-page__no-results" data-js="faq-no-results" hidden>
+        По вашему запросу ничего не найдено
+    </p>
+</div>
+{% endmacro %}

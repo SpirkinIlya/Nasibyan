@@ -1,0 +1,105 @@
+.faq-page {
+    position: relative;
+    z-index: 3;
+    padding-block: 20px 60px;
+
+    @media (min-width: 1200px) {
+        padding-block: 60px;
+    }
+
+    &__title {
+        color: var(--color-accent-sand);
+        margin: 0;
+        padding-bottom: 40px;
+        text-align: center;
+    }
+
+    /* ── Search ──────────────────────────────────────────────────────── */
+
+    &__search-wrap {
+        max-width: 520px;
+        margin: 0 auto 32px;
+    }
+
+    &__search-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid rgb(206 189 176 / 40%);
+        transition: border-color var(--transition-fast);
+
+        &:focus-within {
+            border-color: var(--color-accent-sand);
+        }
+    }
+
+    &__search-input {
+        flex: 1;
+        appearance: none;
+        background: none;
+        border: none;
+        outline: none;
+        padding: 10px 0;
+        font-family: var(--font-primary);
+        font-size: 16px;
+        font-weight: 300;
+        color: var(--color-pale-sandy);
+
+        /* Remove native search clear button */
+        &::-webkit-search-cancel-button {
+            appearance: none;
+        }
+
+        &::placeholder {
+            color: rgb(206 189 176 / 50%);
+        }
+    }
+
+    &__search-icon {
+        flex-shrink: 0;
+        color: rgb(206 189 176 / 50%);
+        transition: color var(--transition-fast);
+
+        .faq-page__search-label:focus-within & {
+            color: var(--color-accent-sand);
+        }
+    }
+
+    /* ── Tabs ────────────────────────────────────────────────────────── */
+
+    &__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    /* ── Questions list ──────────────────────────────────────────────── */
+
+    &__items {
+        /* nothing special — questions are stacked */
+    }
+
+    &__item {
+        /* Smooth hide/show via opacity + max-height for search results */
+        transition:
+            opacity 0.2s ease,
+            max-height 0.25s ease;
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    /* ── No results ──────────────────────────────────────────────────── */
+
+    &__no-results {
+        padding: 40px 0;
+        text-align: center;
+        font-family: var(--font-primary);
+        font-size: 18px;
+        font-weight: 300;
+        color: rgb(206 189 176 / 60%);
+        margin: 0;
+    }
+}

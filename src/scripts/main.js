@@ -47,6 +47,8 @@ import '/blocks/cta-course/cta-course.scss';
 import '/blocks/devider/devider.scss';
 import '/blocks/event-card/event-card.scss';
 import '/blocks/faq/faq.scss';
+import '/blocks/faq-page/faq-page.scss';
+import '/blocks/faq-page/faq-page.js';
 import '/blocks/footer/footer.scss';
 import '/blocks/form/form.scss';
 import '/blocks/form/form.js';
