@@ -1,0 +1,26 @@
+{% macro pagination(data)%}
+<div class="pagination">
+    <div class="pagination__container">
+        <div class="pagination__page-prev pagination__page-prev_disabled">
+            <a class="link link__control">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5.14645 8.35355C4.95118 8.15829 4.95118 7.84171 5.14645 7.64645L9.14645 3.64645C9.34171 3.45118 9.65829 3.45118 9.85355 3.64645C10.0488 3.84171 10.0488 4.15829 9.85355 4.35355L6.20711 8L9.85355 11.6464C10.0488 11.8417 10.0488 12.1583 9.85355 12.3536C9.65829 12.5488 9.34171 12.5488 9.14645 12.3536L5.14645 8.35355Z"
+                        fill="currentColor"></path>
+                </svg></a>
+        </div>
+        <div class="pagination__page-num pagination__page-num_active"><a class="link link__control"
+                href="o-spikere/blog/">1</a></div>
+        <div class="pagination__page-num"><a class="link link__control" href="#">2</a></div>
+        <div class="pagination__page-num"><a class="link link__control" href="#">3</a></div>
+        <div class="pagination__page-num"><a class="link link__control" href="#">4</a></div>
+        <div class="pagination__page-num"><a class="link link__control" href="#">5</a></div>
+        <div class="pagination__page-next"><a class="link link__control" href="#"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9.85355 7.64645C10.0488 7.84171 10.0488 8.15829 9.85355 8.35355L5.85355 12.3536C5.65829 12.5488 5.34171 12.5488 5.14645 12.3536C4.95118 12.1583 4.95118 11.8417 5.14645 11.6464L8.79289 8L5.14645 4.35355C4.95118 4.15829 4.95118 3.84171 5.14645 3.64645C5.34171 3.45118 5.65829 3.45118 5.85355 3.64645L9.85355 7.64645Z"
+                        fill="currentColor"></path>
+                </svg></a></div>
+    </div>
+</div>
+{% endmacro %}

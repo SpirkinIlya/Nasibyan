@@ -72,6 +72,7 @@ import '/blocks/my-way/my-way.scss';
 import '/blocks/my-way/my-way.js';
 import '/blocks/mystery/mystery.scss';
 import '/blocks/pages/pages.scss';
+import '/blocks/pagination/pagination.scss';
 import '/blocks/personal-work/personal-work.scss';
 import '/blocks/podcasts/podcasts.scss';
 import '/blocks/practices/practices.scss';

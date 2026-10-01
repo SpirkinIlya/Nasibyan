@@ -1,5 +1,6 @@
 {% from "blocks/article-card/article-card.njk" import articleCard %}
 {% from "blocks/tab/tab.njk" import tab %}
+{% from "blocks/pagination/pagination.njk" import pagination %}
 
 {% macro articles(data) %}
 <section class="articles container">
@@ -20,13 +21,8 @@
             {{tab({text:'Самореализация'})}}
             {{tab({text:'Самосовершенствование'})}}
         </div>
-        <button
-            class="articles__tabs-toggle"
-            type="button"
-            data-js="articles-tabs-toggle"
-            aria-expanded="false"
-            aria-label="Развернуть фильтры"
-            hidden>
+        <button class="articles__tabs-toggle" type="button" data-js="articles-tabs-toggle" aria-expanded="false"
+            aria-label="Развернуть фильтры" hidden>
             <span class="articles__tabs-icon" aria-hidden="true">↓</span>
         </button>
     </div>
@@ -37,6 +33,9 @@
         {{articleCard()}}
         {{articleCard()}}
         {{articleCard()}}
+    </div>
+    <div class="articles__pagination">
+        {{pagination()}}
     </div>
 </section>
 {% endmacro %}

@@ -77,9 +77,13 @@
         line-height: 1;
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    &__pagination {
+        padding-top: 40px;
+    }
 }
 
 /* Icon rotation when tabs are open (sibling selector) */
-.articles__tabs[data-state="open"] + .articles__tabs-toggle .articles__tabs-icon {
+.articles__tabs[data-state="open"]+.articles__tabs-toggle .articles__tabs-icon {
     transform: rotate(180deg);
 }
