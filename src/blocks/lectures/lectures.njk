@@ -3,38 +3,40 @@
 {% set lecturesData=[
 {
 title:'Лекция «Интуиция. Как слышать себя в мире неопределенности»',
-image:'/images/lectures/lecture1.webp',
+image:'images/lectures/lecture1.webp',
 description:'Как перестать тонуть в шуме прошлого, страхах настоящего и сотнях сценариев будущего',
 url:'#'
 },
 {
 title:'Лекция «О достоинстве»',
-image:'/images/lectures/lecture2.webp',
+image:'images/lectures/lecture2.webp',
 description:'Как перестать зарабатывать то, что уже есть по умолчанию?',
 url:'#'
 },
 {
 title:'Лекция «Тёмная триада невроза: стыд, вина и тревога»',
-image:'/images/lectures/lecture3.webp',
+image:'images/lectures/lecture3.webp',
 description:'Как не дать скрытым чувствам управлять вашей жизнью, отношениями и карьерой',
 url:'#'
 },
 {
 title:'Лекция «Секс, сексуальность, романтика и эротизм»',
-image:'/images/lectures/lecture4.webp',
-description:'Провокационная лекция о том, как вернуть притяжение и научиться строить близость на различиях, а не на одинаковости',
+image:'images/lectures/lecture4.webp',
+description:'Провокационная лекция о том, как вернуть притяжение и научиться строить близость на различиях, а не на
+одинаковости',
 url:'#'
 },
 {
 title:'Лекция «Мужчины и женщины. ‌Равные или разные?»',
-image:'/images/lectures/lecture5.webp',
+image:'images/lectures/lecture5.webp',
 description:'Жесткая система психологической автономии: без жалости, бесконечной валидации и утешительных сессий',
 url:'#'
 },
 {
 title:'Лекция «Как жить, чтобы не надо было ходить к психологу»',
-image:'/images/lectures/lecture6.webp',
-description:'Глубокая лекция о том, как устроена жизненная энергия, почему уходит страсть и как вернуть живой контакт в отношения',
+image:'images/lectures/lecture6.webp',
+description:'Глубокая лекция о том, как устроена жизненная энергия, почему уходит страсть и как вернуть живой контакт в
+отношения',
 url:'#'
 }
 ]%}
@@ -48,16 +50,9 @@ url:'#'
         <div class="lectures__wrap" data-js="lectures-wrap">
             <div class="lectures__items" data-js="lectures-items">
                 {% for item in lecturesData %}
-                <button
-                    class="lectures__item"
-                    type="button"
-                    data-js="lectures-item"
-                    data-index="{{ loop.index0 }}"
-                    data-title="{{ item.title }}"
-                    data-description="{{ item.description }}"
-                    data-image="{{ item.image }}"
-                    data-url="{{ item.url }}"
-                    aria-expanded="false">
+                <button class="lectures__item" type="button" data-js="lectures-item" data-index="{{ loop.index0 }}"
+                    data-title="{{ item.title }}" data-description="{{ item.description }}"
+                    data-image="{{ item.image  | url}}" data-url="{{ item.url }}" aria-expanded="false">
                     {{ item.title }}
                 </button>
                 {% endfor %}
