@@ -76,10 +76,6 @@
 
     /* ── Questions list ──────────────────────────────────────────────── */
 
-    &__items {
-        /* nothing special — questions are stacked */
-    }
-
     &__item {
         /* Smooth hide/show via opacity + max-height for search results */
         transition:
@@ -88,6 +84,13 @@
 
         &[hidden] {
             display: none;
+        }
+
+        &:last-child {
+
+            .question {
+                border-bottom: none;
+            }
         }
     }
 
