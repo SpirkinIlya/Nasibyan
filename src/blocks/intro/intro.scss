@@ -2,12 +2,20 @@
     position: relative;
 
     &__container {
-        padding-block: 24px 108px;
+        padding-block: 24px 0;
         position: relative;
         z-index: 2;
 
+        &_big {
+            padding-block: 24px 108px;
+        }
+
         @media (min-width:1200px) {
-            padding-block: 30px 48px;
+            padding-block: 30px 0;
+
+            &_big {
+                padding-block: 30px 48px;
+            }
         }
 
     }

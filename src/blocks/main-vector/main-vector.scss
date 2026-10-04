@@ -29,6 +29,7 @@
         @media (min-width:1200px) {
             font-size: 42px;
             line-height: 120%;
+            text-align: left;
         }
     }
 
@@ -64,8 +65,8 @@
         width: 100%;
 
         @media (min-width:1200px) {
-            width: 432px;
-            height: 342px;
+            width: 390px;
+            height: auto;
             object-fit: cover;
         }
     }

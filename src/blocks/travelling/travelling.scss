@@ -21,15 +21,11 @@
 
         p {
             margin: 0;
-            padding-bottom: 16px;
 
             @media (min-width:1200px) {
                 font-size: 20px;
             }
 
-            &:last-child {
-                padding-bottom: 0;
-            }
         }
     }
 

@@ -9,11 +9,8 @@
 {% from "blocks/about-consultation/about-consultation.njk" import aboutConsultation %}
 
 {% block content %}
-{% call intro({toForm:true}) %}
-<h1 class="intro__heading">консультации</h1>
-<p class="intro__description">Воспользуйтесь возможностью глубокой проработки и решения своих проблем и вопросов в
-    индивидуальных сессиях с опытным психологом Сергеем Насибяном</p>
-{{button({theme:"primary", text:"Записаться на консультацию"})}}
+{% call intro() %}
+<h1 class="intro__heading text_align_center">консультации</h1>
 {% endcall %}
 {{consultation()}}
 {{requests()}}

@@ -7,7 +7,7 @@
     animation: lecture-card-in 0.35s ease both;
     font-family: var(--font-primary);
 
-    @media (min-width: 1200px) {
+    @media (min-width: 768px) {
         flex-direction: row;
     }
 
@@ -22,7 +22,6 @@
 
         }
 
-        max-width: 290px;
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 16px;

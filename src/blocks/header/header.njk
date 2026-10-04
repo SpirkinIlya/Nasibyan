@@ -1,6 +1,55 @@
 {% from "blocks/logo/logo.njk" import logo %}
 {% from "blocks/button/button.njk" import button %}
-
+{% set mobileMenu = [
+{
+title: "О Сергее Насибяне",
+url: 'about/' | url
+},
+{
+title: "Расписание",
+url: 'schedule/' | url
+},
+{
+title: "Тренинги",
+url: 'trainings/' | url
+},
+{
+title: "Мистика",
+url: 'mystery/' | url
+},
+{
+title: "Психология",
+url: 'psychology/' | url
+},
+{
+title: "Философия",
+url: 'philosophy/' | url
+},
+{
+title: "Книги",
+url: 'books/' | url
+},
+{
+title: "Лекции",
+url: 'lectures/' | url
+},
+{
+title: "Статьи",
+url: 'articles/' | url
+},
+{
+title: "Вопросы и ответы",
+url: 'faq/' | url
+},
+{
+title: "Консультации",
+url: 'consultations/' | url
+},
+{
+title: "Контакты",
+url: 'contacts/' | url
+}
+] %}
 {% macro header(data) %}
 <header class="header" data-js="header">
   <div class="container header__container">
@@ -57,14 +106,14 @@
 
     <nav class="header__drawer-nav" aria-label="Мобильная навигация">
       <ul class="header__drawer-list">
-        {% for item in data.navigation %}
+        {% for item in mobileMenu %}
         <li class="header__drawer-item">
-          <a class="header__drawer-link" href="{{ data.base }}{{ item.href }}">{{ item.text }}</a>
+          <a class="header__drawer-link" href="{{ item.url }}">{{ item.title }}</a>
         </li>
         {% if item.children %}
         {% for child in item.children %}
         <li class="header__drawer-item header__drawer-item_child">
-          <a class="header__drawer-link header__drawer-link_child" href="{{ data.base }}{{ child.href }}">{{ child.text
+          <a class="header__drawer-link header__drawer-link_child" href="{{ child.url }}">{{ child.title
             }}</a>
         </li>
         {% endfor %}

@@ -129,9 +129,13 @@
         margin: 0;
         font-family: var(--font-primary);
         font-weight: 300;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 160%;
         padding-bottom: 40px;
+
+        @media (min-width:1200px) {
+            font-size: 20px;
+        }
     }
 
     /* ── Section: Quote ─────────────────────────────────────────────── */

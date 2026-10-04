@@ -55,6 +55,10 @@
             &:nth-child(2n+2) {
                 direction: rtl;
                 text-align: left;
+
+                p {
+                    direction: ltr;
+                }
             }
         }
 

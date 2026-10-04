@@ -5,7 +5,7 @@
 {% if data.width %} {% set classes = classes + " button_width_" + data.width %} {% endif %}
 
 {% if data.type === "link" %}
-<a class="{{ classes }} button_type_link {{data.class}}" href="{{ data.href or '#' }}" {% if data.target
+<a class="{{ classes }} button_type_link {{data.class}}" href="{{ data.href | url }}" {% if data.target
   %}target="{{ data.target }}" {% endif %} {% if data.target==="_blank" %}rel="noopener noreferrer" {% endif %}><span
     class="button__text">{{
     data.text

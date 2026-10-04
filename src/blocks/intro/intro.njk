@@ -3,7 +3,7 @@
     <div class="intro__decor">
         <img class="image" src="{{ 'images/hero__circle.webp' | url }}" alt="">
     </div>
-    <div class="container intro__container">
+    <div class="container intro__container {% if data.toForm %}intro__container_big{% endif %}">
         {{ caller() }}
     </div>
     {% if data.toForm %}

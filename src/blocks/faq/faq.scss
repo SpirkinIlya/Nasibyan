@@ -1,6 +1,10 @@
 .faq {
     &__container {
         padding-block: 60px;
+
+        .question:last-child {
+            border-bottom: none;
+        }
     }
 
     &__title {
