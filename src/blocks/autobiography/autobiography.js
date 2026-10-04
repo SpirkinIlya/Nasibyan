@@ -11,6 +11,8 @@
  * data-state="no-clamp"          — set on root when content fits (no toggle needed)
  */
 
+import { animateMaxHeight } from '../../scripts/utils/animate-height.js';
+
 const COLLAPSED_LINES = 12;
 
 function initAutobiography() {
@@ -63,44 +65,16 @@ function initAutobiography() {
         const isOpen = root.dataset.state === 'open';
 
         if (isOpen) {
-          // Pin current height so the animation has a starting point
-          wrap.style.maxHeight = `${wrap.scrollHeight}px`;
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              // Record where the toggle sits in the viewport RIGHT BEFORE collapse
-              const anchorY = toggle.getBoundingClientRect().top;
-
-              // Start CSS transition
-              wrap.style.maxHeight = `${collapsedHeight}px`;
-
-              // During the 400ms transition, keep the toggle anchored at anchorY
-              // by compensating scroll every frame
-              const TRANSITION_MS = 400;
-              const startTime = performance.now();
-
-              function tick(now) {
-                const drift = toggle.getBoundingClientRect().top - anchorY;
-
-                if (Math.abs(drift) >= 1) {
-                  window.scrollBy({ top: drift, behavior: 'instant' });
-                }
-
-                if (now - startTime < TRANSITION_MS) {
-                  requestAnimationFrame(tick);
-                }
-              }
-
-              requestAnimationFrame(tick);
-            });
-          });
+          // Collapse — the toggle stays fixed, content above folds down
+          animateMaxHeight(wrap, collapsedHeight, { anchor: true });
 
           delete root.dataset.state;
           toggle.setAttribute('aria-expanded', 'false');
           toggle.setAttribute('aria-label', 'Читать полностью');
         } else {
           // Expand
-          wrap.style.maxHeight = `${wrap.scrollHeight}px`;
+          animateMaxHeight(wrap, wrap.scrollHeight);
+
           root.dataset.state = 'open';
           toggle.setAttribute('aria-expanded', 'true');
           toggle.setAttribute('aria-label', 'Свернуть');

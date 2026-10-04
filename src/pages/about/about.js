@@ -9,6 +9,8 @@
  * data-js="intro-text-toggle" — button with arrow icon
  */
 
+import { animateMaxHeight } from '../../scripts/utils/animate-height.js';
+
 const COLLAPSED_LINES = 6;
 const DESKTOP_BP = 1200;
 const TRANSITION_MS = 400;
@@ -86,36 +88,14 @@ function initIntroText() {
     const isOpen = root.dataset.state === 'open';
 
     if (isOpen) {
-      // Collapse with scroll anchor — button stays visually stationary
-      const anchorY = toggle.getBoundingClientRect().top;
-
-      wrap.style.maxHeight = `${wrap.scrollHeight}px`;
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          wrap.style.maxHeight = `${collapsedHeight}px`;
-
-          const startTime = performance.now();
-
-          function tick(now) {
-            const drift = toggle.getBoundingClientRect().top - anchorY;
-            if (Math.abs(drift) >= 1) {
-              window.scrollBy({ top: drift, behavior: 'instant' });
-            }
-            if (now - startTime < TRANSITION_MS) {
-              requestAnimationFrame(tick);
-            }
-          }
-
-          requestAnimationFrame(tick);
-        });
-      });
+      // Collapse — the toggle stays fixed, content above folds down
+      animateMaxHeight(wrap, collapsedHeight, { anchor: true });
 
       delete root.dataset.state;
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Читать полностью');
     } else {
-      wrap.style.maxHeight = `${wrap.scrollHeight}px`;
+      animateMaxHeight(wrap, wrap.scrollHeight);
       root.dataset.state = 'open';
       toggle.setAttribute('aria-expanded', 'true');
       toggle.setAttribute('aria-label', 'Свернуть');

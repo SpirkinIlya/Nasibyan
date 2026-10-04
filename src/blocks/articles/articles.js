@@ -9,8 +9,9 @@
  * data-js="articles-tabs-toggle" — expand/collapse button (hidden by default)
  */
 
+import { animateMaxHeight } from '../../scripts/utils/animate-height.js';
+
 const COLLAPSED_HEIGHT = 176;
-const TRANSITION_MS = 400;
 
 function initArticlesTabs() {
   document.querySelectorAll('[data-js="articles-tabs-wrap"]').forEach((wrap) => {
@@ -20,7 +21,6 @@ function initArticlesTabs() {
     if (!tabs || !toggle) return;
 
     let isOpen = false;
-    let isAnimating = false;
 
     function getScrollHeight() {
       // Temporarily remove max-height to measure full height
@@ -55,9 +55,6 @@ function initArticlesTabs() {
     }
 
     toggle.addEventListener('click', () => {
-      if (isAnimating) return;
-      isAnimating = true;
-
       const fullHeight = getScrollHeight();
       tabs.style.setProperty('--tabs-scroll-height', `${fullHeight}px`);
 
@@ -67,38 +64,15 @@ function initArticlesTabs() {
         toggle.setAttribute('aria-expanded', 'true');
         toggle.setAttribute('aria-label', 'Свернуть фильтры');
         tabs.dataset.state = 'open';
-        tabs.style.maxHeight = `${fullHeight}px`;
+        animateMaxHeight(tabs, fullHeight);
       } else {
-        // Close — anchor scroll to toggle button so page collapses downward
-        const anchorY = toggle.getBoundingClientRect().top;
-
+        // Close — the toggle stays fixed, page collapses downward
         isOpen = false;
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Развернуть фильтры');
         tabs.removeAttribute('data-state');
-        tabs.style.maxHeight = `${COLLAPSED_HEIGHT}px`;
-
-        // Keep toggle in place during collapse
-        const startTime = performance.now();
-
-        function tick(now) {
-          const drift = toggle.getBoundingClientRect().top - anchorY;
-
-          if (Math.abs(drift) >= 1) {
-            window.scrollBy({ top: drift, behavior: 'instant' });
-          }
-
-          if (now - startTime < TRANSITION_MS) {
-            requestAnimationFrame(tick);
-          }
-        }
-
-        requestAnimationFrame(tick);
+        animateMaxHeight(tabs, COLLAPSED_HEIGHT, { anchor: true });
       }
-
-      setTimeout(() => {
-        isAnimating = false;
-      }, TRANSITION_MS);
     });
 
     // Initial check

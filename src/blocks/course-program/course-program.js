@@ -10,6 +10,8 @@
  * data-js="course-program-control" — wrapper with the toggle <button>
  */
 
+import { animateMaxHeight } from '../../scripts/utils/animate-height.js';
+
 const DESKTOP_BP = 1200;
 const TRANSITION_MS = 400;
 const TEXT_EXPAND = 'Развернуть ↓';
@@ -95,40 +97,15 @@ function initCourseProgram() {
 
     toggle.addEventListener('click', () => {
       if (isOpen) {
-        // ── Collapse with scroll anchor so button stays in viewport ──────────
-        const anchorY = toggle.getBoundingClientRect().top;
-
-        // Pin to current full height so transition has a defined start
-        wrap.style.maxHeight = `${wrap.scrollHeight}px`;
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            const collapsed = getCollapsedHeight();
-            wrap.style.maxHeight = `${collapsed}px`;
-
-            // Keep toggle at anchorY during the transition
-            const startTime = performance.now();
-
-            function tick(now) {
-              const drift = toggle.getBoundingClientRect().top - anchorY;
-              if (Math.abs(drift) >= 1) {
-                window.scrollBy({ top: drift, behavior: 'instant' });
-              }
-              if (now - startTime < TRANSITION_MS) {
-                requestAnimationFrame(tick);
-              }
-            }
-
-            requestAnimationFrame(tick);
-          });
-        });
+        // ── Collapse — button stays fixed in the viewport ────────────────────
+        animateMaxHeight(wrap, getCollapsedHeight(), { anchor: true });
 
         isOpen = false;
         toggle.setAttribute('aria-expanded', 'false');
         setToggleText(false);
       } else {
         // ── Expand ────────────────────────────────────────────────────────────
-        wrap.style.maxHeight = `${wrap.scrollHeight}px`;
+        animateMaxHeight(wrap, wrap.scrollHeight);
         isOpen = true;
         toggle.setAttribute('aria-expanded', 'true');
         setToggleText(true);

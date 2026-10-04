@@ -12,6 +12,8 @@
  * data-state="no-clamp"   — set on root when content fits (no toggle needed)
  */
 
+import { animateMaxHeight } from '../../scripts/utils/animate-height.js';
+
 const COLLAPSED_LINES = 10;
 
 function initMyWay() {
@@ -74,38 +76,15 @@ function initMyWay() {
         const isOpen = root.dataset.state === 'open';
 
         if (isOpen) {
-          // Pin current height so the animation has a defined start
-          wrap.style.maxHeight = `${wrap.scrollHeight}px`;
-
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-              const anchorY = toggle.getBoundingClientRect().top;
-
-              wrap.style.maxHeight = `${collapsedHeight}px`;
-
-              const TRANSITION_MS = 350;
-              const startTime = performance.now();
-
-              function tick(now) {
-                const drift = toggle.getBoundingClientRect().top - anchorY;
-                if (Math.abs(drift) >= 1) {
-                  window.scrollBy({ top: drift, behavior: 'instant' });
-                }
-                if (now - startTime < TRANSITION_MS) {
-                  requestAnimationFrame(tick);
-                }
-              }
-
-              requestAnimationFrame(tick);
-            });
-          });
+          // Collapse — the toggle stays fixed, content above folds down
+          animateMaxHeight(wrap, collapsedHeight, { anchor: true });
 
           delete root.dataset.state;
           toggle.setAttribute('aria-expanded', 'false');
           toggle.setAttribute('aria-label', 'Читать полностью');
         } else {
           // Expand: animate to full content height.
-          wrap.style.maxHeight = `${wrap.scrollHeight}px`;
+          animateMaxHeight(wrap, wrap.scrollHeight);
           root.dataset.state = 'open';
           toggle.setAttribute('aria-expanded', 'true');
           toggle.setAttribute('aria-label', 'Свернуть');
