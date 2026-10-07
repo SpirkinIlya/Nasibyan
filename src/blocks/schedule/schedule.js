@@ -10,7 +10,7 @@ function initSchedule() {
         modules: [Navigation, Grid],
         slidesPerView: 1,
         grid: {
-            rows: 3,
+            rows: 1,
         },
         spaceBetween: 24,
         navigation: {
