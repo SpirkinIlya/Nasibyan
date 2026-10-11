@@ -7,6 +7,7 @@
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
+    border-color var(--transition-fast),
     opacity var(--transition-fast);
   white-space: nowrap;
   height: fit-content;
@@ -22,7 +23,8 @@
   outline-offset: 3px;
 }
 
-/* Themes */
+/* ── Theme: primary ──────────────────────────────────────────────────────── */
+
 .button_theme_primary {
   border-radius: 24px;
   border: 1px solid var(--color-accent-brown);
@@ -35,13 +37,25 @@
   color: var(--color-white);
 }
 
-.button_theme_primary:hover {
-  border: 1px solid var(--color-accent-sand);
+/* Pointer devices — animate on hover */
+@media (hover: hover) {
+  .button_theme_primary:hover {
+    border-color: var(--color-accent-sand);
+  }
+}
+
+/* Touch devices — always look "hovered" */
+@media (hover: none) {
+  .button_theme_primary {
+    border-color: var(--color-accent-sand);
+  }
 }
 
 .button_theme_primary:active {
   color: var(--color-accent-sand);
 }
+
+/* ── Theme: secondary ────────────────────────────────────────────────────── */
 
 .button_theme_secondary {
   border: 2px solid var(--color-accent-sand);
@@ -55,10 +69,21 @@
   color: var(--color-accent-sand);
 }
 
-.button_theme_secondary:hover {
-  background-color: var(--color-accent-sand);
-  color: var(--color-white);
+@media (hover: hover) {
+  .button_theme_secondary:hover {
+    background-color: var(--color-accent-sand);
+    color: var(--color-white);
+  }
 }
+
+@media (hover: none) {
+  .button_theme_secondary {
+    background-color: var(--color-accent-sand);
+    color: var(--color-white);
+  }
+}
+
+/* ── Theme: tertiary ─────────────────────────────────────────────────────── */
 
 .button_theme_tertiary {
   border-bottom: 2px solid #c59857;
@@ -72,31 +97,23 @@
   position: relative;
 }
 
+/* Arrow icon — slides in from outside on hover */
 .button_theme_tertiary::after {
   position: absolute;
   content: '';
-
   width: 32px;
   height: 32px;
-
   top: 50%;
   right: 0;
-
   transform: translate(100%, -50%);
-
   background-image: url(../../assets/icons/arrow.svg);
   background-repeat: no-repeat;
   background-size: 32px 32px;
-
   background-position: -32px center;
-
   transition: background-position 0.5s ease-in-out;
 }
 
-.button_theme_tertiary:hover::after {
-  background-position: 0 center;
-}
-
+/* Underline accent — slides out on hover */
 .button_theme_tertiary::before {
   position: absolute;
   content: '';
@@ -105,19 +122,55 @@
   background: var(--color-accent-sand);
   bottom: -2px;
   right: 0;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
-.button_theme_tertiary:hover::before {
-  transform: translateX(100%);
+@media (hover: hover) {
+  .button_theme_tertiary:hover::after {
+    background-position: 0 center;
+  }
+
+  .button_theme_tertiary:hover::before {
+    transform: translateX(100%);
+  }
 }
 
-/* Width */
+/* Touch — always show arrow, always hide underline accent.
+   Padding-right makes room for the arrow inside the button layout. */
+@media (hover: none) {
+  .button_theme_tertiary {
+    padding-right: 40px; /* 4px base + 32px arrow + 4px gap */
+  }
+
+  .button_theme_tertiary::after {
+    background-position: 0 center;
+    /* Arrow stays inside the button padding, no longer translated outside */
+    transform: translate(0, -50%);
+  }
+
+  .button_theme_tertiary::before {
+    display: none;
+  }
+}
+
+/* ── Width ───────────────────────────────────────────────────────────────── */
+
 .button_width_full {
   width: 100%;
 }
 
-/* Player controls */
+/* Full-width tertiary: no pseudo-elements, no hover animation */
+.button_theme_tertiary.button_width_full {
+  padding-right: 4px; /* reset touch padding-right override */
+}
+
+.button_theme_tertiary.button_width_full::before,
+.button_theme_tertiary.button_width_full::after {
+  display: none;
+}
+
+/* ── Player controls ─────────────────────────────────────────────────────── */
+
 .button_player {
   width: 40px;
   height: 40px;
@@ -125,15 +178,25 @@
   box-sizing: border-box;
   border-radius: 50%;
   color: var(--color-accent-sand);
+}
 
-  @media (min-width:1200px) {
+@media (min-width: 1200px) {
+  .button_player {
     width: 62px;
     height: 62px;
   }
-
 }
 
-.button_player:hover {
-  background: var(--color-accent-sand);
-  color: var(--color-white);
+@media (hover: hover) {
+  .button_player:hover {
+    background: var(--color-accent-sand);
+    color: var(--color-white);
+  }
+}
+
+@media (hover: none) {
+  .button_player {
+    background: var(--color-accent-sand);
+    color: var(--color-white);
+  }
 }

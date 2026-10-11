@@ -77,8 +77,16 @@
     &__title {
         position: relative;
         z-index: 2;
-        top: 520px;
         margin: 0;
+        top: 30%;
+
+        @media (min-width: 360px) and (max-width: 510px) {
+            top: calc((30 + 13 * ((100vw - 360px) / 150px)) * 1%);
+        }
+
+        @media (min-width: 510px) {
+            top: 43%;
+        }
 
         @media (min-width: 1200px) {
             text-align: center;
@@ -86,7 +94,14 @@
             top: 46%;
             left: 443px;
             transform: translate(0, -50%);
+        }
 
+        @media (min-width: 1200px) {
+            text-align: center;
+            max-width: 360px;
+            top: 46%;
+            left: 443px;
+            transform: translate(0, -50%);
         }
     }
 
