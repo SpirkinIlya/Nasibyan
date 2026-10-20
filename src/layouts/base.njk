@@ -1,5 +1,7 @@
 {% from "blocks/header/header.njk" import header %}
 {% from "blocks/footer/footer.njk" import footer %}
+{% from "blocks/form-modal/form-modal.njk" import formModal %}
+{% from "blocks/buy-modal/buy-modal.njk" import buyModal %}
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -46,6 +48,8 @@
   base: base
   })
   }}
+  {{ formModal() }}
+  {{ buyModal() }}
 
 </body>
 

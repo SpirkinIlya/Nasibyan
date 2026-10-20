@@ -1,58 +1,295 @@
-/**
- * form — base form handler
- *
- * Intercepts submit, sets data-state="loading" during processing.
- * Dispatches custom events for external handlers to hook into.
- *
- * data-js="form"              — <form> element
- * data-state="loading"        — while submitting
- * data-state="success"        — on successful response
- * data-state="error"          — on failed response
- *
- * Custom events fired on the form element:
- *   form:submit  — before send  (detail: { formData })
- *   form:success — on success   (detail: { response })
- *   form:error   — on failure   (detail: { error })
- */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('[data-js="form"]').forEach(function (form) {
 
-function initForms() {
-  document.querySelectorAll('[data-js="form"]').forEach((form) => {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function getInputWrap(field) {
+      return field.closest('.input');
+    }
 
-      const formData = new FormData(form);
+    function showInputError(field, message) {
+      const wrap = getInputWrap(field);
 
-      // Notify listeners that submit started
-      form.dispatchEvent(
-        new CustomEvent('form:submit', { bubbles: true, detail: { formData } })
+      if (!wrap) {
+        return;
+      }
+
+      wrap.classList.add('input_error');
+      field.setAttribute('aria-invalid', 'true');
+
+      let error = wrap.querySelector('.input__error');
+
+      if (!error) {
+        error = document.createElement('span');
+        error.className = 'input__error';
+        error.setAttribute('role', 'alert');
+        wrap.appendChild(error);
+      }
+
+      error.textContent = message;
+    }
+
+    function clearInputError(field) {
+      const wrap = getInputWrap(field);
+
+      if (!wrap) {
+        return;
+      }
+
+      wrap.classList.remove('input_error');
+      field.removeAttribute('aria-invalid');
+
+      const error = wrap.querySelector('.input__error');
+
+      if (error) {
+        error.remove();
+      }
+    }
+
+    function getNativeMessage(field) {
+      if (field.validity.valueMissing) {
+        return field.dataset.valueMissing || 'Заполните поле';
+      }
+
+      if (field.validity.typeMismatch) {
+        return field.dataset.typeMismatch || 'Введите корректное значение';
+      }
+
+      if (field.validity.patternMismatch) {
+        return field.dataset.patternMismatch || 'Некорректное значение';
+      }
+
+      return 'Проверьте значение поля';
+    }
+
+    function validateField(field) {
+      if (!field.required && field.value.trim() === '') {
+        clearInputError(field);
+        return true;
+      }
+
+      if (!field.validity.valid) {
+        showInputError(field, getNativeMessage(field));
+        return false;
+      }
+
+      clearInputError(field);
+
+      return true;
+    }
+
+    const fields = form.querySelectorAll(
+      '.input__field'
+    );
+
+    /*
+     * Ограничение ввода + очистка ошибки
+     */
+    fields.forEach(function (field) {
+      field.addEventListener('input', function () {
+
+        if (field.name === 'name') {
+          field.value = field.value.replace(
+            /[^А-Яа-яЁё\s-]/g,
+            ''
+          );
+        }
+
+        if (field.name === 'phone') {
+          field.value = field.value.replace(
+            /[^0-9+\-\s]/g,
+            ''
+          );
+        }
+
+        if (
+          getInputWrap(field) &&
+          getInputWrap(field).classList.contains('input_error')
+        ) {
+          validateField(field);
+        }
+      });
+
+      field.addEventListener('blur', function () {
+        validateField(field);
+      });
+    });
+
+
+    /*
+     * Нативная проверка перед отправкой
+     */
+    form.addEventListener('submit', function (event) {
+      let valid = true;
+      let firstInvalid = null;
+
+      fields.forEach(function (field) {
+        if (!validateField(field)) {
+          valid = false;
+
+          if (!firstInvalid) {
+            firstInvalid = field;
+          }
+        }
+      });
+
+      const checkboxes = form.querySelectorAll(
+        'input[type="checkbox"][required]'
       );
 
-      form.dataset.state = 'loading';
+      checkboxes.forEach(function (checkbox) {
+        if (!checkbox.checked) {
+          valid = false;
 
-      try {
-        const response = await fetch(form.action, {
-          method: form.method || 'POST',
-          body: formData,
-        });
+          checkbox.setAttribute(
+            'aria-invalid',
+            'true'
+          );
 
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          if (!firstInvalid) {
+            firstInvalid = checkbox;
+          }
+        } else {
+          checkbox.removeAttribute(
+            'aria-invalid'
+          );
+        }
+      });
 
-        form.dataset.state = 'success';
-        form.dispatchEvent(
-          new CustomEvent('form:success', { bubbles: true, detail: { response } })
-        );
-      } catch (error) {
-        form.dataset.state = 'error';
-        form.dispatchEvent(
-          new CustomEvent('form:error', { bubbles: true, detail: { error } })
-        );
+      if (!valid) {
+        event.preventDefault();
+
+        if (firstInvalid) {
+          firstInvalid.focus();
+        }
       }
     });
   });
-}
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initForms);
-} else {
-  initForms();
-}
+
+  /*
+   * Ошибки FetchIt 4 / FormIt
+   */
+  document.addEventListener('fetchit:error', function (event) {
+    const {
+      form,
+      response
+    } = event.detail;
+
+    /*
+     * response === null означает сетевую/транспортную
+     * ошибку, а не ошибку конкретного поля.
+     */
+    if (!form || !response) {
+      return;
+    }
+
+    const errors = response.data;
+
+    if (!errors || typeof errors !== 'object') {
+      return;
+    }
+
+    Object.entries(errors).forEach(function ([name, message]) {
+
+      const field = form.elements.namedItem(name);
+
+      if (!field) {
+        return;
+      }
+
+      /*
+       * Наш визуальный формат предназначен
+       * для обычных input.
+       */
+      const wrap = field.closest('.input');
+
+      if (!wrap) {
+        field.setAttribute(
+          'aria-invalid',
+          'true'
+        );
+
+        return;
+      }
+
+      wrap.classList.add('input_error');
+
+      field.setAttribute(
+        'aria-invalid',
+        'true'
+      );
+
+      let error = wrap.querySelector(
+        '.input__error'
+      );
+
+      if (!error) {
+        error = document.createElement('span');
+        error.className = 'input__error';
+        error.setAttribute('role', 'alert');
+
+        wrap.appendChild(error);
+      }
+
+      error.textContent = Array.isArray(message)
+        ? message[0]
+        : message;
+    });
+  });
+
+
+  /*
+   * Успешная отправка
+   */
+  document.addEventListener('fetchit:success', function (event) {
+    const { form } = event.detail;
+
+    if (!form) {
+      return;
+    }
+
+    form.querySelectorAll('.input_error').forEach(function (wrap) {
+      wrap.classList.remove('input_error');
+
+      const error = wrap.querySelector(
+        '.input__error'
+      );
+
+      if (error) {
+        error.remove();
+      }
+    });
+
+    form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
+      field.removeAttribute('aria-invalid');
+    });
+  });
+
+
+  /*
+   * FetchIt 4 вызывает reset после штатного сброса формы.
+   * На всякий случай чистим визуальные ошибки и там.
+   */
+  document.addEventListener('fetchit:reset', function (event) {
+    const { form } = event.detail;
+
+    if (!form) {
+      return;
+    }
+
+    form.querySelectorAll('.input_error').forEach(function (wrap) {
+      wrap.classList.remove('input_error');
+
+      const error = wrap.querySelector(
+        '.input__error'
+      );
+
+      if (error) {
+        error.remove();
+      }
+    });
+
+    form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
+      field.removeAttribute('aria-invalid');
+    });
+  });
+});

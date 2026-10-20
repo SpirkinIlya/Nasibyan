@@ -8,15 +8,20 @@ function initSchedule() {
 
     new Swiper('.schedule__swiper', {
         modules: [Navigation, Grid],
+
         slidesPerView: 1,
+        spaceBetween: 24,
+
         grid: {
             rows: 1,
+            fill: 'row',
         },
-        spaceBetween: 24,
+
         navigation: {
             nextEl: '.button-next',
             prevEl: '.button-prev',
         },
+
         breakpoints: {
             768: {
                 slidesPerView: 2,
@@ -24,6 +29,7 @@ function initSchedule() {
                     rows: 2,
                 },
             },
+
             1200: {
                 slidesPerView: 3,
                 grid: {

@@ -84,7 +84,7 @@ url: 'contacts/' | url
 
     {# ── Desktop CTA button ─────────────────────────────────────────────── #}
     <div class="header__actions">
-      {{ button({ theme: "secondary", text: "Записаться на курс" }) }}
+      {{ button({ theme: "secondary", text: "Записаться на курс", attrs: 'data-js="show-form-modal"' }) }}
     </div>
 
     {# ── Mobile hamburger ───────────────────────────────────────────────── #}
@@ -123,7 +123,7 @@ url: 'contacts/' | url
     </nav>
 
     <div class="header__drawer-footer">
-      {{ button({ theme: "secondary", text: "Записаться на курс", width: "full" }) }}
+      {{ button({ theme: "secondary", text: "Записаться на курс", width: "full", attrs: 'data-js="show-form-modal"' }) }}
     </div>
   </div>
 

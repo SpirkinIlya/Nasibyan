@@ -22,3 +22,37 @@
         }
     }
 }
+
+.schedule__swiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+.schedule__swiper .swiper-slide {
+    height: auto !important;
+    display: flex;
+}
+
+.schedule__swiper .event-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule__swiper .event-card__info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.schedule__swiper .event-card .button {
+    margin-top: auto;
+}
+
+.schedule__swiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+.schedule__swiper .swiper-slide {
+    box-sizing: border-box;
+}

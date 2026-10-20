@@ -21,18 +21,71 @@
   gap: 24px;
 }
 
-/* ── Legal text ───────────────────────────────────────────────────────────── */
+/* ── Consent checkboxes ────────────────────────────────────────────────────── */
 
-.form__legal {
+.form__consents {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* Hide native checkbox, keep it accessible */
+.form__consent-checkbox {
+  appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border: 1.5px solid var(--color-pale-sandy);
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+  position: relative;
+}
+
+/* Checkmark via ::after */
+.form__consent-checkbox::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background-color: var(--color-accent-sand);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.form__consent-checkbox:checked {
+  border-color: var(--color-accent-sand);
+}
+
+.form__consent-checkbox:checked::after {
+  opacity: 1;
+}
+
+.form__consent-checkbox:focus-visible {
+  outline: 2px solid var(--color-accent-sand);
+  outline-offset: 2px;
+}
+
+.form__consent-text {
   font-family: var(--font-primary);
   font-size: 12px;
   font-weight: var(--font-weight-regular);
   line-height: 1.5;
   color: var(--color-dark);
-  margin: 0;
 }
 
-.form__legal-link {
+.form__consent-link {
   color: var(--color-accent-red);
   text-decoration: none;
   transition: opacity var(--transition-fast);

@@ -3,6 +3,15 @@
 .question {
   border-bottom: 1px solid rgba(206, 189, 176, 0.15);
   padding: 24px 0;
+
+  &__video {
+    aspect-ratio: 16/9;
+    width: 100%;
+    max-width: 446px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════════
@@ -44,6 +53,14 @@
   line-height: 120%;
   color: inherit;
   transition: color var(--transition-fast);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
 /* ── Arrow icon ───────────────────────────────────────────────────────────── */

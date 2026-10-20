@@ -32,10 +32,16 @@
             {% endcall %}
         </div>
         <div class="form__footer">
-            <p class="form__legal">
-                Нажимая кнопку «Отправить заявку», вы соглашаетесь с
-                <a class="form__legal-link" href="{{ 'privacy/' | url }}">условиями обработки персональных данных</a>
-            </p>
+            <div class="form__consents">
+                <label class="form__consent">
+                    <input class="form__consent-checkbox" type="checkbox" name="consent_privacy" required>
+                    <span class="form__consent-text">Я ознакомился с <a class="form__consent-link" href="/usloviya-obrabotki-personalnyix-dannyix">Политикой конфиденциальности</a></span>
+                </label>
+                <label class="form__consent">
+                    <input class="form__consent-checkbox" type="checkbox" name="consent_data" required>
+                    <span class="form__consent-text">Я даю согласие на <a class="form__consent-link" href="/agree">обработку персональных данных</a></span>
+                </label>
+            </div>
             {{ button({ text: "Отправить заявку", theme: "primary", width: "full" }) }}
         </div>
         {% endcall %}

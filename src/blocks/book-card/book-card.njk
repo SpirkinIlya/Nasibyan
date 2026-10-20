@@ -12,7 +12,8 @@
     </div>
     <div class="book-card__controls">
         {{button({theme:'tertiary', text: 'о книге', type:'link', url:'#', width:'full'})}}
-        {{button({theme:'primary', text:'Купить', width:'full'})}}
+        {{button({theme:'primary', text:'Купить', width:'full', attrs:'data-js="open-buy-modal"'})}}
+
     </div>
 </div>
 {% endmacro %}

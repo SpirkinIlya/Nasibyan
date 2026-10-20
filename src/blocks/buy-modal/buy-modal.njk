@@ -1,0 +1,38 @@
+/**
+ * buy-modal.njk
+ *
+ * Модальное окно со списком магазинов для покупки книги.
+ *
+ * Триггер: любой элемент с data-js="open-buy-modal".
+ * Список магазинов передаётся через data-shops (JSON-строка) на триггере.
+ * Если data-shops не задан — используется список по умолчанию.
+ *
+ * Пример:
+ *   <button data-js="open-buy-modal">Купить</button>
+ *
+ * С кастомным списком:
+ *   <button
+ *     data-js="open-buy-modal"
+ *     data-shops='[{"name":"Wildberries","url":"https://wb.ru/..."},{"name":"Ozon","url":"https://ozon.ru/..."}]'
+ *   >Купить</button>
+ */
+
+{% macro buyModal() %}
+<div class="buy-modal" data-js="buy-modal" role="dialog" aria-modal="true" aria-labelledby="buy-modal-title" hidden>
+  <div class="buy-modal__overlay" data-js="buy-modal-overlay"></div>
+  <div class="buy-modal__content">
+    <div class="buy-modal__header">
+      <h2 class="buy-modal__title" id="buy-modal-title">Где купить книгу</h2>
+      <button class="buy-modal__close" data-js="buy-modal-close" type="button" aria-label="Закрыть">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="4" x2="4" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <ul class="buy-modal__list" data-js="buy-modal-list" aria-label="Список магазинов">
+      {# Список генерируется JS из data-shops триггера или из дефолтного набора #}
+    </ul>
+  </div>
+</div>
+{% endmacro %}

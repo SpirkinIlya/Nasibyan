@@ -2,39 +2,45 @@
 {% set podcastTitles = [
 {
 title:'Почему молчание хуже ссоры?',
-duration:'43:14'
+duration:'43:14',
+url:'https://www.youtube.com/embed/BC70yHC8vVc'
 },
 {
 title:'Все изменяют всем',
-duration:'39:35'
+duration:'39:35',
+url:'https://www.youtube.com/embed/ZAGeZ8pUEcI'
 },
 {
 title:'Брак по любви - это миф',
-duration:'55:13'
+duration:'55:13',
+url:'https://www.youtube.com/embed/5CJlIUE9Aq0'
 },
 {
 title:'Стыд, вина и одиночество. Как избавиться от тревоги',
-duration:'46:53'
+duration:'46:53',
+url:'https://www.youtube.com/embed/PGBwLstKwJo'
 },
 {
 title:'Как найти любовь. Чувства, измены, ревность. 30 вопросов психологу',
-duration:'1:01:53'
+duration:'1:01:53',
+url:'https://www.youtube.com/embed/videoseries?list=PLHlNlscPjfh_iEifDqENDvLbKyGMtuIz0'
 },
 {
 title:'50 главных вопросов психологу',
-duration:'1:07:14'
+duration:'1:07:14',
+url:'https://www.youtube.com/embed/s_32Ffx7-yM'
 }
 ] %}
 <section class="podcasts container">
     <div class="gradient_type_gold">
         <div class="podcasts__wrap">
             <h2 class="podcasts__title">подкасты</h2>
-            <p class="podcasts__description">Прямые разговоры без пафоса, без воды, с юмором и силой.<br>
-                Речь — о страхах, самооценке, любви, смысле жизни и том, как быть собой.</p>
+            <p class="podcasts__description">Прямые разговоры без пафоса, без воды, с юмором и силой.<br>
+                Речь — о страхах, самооценке, любви, смысле жизни и том, как быть собой.</p>
             <div class="podcasts__items">
                 {% for item in podcastTitles %}
-                <div class="podcasts__item">
-                    <button class="button button_player">
+                <div class="podcasts__item" data-js="podcast-item" data-url="{{ item.url }}">
+                    <button class="button button_player" data-js="podcast-play" aria-label="Смотреть: {{ item.title }}">
                         <svg width="12" height="13">
                             <use href="{{ 'images/sprite/sprite.svg#icon-play' | url }}"></use>
                         </svg>
