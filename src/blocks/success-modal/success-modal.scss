@@ -1,0 +1,105 @@
+/* ── Success modal ─────────────────────────────────────────────────────────── */
+
+.success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100; /* выше form-modal (900) и podcast-modal (1000) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &[data-state="open"] .success-modal__content {
+    animation: success-modal-in 0.3s ease both;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(14 13 11 / 80%);
+    cursor: pointer;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 400px);
+    background: var(--color-dark);
+    border: 1px solid rgb(197 152 87 / 30%);
+    border-radius: 4px;
+    padding: 48px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  &__icon {
+    color: var(--color-accent-sand);
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: var(--font-secondary);
+    font-size: clamp(20px, 4vw, 26px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-white);
+    margin: 0;
+  }
+
+  &__text {
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--color-pale-sandy);
+    margin: 0;
+  }
+
+  &__close {
+    margin-top: 8px;
+    border: 1px solid var(--color-accent-sand);
+    border-radius: 24px;
+    padding: 12px 32px;
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--color-white);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-accent-sand);
+      }
+    }
+
+    @media (hover: none) {
+      background-color: var(--color-accent-sand);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent-sand);
+      outline-offset: 3px;
+    }
+  }
+}
+
+@keyframes success-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

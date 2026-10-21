@@ -9,7 +9,9 @@
  * Кастомный заголовок через data-title:
  *   <button data-js="show-form-modal" data-title="Записаться на тренинг">...</button>
  *
- * Если data-title не задан — используется заголовок по умолчанию.
+ * Источник (скрытое поле source) через data-source.
+ * Если data-source не задан — берётся textContent кнопки-триггера:
+ *   <button data-js="show-form-modal" data-source="header-cta">...</button>
  *
  * Закрытие — крестик, клик на оверлей, клавиша Escape.
  */
@@ -23,6 +25,7 @@ function initFormModal() {
   const overlay = modal.querySelector('[data-js="form-modal-overlay"]');
   const closeBtn = modal.querySelector('[data-js="form-modal-close"]');
   const titleEl = modal.querySelector('[data-js="form-modal-title"]');
+  const sourceField = modal.querySelector('[data-js="form-modal-source"]');
 
   let lastTrigger = null;
 
@@ -30,9 +33,17 @@ function initFormModal() {
   function openModal(trigger) {
     lastTrigger = trigger || null;
 
-    /* Устанавливаем заголовок из data-title или дефолтный */
+    /* Заголовок из data-title или дефолтный */
     if (titleEl) {
       titleEl.textContent = (trigger && trigger.dataset.title) || DEFAULT_TITLE;
+    }
+
+    /* Скрытое поле source: data-source → textContent кнопки → пустая строка */
+    if (sourceField) {
+      sourceField.value =
+        (trigger && trigger.dataset.source) ||
+        (trigger && trigger.textContent.trim()) ||
+        '';
     }
 
     modal.hidden = false;

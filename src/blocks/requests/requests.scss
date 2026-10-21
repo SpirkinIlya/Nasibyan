@@ -93,19 +93,7 @@
             margin: 0;
             font-weight: 400;
             color: var(--color-accent-brown);
-            padding: 0 0 24px 38px;
-            position: relative;
-
-            &::before {
-                content: '';
-                width: 18px;
-                height: 18px;
-                top: 6px;
-                left: 0;
-                position: absolute;
-                background: currentColor;
-                border-radius: 50%;
-            }
+            padding: 0 0 24px 0;
         }
 
         &-description {

@@ -1,9 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-js="form"]').forEach(function (form) {
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll("[data-js=\"form\"]").forEach(function (form) {
 
     function getInputWrap(field) {
-      return field.closest('.input');
+      return field.closest(".input");
     }
+
 
     function showInputError(field, message) {
       const wrap = getInputWrap(field);
@@ -12,20 +14,23 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      wrap.classList.add('input_error');
-      field.setAttribute('aria-invalid', 'true');
+      wrap.classList.add("input_error");
 
-      let error = wrap.querySelector('.input__error');
+      field.setAttribute("aria-invalid", "true");
+
+      let error = wrap.querySelector(".input__error");
 
       if (!error) {
-        error = document.createElement('span');
-        error.className = 'input__error';
-        error.setAttribute('role', 'alert');
+        error = document.createElement("span");
+        error.className = "input__error";
+        error.setAttribute("role", "alert");
+
         wrap.appendChild(error);
       }
 
       error.textContent = message;
     }
+
 
     function clearInputError(field) {
       const wrap = getInputWrap(field);
@@ -34,159 +39,308 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      wrap.classList.remove('input_error');
-      field.removeAttribute('aria-invalid');
+      wrap.classList.remove("input_error");
 
-      const error = wrap.querySelector('.input__error');
+      field.removeAttribute("aria-invalid");
+
+      const error = wrap.querySelector(".input__error");
 
       if (error) {
         error.remove();
       }
     }
 
-    function getNativeMessage(field) {
-      if (field.validity.valueMissing) {
-        return field.dataset.valueMissing || 'Заполните поле';
-      }
-
-      if (field.validity.typeMismatch) {
-        return field.dataset.typeMismatch || 'Введите корректное значение';
-      }
-
-      if (field.validity.patternMismatch) {
-        return field.dataset.patternMismatch || 'Некорректное значение';
-      }
-
-      return 'Проверьте значение поля';
-    }
 
     function validateField(field) {
-      if (!field.required && field.value.trim() === '') {
-        clearInputError(field);
-        return true;
-      }
+      const value = field.value.trim();
 
-      if (!field.validity.valid) {
-        showInputError(field, getNativeMessage(field));
+
+      /*
+       * Обязательное поле
+       */
+      if (field.required && value === "") {
+
+        let message = "Заполните поле";
+
+        if (field.name === "name") {
+          message = "Введите ФИО";
+        }
+
+        if (field.name === "phone") {
+          message = "Введите телефон";
+        }
+
+        showInputError(field, message);
+
         return false;
       }
+
+
+      /*
+       * ФИО
+       */
+      if (
+        field.name === "name" &&
+        value !== "" &&
+        !/^[А-Яа-яЁё]+(?:[\s-][А-Яа-яЁё]+)*$/u.test(value)
+      ) {
+        showInputError(
+          field,
+          "Используйте только кириллицу, пробел и дефис"
+        );
+
+        return false;
+      }
+
+
+      /*
+       * Телефон
+       */
+      if (
+        field.name === "phone" &&
+        value !== "" &&
+        !/^[0-9+\-\s]+$/.test(value)
+      ) {
+        showInputError(
+          field,
+          "Допустимы только цифры, + и -"
+        );
+
+        return false;
+      }
+
+
+      /*
+       * Email необязательный.
+       * Но если заполнен - проверяем формат.
+       */
+      if (
+        field.name === "email" &&
+        value !== "" &&
+        !field.validity.valid
+      ) {
+        showInputError(
+          field,
+          "Введите корректный Email"
+        );
+
+        return false;
+      }
+
 
       clearInputError(field);
 
       return true;
     }
 
-    const fields = form.querySelectorAll(
-      '.input__field'
-    );
+
+    const fields = form.querySelectorAll(".input__field");
+
 
     /*
-     * Ограничение ввода + очистка ошибки
+     * Обработка ввода
      */
     fields.forEach(function (field) {
-      field.addEventListener('input', function () {
 
-        if (field.name === 'name') {
-          field.value = field.value.replace(
-            /[^А-Яа-яЁё\s-]/g,
-            ''
+      field.addEventListener("input", function () {
+
+        let forbiddenCharEntered = false;
+
+
+        /*
+         * ФИО
+         */
+        if (field.name === "name") {
+
+          const originalValue = field.value;
+
+          const filteredValue = originalValue.replace(
+            /[^А-Яа-яЁё\s-]/gu,
+            ""
           );
+
+          if (originalValue !== filteredValue) {
+
+            forbiddenCharEntered = true;
+
+            field.value = filteredValue;
+
+            showInputError(
+              field,
+              "Используйте только кириллицу, пробел и дефис"
+            );
+          }
         }
 
-        if (field.name === 'phone') {
-          field.value = field.value.replace(
+
+        /*
+         * Телефон
+         */
+        if (field.name === "phone") {
+
+          const originalValue = field.value;
+
+          const filteredValue = originalValue.replace(
             /[^0-9+\-\s]/g,
-            ''
+            ""
           );
+
+          if (originalValue !== filteredValue) {
+
+            forbiddenCharEntered = true;
+
+            field.value = filteredValue;
+
+            showInputError(
+              field,
+              "Допустимы только цифры, + и -"
+            );
+          }
         }
+
+
+        /*
+         * Если только что был введен запрещенный символ,
+         * оставляем ошибку на экране.
+         */
+        if (forbiddenCharEntered) {
+          return;
+        }
+
+
+        /*
+         * Если ошибка уже есть и пользователь
+         * продолжил корректный ввод - перепроверяем поле.
+         */
+        const wrap = getInputWrap(field);
 
         if (
-          getInputWrap(field) &&
-          getInputWrap(field).classList.contains('input_error')
+          wrap &&
+          wrap.classList.contains("input_error")
         ) {
           validateField(field);
         }
+
       });
 
-      field.addEventListener('blur', function () {
+
+      /*
+       * Проверяем при уходе из поля.
+       */
+      field.addEventListener("blur", function () {
         validateField(field);
       });
+
     });
 
 
     /*
-     * Нативная проверка перед отправкой
+     * Проверка checkbox после изменения.
      */
-    form.addEventListener('submit', function (event) {
+    form
+      .querySelectorAll("input[type=\"checkbox\"][required]")
+      .forEach(function (checkbox) {
+
+        checkbox.addEventListener("change", function () {
+
+          if (checkbox.checked) {
+            checkbox.removeAttribute("aria-invalid");
+          }
+
+        });
+
+      });
+
+
+    /*
+     * Проверка перед отправкой.
+     */
+    form.addEventListener("submit", function (event) {
+
       let valid = true;
       let firstInvalid = null;
 
+
+      /*
+       * Обычные поля
+       */
       fields.forEach(function (field) {
+
         if (!validateField(field)) {
+
           valid = false;
 
           if (!firstInvalid) {
             firstInvalid = field;
           }
         }
+
       });
 
-      const checkboxes = form.querySelectorAll(
-        'input[type="checkbox"][required]'
-      );
 
-      checkboxes.forEach(function (checkbox) {
-        if (!checkbox.checked) {
-          valid = false;
+      /*
+       * Обязательные checkbox
+       */
+      form
+        .querySelectorAll("input[type=\"checkbox\"][required]")
+        .forEach(function (checkbox) {
 
-          checkbox.setAttribute(
-            'aria-invalid',
-            'true'
-          );
+          if (!checkbox.checked) {
 
-          if (!firstInvalid) {
-            firstInvalid = checkbox;
+            valid = false;
+
+            checkbox.setAttribute(
+              "aria-invalid",
+              "true"
+            );
+
+            if (!firstInvalid) {
+              firstInvalid = checkbox;
+            }
+
+          } else {
+
+            checkbox.removeAttribute(
+              "aria-invalid"
+            );
           }
-        } else {
-          checkbox.removeAttribute(
-            'aria-invalid'
-          );
-        }
-      });
+
+        });
+
 
       if (!valid) {
+
         event.preventDefault();
 
         if (firstInvalid) {
           firstInvalid.focus();
         }
       }
+
     });
+
   });
 
 
   /*
-   * Ошибки FetchIt 4 / FormIt
+   * Серверные ошибки FetchIt 4.0.0-pl
    */
-  document.addEventListener('fetchit:error', function (event) {
-    const {
-      form,
-      response
-    } = event.detail;
+  document.addEventListener("fetchit:error", function (event) {
 
-    /*
-     * response === null означает сетевую/транспортную
-     * ошибку, а не ошибку конкретного поля.
-     */
+    const detail = event.detail || {};
+    const form = detail.form;
+    const response = detail.response;
+
     if (!form || !response) {
       return;
     }
 
     const errors = response.data;
 
-    if (!errors || typeof errors !== 'object') {
+    if (!errors || typeof errors !== "object") {
       return;
     }
+
 
     Object.entries(errors).forEach(function ([name, message]) {
 
@@ -196,100 +350,173 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      /*
-       * Наш визуальный формат предназначен
-       * для обычных input.
-       */
-      const wrap = field.closest('.input');
 
-      if (!wrap) {
+      /*
+       * Checkbox
+       */
+      if (field.type === "checkbox") {
+
         field.setAttribute(
-          'aria-invalid',
-          'true'
+          "aria-invalid",
+          "true"
         );
 
         return;
       }
 
-      wrap.classList.add('input_error');
+
+      /*
+       * Обычный input
+       */
+      const wrap = field.closest(".input");
+
+      if (!wrap) {
+        return;
+      }
+
+      wrap.classList.add("input_error");
 
       field.setAttribute(
-        'aria-invalid',
-        'true'
+        "aria-invalid",
+        "true"
       );
 
+
       let error = wrap.querySelector(
-        '.input__error'
+        ".input__error"
       );
 
       if (!error) {
-        error = document.createElement('span');
-        error.className = 'input__error';
-        error.setAttribute('role', 'alert');
+
+        error = document.createElement("span");
+
+        error.className = "input__error";
+
+        error.setAttribute(
+          "role",
+          "alert"
+        );
 
         wrap.appendChild(error);
       }
 
+
       error.textContent = Array.isArray(message)
         ? message[0]
         : message;
+
     });
+
   });
 
 
   /*
-   * Успешная отправка
+   * Успешная отправка FetchIt
    */
-  document.addEventListener('fetchit:success', function (event) {
-    const { form } = event.detail;
+  document.addEventListener("fetchit:success", function (event) {
+
+    const form = event.detail?.form;
 
     if (!form) {
       return;
     }
 
-    form.querySelectorAll('.input_error').forEach(function (wrap) {
-      wrap.classList.remove('input_error');
 
-      const error = wrap.querySelector(
-        '.input__error'
-      );
+    /*
+     * Очищаем ошибки
+     */
+    form
+      .querySelectorAll(".input_error")
+      .forEach(function (wrap) {
 
-      if (error) {
-        error.remove();
-      }
-    });
+        wrap.classList.remove("input_error");
 
-    form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
-      field.removeAttribute('aria-invalid');
-    });
+        const error = wrap.querySelector(
+          ".input__error"
+        );
+
+        if (error) {
+          error.remove();
+        }
+
+      });
+
+
+    form
+      .querySelectorAll("[aria-invalid=\"true\"]")
+      .forEach(function (field) {
+
+        field.removeAttribute(
+          "aria-invalid"
+        );
+
+      });
+
+
+    /*
+     * Если форма находилась внутри form-modal — закрываем его.
+     */
+    const formModal = form.closest("[data-js=\"form-modal\"]");
+
+    if (formModal) {
+      formModal.hidden = true;
+      delete formModal.dataset.state;
+    }
+
+
+    /*
+     * Показываем уведомление об успешной отправке.
+     * success-modal инициализируется в success-modal.js и хранит
+     * публичный метод _open на DOM-элементе.
+     */
+    const successModal = document.querySelector("[data-js=\"success-modal\"]");
+
+    if (successModal && typeof successModal._open === "function") {
+      successModal._open();
+    }
+
   });
 
 
   /*
-   * FetchIt 4 вызывает reset после штатного сброса формы.
-   * На всякий случай чистим визуальные ошибки и там.
+   * Сброс формы FetchIt
    */
-  document.addEventListener('fetchit:reset', function (event) {
-    const { form } = event.detail;
+  document.addEventListener("fetchit:reset", function (event) {
+
+    const form = event.detail?.form;
 
     if (!form) {
       return;
     }
 
-    form.querySelectorAll('.input_error').forEach(function (wrap) {
-      wrap.classList.remove('input_error');
 
-      const error = wrap.querySelector(
-        '.input__error'
-      );
+    form
+      .querySelectorAll(".input_error")
+      .forEach(function (wrap) {
 
-      if (error) {
-        error.remove();
-      }
-    });
+        wrap.classList.remove("input_error");
 
-    form.querySelectorAll('[aria-invalid="true"]').forEach(function (field) {
-      field.removeAttribute('aria-invalid');
-    });
+        const error = wrap.querySelector(
+          ".input__error"
+        );
+
+        if (error) {
+          error.remove();
+        }
+
+      });
+
+
+    form
+      .querySelectorAll("[aria-invalid=\"true\"]")
+      .forEach(function (field) {
+
+        field.removeAttribute(
+          "aria-invalid"
+        );
+
+      });
+
   });
+
 });

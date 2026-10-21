@@ -1,0 +1,16 @@
+{% macro successModal() %}
+<div class="success-modal" data-js="success-modal" role="alertdialog" aria-modal="true" aria-labelledby="success-modal-title" hidden>
+  <div class="success-modal__overlay" data-js="success-modal-overlay"></div>
+  <div class="success-modal__content">
+    <svg class="success-modal__icon" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+      <circle cx="28" cy="28" r="27" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M17 28.5L24 35.5L39 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h2 class="success-modal__title" id="success-modal-title">Ваша заявка отправлена</h2>
+    <p class="success-modal__text">Мы свяжемся с вами в ближайшее время</p>
+    <button class="success-modal__close" data-js="success-modal-close" type="button">
+      Закрыть
+    </button>
+  </div>
+</div>
+{% endmacro %}

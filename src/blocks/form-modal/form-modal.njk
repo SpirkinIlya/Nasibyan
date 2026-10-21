@@ -21,6 +21,7 @@
     </div>
 
     {% call form({ action: "#", class: "form-modal__form", novalidate: true }) %}
+    <input type="hidden" name="source" data-js="form-modal-source" value="">
     <div class="form__fields">
       {% call formField({ name: "course" }) %}
       {{ select({ name: "course-modal", placeholder: "Выберите курс или тренинг", options: [

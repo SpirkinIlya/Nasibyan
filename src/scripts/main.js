@@ -95,6 +95,8 @@ import '/blocks/seminar/seminar.scss';
 import '/blocks/seminar-about/seminar-about.scss';
 import '/blocks/smotrim/smotrim.scss';
 import '/blocks/smotrim/smotrim.js';
+import '/blocks/success-modal/success-modal.scss';
+import '/blocks/success-modal/success-modal.js';
 import '/blocks/tab/tab.scss';
 import '/blocks/textarea/textarea.scss';
 import '/blocks/trainings/trainings.scss';
