@@ -40,6 +40,8 @@ import '/blocks/buy-modal/buy-modal.js';
 import '/blocks/cartoon/cartoon.scss';
 import '/blocks/chanel-subscribe/chanel-subscribe.scss';
 import '/blocks/consultation/consultation.scss';
+import '/blocks/cookies-banner/cookies-banner.scss';
+import '/blocks/cookies-banner/cookies-banner.js';
 import '/blocks/course-program/course-program.scss';
 import '/blocks/course-program/course-program.js';
 import '/blocks/course-schedule/course-schedule.scss';

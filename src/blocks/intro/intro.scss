@@ -42,6 +42,10 @@
         }
     }
 
+    &__button {
+        white-space: unset;
+    }
+
     &__to-form {
         width: fit-content;
         position: absolute;
